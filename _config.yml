@@ -1,0 +1,13 @@
+# Site settings
+title: Ryan Harrison
+email: mail@ryanharrison.co.uk
+description: > # this means to ignore newlines until "baseurl:"
+  Welcome to my blog on technology and software development. It is
+  built on top of Jekyll to provide speed and simplicity.
+baseurl: "/blog" # the subpath of your site, e.g. /blog/
+url: "http://ryanharrison.co.uk" # the base hostname & protocol for your site
+twitter_username: _ryanharrison10
+github_username:  raharrison
+
+# Build settings
+markdown: kramdown
