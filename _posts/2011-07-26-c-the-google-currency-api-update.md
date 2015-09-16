@@ -7,6 +7,8 @@ tags:
   - JSON
   - regular expressions
 ---
+**NOTE: The Google Finance API has now been deprecated so this code will no longer work**
+
 After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example &#8211; 
 
 [http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd][2]
@@ -51,7 +53,7 @@ string units = match.Groups[3].Value.Replace(" ","");
 
 Here, the number is stored as a String from the first group and the &#8216;spaces&#8217; are removed (for some reason in the returned String, &#8216;spaces&#8217; have a Unicode value of 160, which is called the &#8216;Non-breaking space&#8217;). Next, the number is converted into a decimal and the units are extracted from the match and stored in the &#8216;units&#8217; variable.
 
-As the only possible values of the &#8216;units&#8217; variable are &#8216;millions&#8217;, &#8216;billions&#8217; and &#8216;trillions&#8217;, we can simply test the variable against each and multiply the number correspondingly to get the overall result. Finally, we just need to round the number to two decimal places to signify a currency, and return the value. Here is the full updated code which hopefully is bug free.
+As the only possible values of the &#8216;units&#8217; variable are &#8216;millions&#8217;, &#8216;billions&#8217; and &#8216;trillions&#8217;, we can simply test the variable against each and multiply the number correspondingly to get the overall result. Finally, we just need to round the number to two decimal places to signify a currency, and return the value. Here is the full updated code which hopefully is bug free. The full source code can be found in [GitHub][3].
 
 {% highlight csharp %}
 using System;  
@@ -96,3 +98,4 @@ public static class Currency
 
  [1]: {{ site.baseurl }}{% post_url 2011-07-15-c-the-google-currency-api %}
  [2]: http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd
+ [3]: https://github.com/raharrison/GoogleAPI
