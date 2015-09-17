@@ -9,7 +9,7 @@ url: "http://ryanharrison.co.uk" # the base hostname & protocol for your site
 twitter_username: _ryanharrison10
 github_username:  raharrison
 
-exclude: [".sass-cache", "README.md"]
+exclude: [".sass-cache", "README.md", "utils"]
 
 # Build settings
 markdown: kramdown
