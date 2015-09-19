@@ -1,4 +1,5 @@
 import re
+import html
 from os import listdir
 from os import path
 
@@ -38,6 +39,9 @@ def convertPost(path):
 
     # replace code tags
     output = codePattern.sub(replaceCode, output)
+
+    # remove html entities
+    output = html.unescape(output)
 
     # output result
     with open(outputdir + path, 'w', encoding="utf8") as file:
