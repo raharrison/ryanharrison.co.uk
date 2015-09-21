@@ -9,7 +9,7 @@ tags:
 ---
 Cut out all the sugar from pretty much any unit testing framework and you have yourself the situation where the users have marked their test classes to signify that they contain test methods and have marked the test methods themselves to tell the framework to actually run them.
 
-So really on the base level (cutting out assertions and such) you need to somehow figure out which methods in which classes should be run by your tester. In managed languages this becomes a lot simpler through the use of reflection. We can simply ‘reflect’ on each of the classes/methods and decide if they should be run or not.
+So really on the base level (cutting out assertions and such) you need to somehow figure out which methods in which classes should be run by your tester. In managed languages this becomes a lot simpler through the use of reflection. We can simply 'reflect' on each of the classes/methods and decide if they should be run or not.
 
 Here is some short C# code that demonstrates this idea through attributes and reflection. Classes which contain test methods are marked with the `TestClass` attribute and the test methods themselves which will be run later on are marked with the `TestMethod` attribute. The code uses `LINQ` to first get all the types in the currently executing assembly which include the `TestClass` attribute. Then all the methods are found in each of those classes which are marked with the `TestMethod` attribute. Finally each of those test methods are invoked using a new instance of the test class itself. The code is all commented so it should all be self-explanatory.
 

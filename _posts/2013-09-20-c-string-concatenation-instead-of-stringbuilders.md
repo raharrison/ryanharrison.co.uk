@@ -29,10 +29,10 @@ foreach (var value in values)
 } 
 {% endhighlight %} 
 
-Using this method is a lot more efficient thanks to the fact that `StringBuilders` keep the same position in memory for their strings and do not perform inefficient copy operations each time a new string is appended (for example number 4 from above would not be created in a completely separate memory location). This makes `StringBuilders` very useful when concatenating many strings at once. But that doesn’t mean go replace all of your string concatenation code with StringBuilders right away. There are some situations where explicitly using a StringBuilder can make the situation worse. For example: 
+Using this method is a lot more efficient thanks to the fact that `StringBuilders` keep the same position in memory for their strings and do not perform inefficient copy operations each time a new string is appended (for example number 4 from above would not be created in a completely separate memory location). This makes `StringBuilders` very useful when concatenating many strings at once. But that doesn't mean go replace all of your string concatenation code with StringBuilders right away. There are some situations where explicitly using a StringBuilder can make the situation worse. For example: 
 
 {% highlight csharp %}
 string result = "foo " + "bar " + "baz";
 {% endhighlight %} 
 
-You might think that this suffers with the same inefficiencies as in the first example but in fact it doesn’t at all. The difference is that compile-time concatenations (which is what’s happening here) are automatically translated by the compiler into the appropriate calls to `String.Concat()` (which is the fastest way). Adding a `StringBuilder` would essentially be ruining the optimisations made by the compiler. The use of `StringBuilder` should be reserved to building complex strings at runtime – not replacing compile time concatenations.
+You might think that this suffers with the same inefficiencies as in the first example but in fact it doesn't at all. The difference is that compile-time concatenations (which is what's happening here) are automatically translated by the compiler into the appropriate calls to `String.Concat()` (which is the fastest way). Adding a `StringBuilder` would essentially be ruining the optimisations made by the compiler. The use of `StringBuilder` should be reserved to building complex strings at runtime – not replacing compile time concatenations.

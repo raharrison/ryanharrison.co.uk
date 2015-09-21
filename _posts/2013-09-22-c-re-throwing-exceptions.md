@@ -66,7 +66,7 @@ namespace ScratchPad
 
 This is pretty self-explanatory. We have a method that runs another method and catches any exceptions it may throw (in this case one will be thrown every time). In the catch block we examine the exception, perhaps do some logging and re-throw the exception for the caller to handle. Finally in Main the re-thrown exception is caught again and the stack trace is examined.
 
-At first look there is nothing wrong with this code, it’s all pretty commonplace, nothing much to see here. However this is the output that we get:
+At first look there is nothing wrong with this code, it's all pretty commonplace, nothing much to see here. However this is the output that we get:
 
 {% highlight text %}  
 Trying to run DoSomething()  
@@ -78,7 +78,7 @@ at ScratchPad.Throwing.Run() in C:\Code\ScratchPad\ScratchPad\Program.cs:line 28
 at ScratchPad.Throwing.Main() in C:\Code\ScratchPad\ScratchPad\Program.cs:line 37  
 {% endhighlight %}
 
-You may or may not have noticed that this is not the full stack trace. We can see that the exception came from `Run()`, however we can’t tell that in actual fact the exception originated from `DoSomething()` at all. This may or may not cause problems when debugging as now instead of going straight to the route cause, you first have to go through `Run()`.
+You may or may not have noticed that this is not the full stack trace. We can see that the exception came from `Run()`, however we can't tell that in actual fact the exception originated from `DoSomething()` at all. This may or may not cause problems when debugging as now instead of going straight to the route cause, you first have to go through `Run()`.
 
 We lose the top of the stack trace because we used
 
@@ -127,6 +127,6 @@ at ScratchPad.Throwing.Main() in C:\Code\ScratchPad\ScratchPad\Program.cs:line 3
 
 We now have the full story in the stack trace. We can see that the exception originated from the `DoSomething()` method and passed through the `Run()` method into `Main()` – much more helpful when debugging.
 
-I don’t see any situation when using `throw e;` would be of any use at all. If you wanted to hide the stack trace then you would typically be throwing a completely new exception anyway – with a new message and perhaps other information to pass to the caller. If you didn’t want to hide the stack trace then throw; is the statement to use. Resharper even sees `throw e;` as a problem and tries to replace it with the simple throw;.
+I don't see any situation when using `throw e;` would be of any use at all. If you wanted to hide the stack trace then you would typically be throwing a completely new exception anyway – with a new message and perhaps other information to pass to the caller. If you didn't want to hide the stack trace then throw; is the statement to use. Resharper even sees `throw e;` as a problem and tries to replace it with the simple throw;.
 
 Even so I bet this mistake has been made a lot of times by a lot of people. So remember if you are wanting to re-throw an exception, never use throw e; as it will loose your stack trace. Instead always use `throw;`.
