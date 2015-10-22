@@ -177,6 +177,40 @@
 }
 
 
+/**
+ * Posts
+ */
+.post {
+  blockquote {
+    margin: 1.8em .8em;
+    border-left: 2px solid $grey-color-light;
+    padding: 0.1em 1em;
+    color: $grey-color-light;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .comments {
+    margin-top: 10px;
+  }
+
+  .read-more {
+    text-transform: uppercase;
+    font-size: 15px;
+  }
+}
+
+.posts > .post {
+  padding-bottom: 2em;
+  border-bottom: 1px solid $grey-color-light;
+}
+
+.posts > .post:last-child {
+  padding-bottom: 1em;
+  border-bottom: none;
+}
+
+
 
 /**
  * Posts
