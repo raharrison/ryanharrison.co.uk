@@ -6,7 +6,12 @@
 
 
 // Our variables
+
+// Font stacks
 $base-font-family: Helvetica, Arial, sans-serif;
+$helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$georgia: Georgia, serif;
+
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -16,7 +21,7 @@ $spacing-unit:     30px;
 $text-color:       #111;
 $background-color: #fdfdfd;
 $brand-color:      #2a7ae2;
-$footer-grey:        #eee;
+$light-grey:        #eee;
 
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
