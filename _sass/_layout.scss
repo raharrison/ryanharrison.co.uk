@@ -11,7 +11,7 @@
 }
 
 .header-container {
-    padding: 20px 0;
+    padding: 20px 10px;
     border-bottom: 1px solid $light-grey;
 }
 
@@ -66,9 +66,37 @@
   }
 }
 
+
+
+nav {
+  float: right;
+  font-family: $helveticaNeue;
+  font-size: 18px;
+
+  @include media-query($on-palm) {
+    float: none;
+    margin-top: 9px;
+    display: block;
+    font-size: 16px;
+  }
+
+  a {
+    margin-left: 20px;
+    color: $brand-color;
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    @include media-query($on-palm) {
+      margin: 0 10px;
+      color: $blue;
+    }
+  }
+}
+
 .site-nav {
     float: right;
-    line-height: 56px;
+    line-height: 60px;
 
     .menu-icon {
         display: none;
