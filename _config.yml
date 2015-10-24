@@ -53,6 +53,9 @@ markdown: kramdown
 # The release of Jekyll Now that you're using
 version: v2.5.3
 
+# Enable pagination
+paginate: 6
+
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
