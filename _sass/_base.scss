@@ -83,6 +83,37 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: $brand-color;
+  font-weight: bold;
+
+  line-height: 1.7;
+  padding: 0;
+
+  @include media-query($on-palm) {
+    line-height: 1.4;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  a {
+    color: inherit;
+  }
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
 
 
 /**
@@ -145,6 +176,10 @@ pre {
     }
 }
 
+
+/*
+Navigation bar
+ */
 nav {
   float: right;
   font-family: $helveticaNeue;
@@ -206,25 +241,6 @@ nav {
 
 .clearfix:after {
     clear: both;
-}
-
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
-    }
 }
 
 /**
