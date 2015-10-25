@@ -15,16 +15,6 @@
     border-bottom: 1px solid $light-grey;
 }
 
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
 .site-avatar {
   float: left;
   width: 70px;
@@ -68,31 +58,7 @@
 
 
 
-nav {
-  float: right;
-  font-family: $helveticaNeue;
-  font-size: 18px;
 
-  @include media-query($on-palm) {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
-  }
-
-  a {
-    margin-left: 20px;
-    color: $brand-color;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
-
-    @include media-query($on-palm) {
-      margin: 0 10px;
-      color: $blue;
-    }
-  }
-}
 
 .site-nav {
     float: right;

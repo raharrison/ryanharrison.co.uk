@@ -148,6 +148,32 @@ pre {
     }
 }
 
+nav {
+  float: right;
+  font-family: $helveticaNeue;
+  font-size: 18px;
+
+  @include media-query($on-palm) {
+    float: none;
+    margin-top: 9px;
+    display: block;
+    font-size: 16px;
+  }
+
+  a {
+    margin-left: 20px;
+    color: $brand-color;
+    text-align: right;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    @include media-query($on-palm) {
+      margin: 0 10px;
+      color: $blue;
+    }
+  }
+}
+
 
 
 /**
@@ -160,7 +186,7 @@ pre {
     margin-left: auto;
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
-    @extend %clearfix;
+    @extend .clearfix;
 
     @include media-query($on-laptop) {
         max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
@@ -175,13 +201,14 @@ pre {
 /**
  * Clearfix
  */
-%clearfix {
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
 
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
+.clearfix:after {
+    clear: both;
 }
 
 
