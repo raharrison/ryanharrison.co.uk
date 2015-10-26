@@ -21,8 +21,18 @@ layout: default
             </article>
         {% endfor %}
     </div>
+    
     <!-- Pagination links -->
-    <div class="pagination">
+    <ul class="pagination">
+        <li class="previous">
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">← Newer</a>
+        </li>
+        <li class="next">
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older →</a>
+        </li>
+    </ul>
+
+<!--     <div class="pagination">
         {% if paginator.previous_page %}
             <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="previous">Previous</a>
         {% else %}
@@ -34,6 +44,6 @@ layout: default
         {% else %}
             <span class="next ">Next</span>
         {% endif %}
-    </div>
+    </div> -->
 
 </div>

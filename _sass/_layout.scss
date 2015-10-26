@@ -130,12 +130,32 @@
  */
 .site-footer {
   border-top: 1px solid $grey-color-light;
-  margin-top: $spacing-unit;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background-color: $light-grey;
   padding: 20px 0;
   text-align: center;
+}
+
+/*
+Pagination
+ */
+
+.pagination {
+  list-style: none;
+  overflow: hidden;
+  padding-top: $spacing-unit;
+  border-top: 2px solid $light-grey;
+  margin: 0px;
+  margin-top: $spacing-unit / 2;
+}
+
+.previous {
+  float: left;
+}
+
+.next {
+  float: right;
 }
 
 
