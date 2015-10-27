@@ -14,13 +14,13 @@ The first language is Java. I will assume that you have the `JDK (Java Developme
 
 The first step is to navigate to the installation directory of your JDK installation and copy the path to the `bin` folder which resides inside. The path should look a bit like this (depending the version of the JDK you have installed) –
 
-![JDK Path]({{ site.url }}/blog/images/2011/jdkpath.jpg){: .center-image width="522" height="254"}
+![JDK Path]({{ site.url }}/images/2011/jdkpath.jpg){: .center-image width="522" height="254"}
 
 Once you have the path in the clipboard, you have to add it to your system's Environment Variables, which will essentially allow you to run the Java compiler from anywhere on your computer.
 
 In Windows 7, click the Start orb and right click on the `Computer` shortcut and click on `Properties` in the context menu. This should take you to a window that looks something like this –
 
-![System Properties]({{ site.url }}/blog/images/2011/properties.jpg){: .center-image width="655" height="182"}
+![System Properties]({{ site.url }}/images/2011/properties.jpg){: .center-image width="655" height="182"}
 
 Then, click on `Advanced System Settings` on the right hand side. Under the `Advanced` tab of the new window, click on `Environment Variables…`.
 
@@ -28,7 +28,7 @@ Next, you want to locate the variable named `Path` in your `System Variables`. I
 
 Finally, simply paste in the path to the JDK's `bin` directory and click on OK. The value field should look a little like this –
 
-![JDK Environment Variable]({{ site.url }}/blog/images/2011/jdkenvironment.jpg){: .center-image width="457" height="253"}
+![JDK Environment Variable]({{ site.url }}/images/2011/jdkenvironment.jpg){: .center-image width="457" height="253"}
 
 We have now configured your system to allow you to compile Java programs from any directory on you hard drive.
 
@@ -36,7 +36,7 @@ To use the compiler from the command line, open up a new command prompt window b
 
 Type in `javac` (stands for Java Compiler) and hit enter. You should see a lot writing being printed to the window. It should look a little like this –
 
-![Java Compiler]({{ site.url }}/blog/images/2011/javac.jpg){: .center-image width="542" height="274"}
+![Java Compiler]({{ site.url }}/images/2011/javac.jpg){: .center-image width="542" height="274"}
 
 This signifies that you can actually use the compiler and that you have successfully followed the previous steps.
 
@@ -60,7 +60,7 @@ Next, navigate to the directory of your source file using the `cd` command.
 
 When this is done, type `javac` again, yet this time followed by the name of the source file you just created, (make sure you add the `.java` extension) and hit enter. If there are no syntax errors you should see a new `.class` file in the same directory. This is where the compiled bytecode is stored. Finally, to run the program type `java` and the name of the .class file (this time no need to add the extension). The program will now run the window and you should see something like this –
 
-![Compiling and Running the Java Program]({{ site.url }}/blog/images/2011/javaprogram.jpg){: .center-image width="542" height="274"}
+![Compiling and Running the Java Program]({{ site.url }}/images/2011/javaprogram.jpg){: .center-image width="542" height="274"}
 
 [More information about the Java compiler, including the many command line arguments][2].
 
@@ -70,7 +70,7 @@ Next for C#. This is pretty much the same as for Java apart from a different pat
 
 In this case you need to copy the path to the `.NET Framework` folder in the root `Windows` folder. The path should be a bit like this depending on the version of the .NET framework you have installed –
 
-![The Path to the .Net Framework installation]({{ site.url }}/blog/images/2011/netframework.jpg){: .center-image width="531" height="254"}
+![The Path to the .Net Framework installation]({{ site.url }}/images/2011/netframework.jpg){: .center-image width="531" height="254"}
 
 Make sure you have a file called `csc.exe` in the path directory, and add this to the `Path` Environment Variable just like before.
 
@@ -90,7 +90,7 @@ public class csharp
 
 Open up a new command window, navigate to the relevant directory, and type `csc` followed by the source file's name and hit enter. This time a `.exe` will be created in the same directory if no syntax errors are encountered. To run this program, simply type the file name into the command line window and hit enter. You should again see the following –
 
-![Compiling and Running the C# Program]({{ site.url }}/blog/images/2011/csharpprogram.png){: .center-image width="542" height="274"}
+![Compiling and Running the C# Program]({{ site.url }}/images/2011/csharpprogram.png){: .center-image width="542" height="274"}
 
 [More information about the C# compiler can be found][3].
 
@@ -114,7 +114,7 @@ Open up your Visual Studio Command Prompt, in my case the 2010 version, and agai
 
 Next, simply type in `cl` along with the name of your source file and hit enter. If no syntax errors are encountered, a `.exe` file along with a `.obj` file will be created in the same directory (you can ignore the `.obj` file for the purposes of this tutorial, as this is just an intermediate file). Type in the name of the executable and you see the following –
 
-![Compiling and Running the C++ Program]({{ site.url }}/blog/images/2011/C++-Compiler.jpg){: .center-image width="542" height="274"}
+![Compiling and Running the C++ Program]({{ site.url }}/images/2011/C++-Compiler.jpg){: .center-image width="542" height="274"}
 
 It should be noted that if you are using libraries from the .NET Framework in your C++ application, you will need to include the `/clr` attribute before the file name to signal the compiler to create MSIL code rather than native machine code.
 

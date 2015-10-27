@@ -84,7 +84,7 @@ So we now have two methods that we can use to simulate a mouse click, yet no way
 
 In my program, I have created a simple User Interface containing a list view, a few buttons, and a couple of textboxes, which will allow the user to specify a queue of points to click in sequence, as well as the ability to insert additional information for each click (button to press, time in between, etc).
 
-![Screenshot of the final Auto Clicker programe]({{ site.url }}/blog/images/2011/Auto_Clicker.jpg){: .center-image width="527" height="276"}
+![Screenshot of the final Auto Clicker programe]({{ site.url }}/images/2011/Auto_Clicker.jpg){: .center-image width="527" height="276"}
 
 The meat of the application happens in two methods. The first is the `StartClickingButton_Click` event handler, where a new thread is created to handle the mouse clicks so that the main form does not become completely unresponsive when the program is clicking every couple of milliseconds.
 
