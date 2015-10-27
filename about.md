@@ -8,4 +8,4 @@ Welcome to my blog on technology and software development. It is built on top of
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[{{ site.footer-links.email }}](mailto:{{ site.footer-links.email }})
