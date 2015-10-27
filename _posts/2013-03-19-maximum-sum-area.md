@@ -110,4 +110,4 @@ y2 = 2
 Maximum sum area = 38 7 12 2 13 -2 6 
 {% endhighlight %}
 
-[1]: http://ryanharrison.co.uk/2013/maximum-sum-subsequence/
+[1]: {{ site.baseurl }}{% post_url 2013-02-17-maximum-sum-subsequence %}
