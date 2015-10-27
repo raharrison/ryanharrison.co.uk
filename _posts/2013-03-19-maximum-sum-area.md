@@ -12,7 +12,7 @@ As a follow up to my previous post where we found the [maximum sum subsequence][
 
 Instead of finding the subsequence of the array that contains the maximum sum, now the region of the array with the maximum sum will be found. For example in the image below, the region of the array with the largest sum is found to be enclosed by the points `(1,1)` and `(3,2)`.
 
-![Maximum Sum Area example]({{ site.url }}/blog/images/2013/maxsumarea.png){: .center-image width="391" height="228"}
+![Maximum Sum Area example]({{ site.url }}/images/2013/maxsumarea.png){: .center-image width="391" height="228"}
 
 Here is the algorithm. Note that this is massively inefficient with an order of `O(n^6)` – meaning that if we double the input size, the time taken calculate the result will increase by a factor of `64 (2^6)`.
 
