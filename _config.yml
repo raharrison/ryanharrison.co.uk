@@ -51,6 +51,9 @@ version: v2.5.3
 # Enable pagination
 paginate: 6
 
+# Post excerpts include everything up to this tag
+excerpt_separator: <!--more-->
+
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
