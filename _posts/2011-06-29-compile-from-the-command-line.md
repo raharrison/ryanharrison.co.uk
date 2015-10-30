@@ -72,6 +72,12 @@ In this case you need to copy the path to the `.NET Framework` folder in the ro
 
 ![The Path to the .Net Framework installation]({{ site.url }}/images/2011/netframework.jpg){: .center-image width="531" height="254"}
 
+ [2]: http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html
+ [3]: http://msdn.microsoft.com/en-us/library/ms379563(v=vs.80).aspx
+ [4]: http://msdn.microsoft.com/en-US/library/fwkeyyhe(v=VS.80).aspx
+
+<!--more-->
+
 Make sure you have a file called `csc.exe` in the path directory, and add this to the `Path` Environment Variable just like before.
 
 And that's it for C#. To compile and run the 'Hello World!' C# program, make a new `.cs` source file with the following code inside –
@@ -121,7 +127,3 @@ It should be noted that if you are using libraries from the .NET Framework in yo
 [Comprehensive list of all the command line arguments available for the C++ compiler][4].
 
 That's about it for compiling from the command line. If you have any problems or queries, feel free to post a comment below or contact me through the contact form.
-
- [2]: http://docs.oracle.com/javase/7/docs/technotes/tools/windows/javac.html
- [3]: http://msdn.microsoft.com/en-us/library/ms379563(v=vs.80).aspx
- [4]: http://msdn.microsoft.com/en-US/library/fwkeyyhe(v=VS.80).aspx

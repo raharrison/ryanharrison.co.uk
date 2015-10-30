@@ -86,6 +86,11 @@ In my program, I have created a simple User Interface containing a list view, a 
 
 ![Screenshot of the final Auto Clicker programe]({{ site.url }}/images/2011/Auto_Clicker.jpg){: .center-image width="527" height="276"}
 
+[1]: http://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
+[2]: http://apps.facebook.com/myclickchallenge/
+
+<!--more-->
+
 The meat of the application happens in two methods. The first is the `StartClickingButton_Click` event handler, where a new thread is created to handle the mouse clicks so that the main form does not become completely unresponsive when the program is clicking every couple of milliseconds.
 
 {% highlight csharp %}  
@@ -184,6 +189,3 @@ Pages on the two custom structures for the SendInput function
 
   * <http://msdn.microsoft.com/en-us/library/ms646270(v=vs.85).aspx>  
   * <http://msdn.microsoft.com/en-us/library/ms646273(v=vs.85).aspx>
-
-[1]: http://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
-[2]: http://apps.facebook.com/myclickchallenge/

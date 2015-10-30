@@ -64,12 +64,15 @@ If on the other hand you did get output that looked like the above, then that's 
 
 [1]: http://maven.apache.org/what-is-maven.html
 [2]: http://maven.apache.org/download.html
+[3]: http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
 
 ### Creating a Project
 
 To create a project with Maven, you make use of its `archetype` mechanism. This is basically a large collection of pre-made project templates that you can base your project from. There are a ton of different types of `archetypes` available so you there should already be one that matches your requirements. In this tutorial we will be using a `quickstart archetype` which is one of the simpler models of a basic Java application.
 
 To construct this project first open up a terminal or command prompt window and navigate to the location on your machine where you want your project to be stored. In this example I am using a 'Projects' folder sitting on the root C: drive directory.
+
+<!--more-->
 
 Once there issue the command:
 
@@ -252,5 +255,3 @@ A new folder `'target'` has also been created which houses all of the .class fil
     > Hello World!
 
 If you get this output then everything is working correctly!
-
-[3]: http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html

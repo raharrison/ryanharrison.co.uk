@@ -79,6 +79,8 @@ The symbolic differentiation package offers support to obtain exact derivatives 
     
 As you can see the symbolic differentiator returns a `Function` representing the equation of the derivative, which in this case is `2*x + 8`. This function is then evaluated at the some point `3.5` to get an answer of `15`. Note how this result is exact and without the small error retrieved from the numeric method of differentiation.
 
+<!--more-->
+
 ### Distributions
 
 The distributions package offers classes to evaluate both discrete and continuous probability distributions.

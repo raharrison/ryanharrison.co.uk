@@ -5,6 +5,9 @@ tags:
   - java
   - maven
 ---
+
+ [1]: {{ site.baseurl }}{% post_url 2014-05-05-maven-installation-getting-started %}
+
 ### Prerequisites –
 
 It is assumed that before starting this tutorial, you have read and understand the first part of this series which includes an overview of Maven and [creating a simple Maven project][1].
@@ -98,6 +101,8 @@ public class App {
 
 In this example we make use of the `Joiner` class to join together an array of words with a space delimiter.
 
+<!--more-->
+
 ### Compiling and running the project –
 
 Finally, in order to compile the application (including Maven downloading the dependencies), we run the command:
@@ -149,5 +154,3 @@ Finally, we can run the `.jar` file and get our output:
     > Hello World using the Guava library
 
 As you can see we get the joined output from our program. That's it for this tutorial, thanks for reading!
-
- [1]: {{ site.baseurl }}{% post_url 2014-05-05-maven-installation-getting-started %}

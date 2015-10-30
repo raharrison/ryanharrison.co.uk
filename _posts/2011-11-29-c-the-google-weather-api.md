@@ -155,6 +155,8 @@ public static List<Conditions> GetForecastConditions(string city)
 }  
 {% endhighlight %}
 
+<!--more-->
+
 Finally, we can use the two new methods in a simple Console application (although it could easily be used in a GUI). In this example we prompt the user for whether or not they want the current or forecast conditions, prompt them for a city to search for, and print the corresponding conditions to the Console. A prompt if also shown if the `Conditions` object is null – meaning that an error occurred.
 
 {% highlight csharp %}  
