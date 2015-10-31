@@ -253,3 +253,9 @@ Pagination
         }
     }
 }
+
+#topcontrol {
+  @include media-query($on-palm) {
+      display: none;
+  }
+}
