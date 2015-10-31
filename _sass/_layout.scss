@@ -102,8 +102,12 @@
         }
 
         .trigger {
-            clear: both;
-            display: none;
+          position: absolute;
+          background-color: white;
+          right: 20px;
+          top: 70px;
+          clear: both;
+          display: none;
         }
 
         &:hover .trigger {
