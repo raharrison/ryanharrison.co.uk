@@ -13,6 +13,7 @@ In the Apache web server, it is very quick to modify the page served when variou
 Next, you just need to modify an Apache config file to point to your new page in the event that a 404 error occurs. A lot of other guides direct you to create a `.htaccess` file, but I prefer to simply modify the main `VirtualHost` (plus you don't get the slight performance hit of accessing the `.htaccess` file upon every page load). The config file is located in `/etc/apache2/sites-enabled/000-default.conf`. Open it up in your favourite text editor (in this case nano, although feel free to use vim if you know how to exit it). You will need root privileges to be able to modify this file.
 
 `$ sudo nano /etc/apache2/sites-enabled/000-default.conf`
+
 (this is really just a symlink to /etc/apache2/sites-available/000-default.conf, so you could also directly modify this file instead)
 
 Inside this file, you will see the main Apache `VirtualHost` serving files from `/var/www/html` on port 80. By default it will look something like:
