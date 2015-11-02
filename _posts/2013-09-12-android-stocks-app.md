@@ -18,25 +18,25 @@ Rather than presenting the information in a big long table, this app aims to giv
 
 Here is the main app display which shows the ticker tiles for each of the stocks currently in the users’ portfolio. As more stocks are added, tiles are added to the bottom. The figures themselves can be updated by tapping the icon in the top rightmost corner. In a way this almost replicates ‘live tiles’ in Windows 8.
 
-![Stocks Main]({{ site.url }}/images/2013/stocks_main.jpg){: .center-image width="338" height="560"}
+![Stocks Main]({{ site.url }}/images/2013/stocks_main.jpg){: .center-image width="338"}
 
 As I said before the tickers that are monitored on this screen can easily be added to through the use of the ‘+’ icon in the top right hand corner. This brings up the ‘Add ticker’ screen that allows you to search for a given company. In this example I search for ‘Google’ which brings up a list of possible stocks to add to the monitored portfolio. Here I choose the main Google ticker ‘GOOG’. It immediately gets added as another tile on the main screen with the most recent price information. To remove a ticker from the portfolio, hold your finger on the appropriate tile and select ‘ok’ in the confirmation menu that appears. The tile will be immediately removed from the main screen and the figures for the stock will no longer be downloaded unless the ticker is added again through the ‘Add Ticker’ view.
 
-![Stocks Add]({{ site.url }}/images/2013/stocks_add.jpg){: .center-image width="338" height="560"}
+![Stocks Add]({{ site.url }}/images/2013/stocks_add.jpg){: .center-image width="338"}
 
-![Stocks Added]({{ site.url }}/images/2013/stocks_added1.jpg){: .center-image width="338" height="560"}
+![Stocks Added]({{ site.url }}/images/2013/stocks_added1.jpg){: .center-image width="338"}
 
 To view more detailed information and figures about a particular ticker in your portfolio, simply tap the appropriate tile that contains the relevant ticker. This brings up a new screen containing further financial figures about the stock along with a news feed with items relating to the stock. The news feed is updated constantly with the tickers to present the newest articles. Tapping a news article opens up the article in your web browser. For example here is the display for Yahoo Inc which was accessed by simply touching the Yahoo tile on the main display. As you can see the news feed is presented at the bottom and more detailed figures are at the top including the Day Highs and Low, Years High and Low and Volume figures.
 
-![Stocks Info]({{ site.url }}/images/2013/stocks_info.jpg){: .center-image width="338" height="560"}
+![Stocks Info]({{ site.url }}/images/2013/stocks_info.jpg){: .center-image width="338"}
 
 When inside the detailed information view for a particular stock, you can also view various charts for the stock which illustrate the price changes over a certain timeframe. Access this by tapping the ‘View Chart’ button. By default a 3 month chart will be shown however you can change the charts timespan by selecting an option from the top of the page. Here is an example showing the 1 month chart for Yahoo –
 
-![Stocks Chart]({{ site.url }}/images/2013/stocks_chart.jpg){: .center-image width="338" height="560"}
+![Stocks Chart]({{ site.url }}/images/2013/stocks_chart.jpg){: .center-image width="338"}
 
 Each view in the app is fully compatible with a wide range of screen resolutions in both portrait and landscape. For example when flipped to landscape, the detailed information view for a stock is changed to present the information in a more user friendly manner –
 
-![Stocks Info Landscape]({{ site.url }}/images/2013/stock_info_landscape.jpg){: .center-image width="561" height="328"}
+![Stocks Info Landscape]({{ site.url }}/images/2013/stock_info_landscape.jpg){: .center-image width="561"}
 
 All data in the app is downloaded from the API’s by Yahoo! Finance (free for personal use). The app is also compatible with devices running Android Froyo (version 8) and above. I may do further posts on the internal infrastructure of the app which relies heavily on parsing retrieved XML and JSON data.
 

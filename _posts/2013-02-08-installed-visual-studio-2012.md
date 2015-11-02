@@ -13,10 +13,10 @@ When I was finally able to get rid of just about everything, the installation pr
 
 Here are a few screenshots –
 
-![Installation]({{ site.url }}/images/2013/vs2.png){: .center-image width="276" height="386"}
+![Installation]({{ site.url }}/images/2013/vs2.png){: .center-image width="276"}
 
-![Installed]({{ site.url }}/images/2013/vs4.png){: .center-image width="276" height="386"}
+![Installed]({{ site.url }}/images/2013/vs4.png){: .center-image width="276"}
 
-![Start Page]({{ site.url }}/images/2013/vs5.png){: .center-image width="820" height="442"}
+![Start Page]({{ site.url }}/images/2013/vs5.png){: .center-image width="820"}
 
 I really like the look and feel of the new styled interface so far. However I may have to try and figure out a way of reverting back to the old non-capitalised versions of the menu items.

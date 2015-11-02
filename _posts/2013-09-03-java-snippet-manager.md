@@ -19,7 +19,7 @@ The source code for my Java swing Snippet Manager application is now [on GitHub]
   * Save your snippet collection to an XML file for use on any computer. Have separate files for different snippet sets
   * Easy and to use intuitive interface with automatic line numberings, syntax highlighting and find/replace dialog
 
-![Snippet Manager Screenshot]({{ site.url }}/images/2013/snippetmanagerscreenshot.jpg){: .center-image width="626" height="463"}
+![Snippet Manager Screenshot]({{ site.url }}/images/2013/snippetmanagerscreenshot.jpg){: .center-image width="626"}
 
 [Full source code][1]
 

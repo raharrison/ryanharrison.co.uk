@@ -35,7 +35,7 @@ The parameters to the addButton method are:
 
 The new button should then show up in the WordPress text editor. Clicking on it will add your chosen tags to the editor.
 
-![Wordpress custom button]({{ site.url }}/images/2013/custom_button.jpg){: .center-image width="584" height="37"}
+![Wordpress custom button]({{ site.url }}/images/2013/custom_button.jpg){: .center-image width="584"}
 
 [Source][1]
 

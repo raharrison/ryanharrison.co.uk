@@ -35,7 +35,7 @@ Functions for use in any of the algorithms can be freely customised and changed 
   * Main parameters for algorithms can be modified by dragging points on the graph itself. This allows for a more interactive and visual approach to the progress and inaccuracies of the algorithm
   * Numerical data used in the calculations of the results of the algorithm is also provided to allow students themselves to reach a solution
 
-![Numerical Methods Helper Screenshot]({{ site.url }}/images/2013/numericalmethodshelper.jpg){: .center-image width="657" height="507"}
+![Numerical Methods Helper Screenshot]({{ site.url }}/images/2013/numericalmethodshelper.jpg){: .center-image width="657"}
 
 This screenshot shows the integration tab of the program. The user is able to enter a custom function along with the upper and lower bounds of the integration, the numerical algorithm to use and the number of iterations. The results are then shown to the user, with a formula of the chosen algorithm and the ordinates used. Te application of the algorithm to the equation is also shown graphically on an interactive plotting view.
 
