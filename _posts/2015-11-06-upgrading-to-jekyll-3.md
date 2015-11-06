@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache - Create a Custom 404 Page
+title: Upgrading to Jekyll 3.0
 tags:
   - jekyll
   - ruby
