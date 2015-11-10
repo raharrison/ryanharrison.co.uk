@@ -15,4 +15,4 @@ Fortunately, in Git it's easy to undo your last commit (as long as you haven't p
 
 This is demonstrated in the below contrived example where I do an accidental commit, undo the commit using the above command and finally do a quick `git status` to confirm that the file in the commit has been reverted and is outside of the staging area. After this, the commit is no longer included in the `git log` and you would be free to make further changes to it (and others) and do a new commit as normal when ready.
 
-![Git Undo Commit Example]({{ site.url }}/images/2015/git_undo_commit.png){: .center-image width="600"}
+![Git Undo Commit Example]({{ site.url }}/images/2015/git_undo_commit.png){: .center-image}
