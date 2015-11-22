@@ -162,6 +162,7 @@ code {
 
 code {
     padding: 1px 5px;
+    overflow-wrap: break-word;
 }
 
 pre {
@@ -172,6 +173,7 @@ pre {
         border: 0;
         padding-right: 0;
         padding-left: 0;
+        overflow-wrap: normal;
 
         @include media-query($on-palm) {
           font-size: 12px;
