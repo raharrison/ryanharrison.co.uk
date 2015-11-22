@@ -228,6 +228,9 @@ Pagination
 
 .post-content {
     margin-bottom: $spacing-unit;
+    a:hover {
+      text-decoration: underline;
+    }
 
     h2 {
         font-size: 32px;
