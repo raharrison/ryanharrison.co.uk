@@ -50,5 +50,5 @@ Finally, once you have made all your changes, restart the Apache server to pick 
 
 Your new error pages should now be setup and running. To test, visit a page on your site which doesn't exist. You should be greeted with your new 404 page:
 
-![404 page]({{ site.url }}/images/2015/404-page.jpg){: .center-image width="570"}
+![404 page](/images/2015/404-page.jpg){: .center-image width="570"}
 

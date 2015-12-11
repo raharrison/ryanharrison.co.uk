@@ -7,7 +7,7 @@ tags:
   - repeat
 ---
 
-![Spotify Logo]({{ site.url }}/images/2015/spotify.png){: .center-image width="200"}
+![Spotify Logo](/images/2015/spotify.png){: .center-image width="200"}
 
 I tend to use the radio in Spotify quite a bit. It's never been the best of implementations out there, but recently it's been more annoying than usual in terms of repeating. The radio has always liked to repeat some songs over and over again, but it has now decided to repeat entire sequences of songs.
 

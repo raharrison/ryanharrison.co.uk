@@ -11,10 +11,10 @@ When using any version control system it’s inevitable that you’re going to m
 
 For example given this test repository with three previous commits:
 
-![Before ammended message]({{ site.url }}/images/2014/beforeAmend.png){: .center-image width="570"}
+![Before ammended message](/images/2014/beforeAmend.png){: .center-image width="570"}
 
 To change the message of the most recent commit – in this case “Third commit”, you can use `git commit --amend -m "This is a modified message"`
 
 This gives the updated log messages:
 
-![After ammended message]({{ site.url }}/images/2014/afterAmend.png){: .center-image width="570"}
+![After ammended message](/images/2014/afterAmend.png){: .center-image width="570"}

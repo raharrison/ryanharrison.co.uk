@@ -11,7 +11,7 @@ When I first launched my blog way back [in 2011][1] I didn't really know a whole
 
 I got myself their most basic shared web hosting plan which consists of a single domain and unlimited (yeah, until you start using too much of course) bandwidth/email/databases. To be honest even by today's standards that's pretty good going. At the time I payed $5.95/mo for 2 years of hosting which included a 20% promotion (which I later learnt is pretty much a contant thing).
 
-![Hostgator Logo]({{ site.url }}/images/2015/hostgator.jpg){: .center-image width="300"}
+![Hostgator Logo](/images/2015/hostgator.jpg){: .center-image width="300"}
 
 They provided a good service to me for the duration of my stay. I was able to host my Wordpress blog with no issues and could easily play around with FTP and a few MySql databases on the side. Most importantly actually was the ease of getting hold of personalised email with my domain - something that it turns out is quite messy without cPanel as I found out recently.
 

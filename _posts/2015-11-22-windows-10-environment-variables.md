@@ -10,11 +10,11 @@ tags:
 
 The old environment variable editor in Windows has never been the best in terms of user experience. The main editor window was not resizable and the two listboxes showing user and system environment variables were both small - making it awkward to manage a lot of variables. The problem got even worth when editing the `PATH` environment variable, which can often grow to become a rather large and unwieldy string. Previously, again the variable editor itself was not resizable, forcing you to scroll through a small textbox to read or make changes to your `PATH`.
 
-![Old Windows Environment Variable Editor]({{ site.url }}/images/2015/windows_old_path.png){: .center-image}
+![Old Windows Environment Variable Editor](/images/2015/windows_old_path.png){: .center-image}
 
 Thankfully, in the new November Update for Windows 10 (build 10586), which includes enhancements to the Edge browser, Cortana, Start Menu and more, Microsoft have finally updated the Environment Variable manager.
 
-![New Windows Environment Variable Editor]({{ site.url }}/images/2015/windows_new_path.png){: .center-image width="570"}
+![New Windows Environment Variable Editor](/images/2015/windows_new_path.png){: .center-image width="570"}
 
 The main editor window is now resizable, making it much easier to navigate through your list of variables. The real magic however happens when editing the `PATH` variable, which now gets it's own dedicated editor. Each path in the variable is now listed separately in a convenient listview, allowing you to quickly add or delete entries or change the order without having to scroll the whole string or worry about any semi-colon separators.
 
