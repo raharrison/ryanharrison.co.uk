@@ -43,11 +43,11 @@ Lets go back to our example. We want to find the forecast of the stock price in 
 The most basic form of regression analysis is linear regression – that is finding a linear function that best models the relationship between the two variables. The base linear line function is `Y = aX + b` from earlier. We want to find the price `Y` and `X` is the month. We need to find the best values for `a` and `b` that produce a line that follows our current data as much as possible. If the line is accurate, we can use it to forecast other months. Our function becomes `PRICE = a * MONTH + b`. A huge part of regression analysis is finding the best values of `a` and `b` that produce a line that closely models our current data set.
 
  [1]: http://en.wikipedia.org/wiki/Regression_analysis
- [2]: http://i.imgur.com/32ToM9O.jpg
- [3]: http://i.imgur.com/zuGTqzG.jpg
- [4]: http://i.imgur.com/w9Wa8WE.jpg
- [5]: http://i.imgur.com/yssVg8S.jpg
- [6]: http://upload.wikimedia.org/math/8/f/b/8fb0426fb13f5e83ac05e208be4f9dfa.png
+ [2]: https://i.imgur.com/32ToM9O.jpg
+ [3]: https://i.imgur.com/zuGTqzG.jpg
+ [4]: https://i.imgur.com/w9Wa8WE.jpg
+ [5]: https://i.imgur.com/yssVg8S.jpg
+ [6]: https://upload.wikimedia.org/math/8/f/b/8fb0426fb13f5e83ac05e208be4f9dfa.png
  [7]: {{ site.baseurl }}{% post_url 2013-10-07-java-regression-library-linear-model %}
  
 <!--more-->
