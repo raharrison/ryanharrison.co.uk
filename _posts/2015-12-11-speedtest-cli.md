@@ -13,8 +13,8 @@ Handily, there is an [open source project on GitHub ](https://github.com/sivel/s
 
 The project provides many different methods of installation such as `pip` or `easy_install`. You can also clone the Git repository onto your machine somewhere. These will all work fine, however as the script is just one file, you can simply use `curl/wget` to download and run it directly. Using `wget`, the commands to download the script and make it executable are:
 
-    wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py
-    chmod +x speedtest-cli
+    $ wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py
+    $ chmod +x speedtest-cli
 
 Then, just run the script using `python speedtest-cli`. Just like speedtest.net, the script will choose the closest server to your machine and begin a download/upload test. The results are then output into your terminal window:
 
@@ -24,9 +24,9 @@ Then, just run the script using `python speedtest-cli`. Just like speedtest.net,
     Selecting best server based on latency...
     Hosted by Heberg.fr (Roubaix) [0.72 km]: 4.621 ms
     Testing download speed........................................
-    Download: 86.83 Mbit/s
+    Download: 93.98 Mbit/s
     Testing upload speed..................................................
-    Upload: 91.38 Mbit/s
+    Upload: 91.33 Mbit/s
 
 There are also some additional switches that let your define which server you wish to use for the test. First, you need to find the corresponding id using `python speedtest_cli --list`. This will output a long list (probably best to redirect this into a file) of servers and id's. Make a note of the id you want to use and then run the command again, this time supplying said server e.g. `python speedtest_cli --server <ID>`.
 
