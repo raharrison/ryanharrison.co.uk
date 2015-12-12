@@ -1,0 +1,50 @@
+---
+layout: default
+title: Search
+---
+
+<h2>Site Search</h2>
+
+<div>
+    <form id="site_search">
+      <label>Search</label><input type="text" id="search_box">
+      <input type="submit" value="Go">
+    </form>
+</div>
+
+<div class="entry">
+    <ul id="search_results" class="post-content"></ul>    
+</div>
+
+
+<script>
+  
+$(document).ready(function(){
+
+    $.getJSON( "search.json", function( data ) {
+        var items = [];
+        $.each(data, function(key, value) {
+            items.push(
+            {
+                url : value.url,
+                title : value.title,
+                searchTerm : value.title.toLowerCase()
+            });
+        });
+
+        $("#site_search").submit(function(e){
+            e.preventDefault();
+            var query = $("#search_box").val().toLowerCase(); // Get the value for the text field
+           
+            $.each(items, function(key, value) {
+                if(value.searchTerm.includes(query)) {
+                    var h = "<li id='" + key + "'><a href='" + value.url +  "'>" + value.title + "</a></li>";
+                    $("#search_results").append(h);
+                }
+            });
+        });
+    });
+});
+
+
+</script>
