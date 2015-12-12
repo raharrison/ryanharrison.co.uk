@@ -28,7 +28,7 @@ For example -;
 
 The URL responds with a JSON object where the actual result is mixed in with some other information from the request, which presents a minor problem when trying to convert currencies in our program. This will be dealt with a bit later on.
 
-First of all in our program, we to get the output of the request. I used the WebClient class, which will download the response as a String for use in our program. In the following code, the URL is constructed with parameters passed in by the user, and the string is downloaded and stored in the &#8216;response&#8217; variable.
+First of all in our program, we to get the output of the request. I used the WebClient class, which will download the response as a String for use in our program. In the following code, the URL is constructed with parameters passed in by the user, and the string is downloaded and stored in the 'response' variable.
 
 {% highlight csharp %}
 using System;
@@ -48,13 +48,13 @@ public static class CurrencyConverter
 
 This takes care of getting the response with the answer we want, yet we still need to somehow extract the correct data from the string. In this example I will use Regular Expressions however if your prefer not to use them, or your language does not natively support them, it would be perfectly viable to loop through the response one character at a time, and parse out the result.
 
-The Regex pattern will look like this &#8211;
+The Regex pattern will look like this -;
 
 `rhs: \\\"(\\d\*.\\d\*)`
 
-This pattern essentially searches for the &#8216;rhs&#8217; which appears just before the result value, and extracts any numbers afterwards until any non-numeric character is reached.
+This pattern essentially searches for the 'rhs' which appears just before the result value, and extracts any numbers afterwards until any non-numeric character is reached.
 
-Using the Regex to extract the result, we end up with the following, final code &#8211;
+Using the Regex to extract the result, we end up with the following, final code -;
 
 {% highlight csharp %}
 using System;  
@@ -80,7 +80,7 @@ public static class CurrencyConverter
 
 The full source code can be found in [GitHub][2].
 
-Thats about it for the Google Currency API for now, however I may post snippets on how to use some other features of the extensive API&#8217;s Google offer soon.
+Thats about it for the Google Currency API for now, however I may post snippets on how to use some other features of the extensive API's Google offer soon.
 
 [More Information about the Google Finance API][1]
 

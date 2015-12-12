@@ -22,7 +22,7 @@ public long queryForLong(String sql, Object... args) throws DataAccessException
 public int queryForInt(String sql, Object... args) throws DataAccessException
 {% endhighlight %}
 
-I&#8217;m not sure why the designers have to decided to deprecate these two methods, but the solution (or perhaps the workaround is simple):
+I'm not sure why the designers have to decided to deprecate these two methods, but the solution (or perhaps the workaround is simple):
 
 **Old:**
 

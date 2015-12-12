@@ -20,12 +20,12 @@ Not only does Numerical Methods Helper give a final result to an algorithm, but 
 
 Functions for use in any of the algorithms can be freely customised and changed using a number of built operators including trigonometry and logarithms. Not only can the program be used for the tuition of numerical methods, but the graphs can also be utilised for other topics such as transformations of graphs.
 
-### Main Features –
+### Main Features -
 
   * Freely scrollable and zoomable graphing view
-  * Worked examples of all numerical algorithms and AS and A2 Maths including – 
+  * Worked examples of all numerical algorithms and AS and A2 Maths including - 
       * The Trapezium rule
-      * The Mid – Ordinate Rule
+      * The Mid - Ordinate Rule
       * Simpsons Rule
       * Root Finding by iteration
   * Teaching aids for other topics such as local extrema and tangents and normal lines to functions

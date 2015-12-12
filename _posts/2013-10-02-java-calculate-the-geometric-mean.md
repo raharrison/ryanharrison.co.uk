@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Java &#8211; Calculate the Geometric Mean'
+title: 'Java - Calculate the Geometric Mean'
 tags:
   - java
   - mean
@@ -11,7 +11,7 @@ Here is a small snippet to calculate the [geometric mean][1] of a data set.
 
 The geometric mean is defined as:
 
-![][2]
+![Formula][2]
 
 <br />
 {% highlight java %} 

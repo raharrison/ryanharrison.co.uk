@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'C# – Write code indirectly using reflection'
+title: 'C# - Write code indirectly using reflection'
 tags:
   - 'c#'
   - reflection

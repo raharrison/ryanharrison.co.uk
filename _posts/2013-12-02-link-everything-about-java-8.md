@@ -5,7 +5,7 @@ tags:
   - java
   - sdk
 ---
-As the release of Java 8 looms ever closer and closer, here is some good information about what new changes to expect. Unlike Java 7 this release does seem to actually include some useful features including lambda&#8217;s which can be neatly integrated with the new streams API and a much needed new date/time API.
+As the release of Java 8 looms ever closer and closer, here is some good information about what new changes to expect. Unlike Java 7 this release does seem to actually include some useful features including lambda's which can be neatly integrated with the new streams API and a much needed new date/time API.
 
 [Everything About Java 8][1]
 

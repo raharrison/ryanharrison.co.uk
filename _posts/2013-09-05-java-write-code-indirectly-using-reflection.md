@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 'Java – Write code indirectly using reflection'
+title: 'Java - Write code indirectly using reflection'
 tags:
   - java
   - reflection
 ---
-In a [recent post][1] I showed how it is possible to write all your [C# code indirectly through reflection][1]. Here is the same example in Java. The process itself is very much the same – retrieve meta information about the classes/methods we are interested in and then invoke them passing in the object it would normally be called from. The classes themselves are all very similar through C# to Java. `Type` becomes `Class`, `MethodInfo` becomes `Method` etc.
+In a [recent post][1] I showed how it is possible to write all your [C# code indirectly through reflection][1]. Here is the same example in Java. The process itself is very much the same - retrieve meta information about the classes/methods we are interested in and then invoke them passing in the object it would normally be called from. The classes themselves are all very similar through C# to Java. `Type` becomes `Class`, `MethodInfo` becomes `Method` etc.
 
 A more interesting difference is how the Java version uses variable length parameters in the `.invoke` calls on `Method` objects as a way of passing parameters to the particular method. In the C# version you have to explicitly pass a `Type` or object array. I think the Java version is slightly more user friendly in that quite small regard even though the actual parameter itself is an array in both circumstances.
 

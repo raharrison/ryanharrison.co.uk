@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Java – Math Engine'
+title: 'Java - Math Engine'
 tags:
   - java
   - math engine

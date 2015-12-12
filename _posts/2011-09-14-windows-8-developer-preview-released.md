@@ -4,7 +4,7 @@ title: Windows 8 Developer Preview Released
 tags:
   - windows 8
 ---
-Microsoft has now released the developers preview for Windows 8, which includes –
+Microsoft has now released the developers preview for Windows 8, which includes -
 
   * A 64-bit Windows Developer Preview
   * Windows SDK for Metro style apps

@@ -15,11 +15,11 @@ In Visual Studio 11 the whole interface has been transformed to a monochrome eff
 
 ![Visual Studio 11 Start Menu](/images/2012/visualstudio11start1.png){: .center-image width="622"}
 
-With the code view open, the main focus is rightly where it should be – on the code. Nothing else is stealing your attention.
+With the code view open, the main focus is rightly where it should be - on the code. Nothing else is stealing your attention.
 
 ![Visual Studio 11 Code View](/images/2012/visualstudio11code1.png){: .center-image width="614"}
 
-Some of the new features including Hubs, Pivots and multi – instancing are explained in the [Visual Studio Blog][2].
+Some of the new features including Hubs, Pivots and multi - instancing are explained in the [Visual Studio Blog][2].
 
  [1]: http://www.microsoft.com/visualstudio/11/en-us
  [2]: http://blogs.msdn.com/b/visualstudio/

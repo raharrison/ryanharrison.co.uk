@@ -9,7 +9,7 @@ tags:
 ---
 As a follow up to my previous post on adding a new custom inline code shortcode to the WordPress editor, I figured it what also prove helpful to add a custom button to the text editor itself to surround the current text selection inside the inline code shortcode tags.
 
-Again, in WordPress this is pretty easy to do and can be accomplished in a couple lines of code. I found on my searches that there were many tutorials online about adding custom buttons to the WordPress Visual editor, however not so many about custom buttons in the Text editor – which is what I use most of the time when making posts. I did however find a [short article][1] which includes a quick and simple answer. The following code is taken from this post.
+Again, in WordPress this is pretty easy to do and can be accomplished in a couple lines of code. I found on my searches that there were many tutorials online about adding custom buttons to the WordPress Visual editor, however not so many about custom buttons in the Text editor - which is what I use most of the time when making posts. I did however find a [short article][1] which includes a quick and simple answer. The following code is taken from this post.
 
 To add a new button to the text editor, simply open up `functions.php`, which should be located in your theme folder, and add in the following code (this example adds the inline code tags, but can easily be modified to insert any HTML or shortcode tags that you like). These button in the text editor are known as `Quicktag buttons`. In the code below replace the `your_shortcode` text with your custom shortcode.
 

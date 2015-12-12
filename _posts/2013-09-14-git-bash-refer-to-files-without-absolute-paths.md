@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Git Bash &#8211; Refer to files without absolute paths'
+title: 'Git Bash - Refer to files without absolute paths'
 tags:
   - bash
   - git
@@ -17,7 +17,7 @@ or
 
 The problem is especially bad when working on Java projects as the folder structure follows the package names which can often get rather long.
 
-Handily there is an alternative when using `Git Bash` to all this typing &#8211; the &#8216;**&#8217; or &#8216;2-asterisk *globstar*&#8216; which searches recursively down your file structure for a file matching the given name.
+Handily there is an alternative when using `Git Bash` to all this typing - the '\*' or '2-asterisk *globstar*; which searches recursively down your file structure for a file matching the given name.
 
 The above commands can then be replaced with:
 

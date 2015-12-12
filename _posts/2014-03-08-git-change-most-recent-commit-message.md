@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Git – Change most recent commit message'
+title: 'Git - Change most recent commit message'
 tags:
   - git
   - tip
@@ -13,7 +13,7 @@ For example given this test repository with three previous commits:
 
 ![Before ammended message](/images/2014/beforeAmend.png){: .center-image width="570"}
 
-To change the message of the most recent commit – in this case “Third commit”, you can use `git commit --amend -m "This is a modified message"`
+To change the message of the most recent commit - in this case “Third commit”, you can use `git commit --amend -m "This is a modified message"`
 
 This gives the updated log messages:
 

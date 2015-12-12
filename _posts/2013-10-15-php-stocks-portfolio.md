@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'PHP – Stocks Portfolio Main Page'
+title: 'PHP - Stocks Portfolio Main Page'
 tags:
   - database
   - php
@@ -30,7 +30,7 @@ You have to be logged in to the system to be able to add a new stock to the port
 
 ![Stocks Portfolio Login Page](/images/2013/stocks_portfolio_login.jpg){: .center-image width="650"}
 
-The login page is quite simple – just a username and password field. The system currently only has one registered user with a username of 'admin' and a password of 'pass'. Entering in this two values and then pressing the 'Submit' button should successfully log you in to the system. The page now includes one link that takes you back to the main portfolio page.
+The login page is quite simple - just a username and password field. The system currently only has one registered user with a username of 'admin' and a password of 'pass'. Entering in this two values and then pressing the 'Submit' button should successfully log you in to the system. The page now includes one link that takes you back to the main portfolio page.
 
 The add new stocks page can be accessed from the link at the top of the main portfolio page. Now when following this link, you shouldn't be redirected to the login page as you have already succesfully logged in. Instead the 'Add a new Stock to the Portfolio' should load.
 
@@ -38,7 +38,7 @@ This page allows the user to enter information about a new stock they wish to ad
 
 The site uses a few Javascript functions to improve the overall usability. Such an example is a script that makes sure that all the compulsory fields are filled in with numeric data (where necessary), along with a script that automatically calculates the price change given a current price and yearly low/high. The formula used not exact by anyway means. It just calculates the difference between the current price and the yearly average:
 
-`change = price – ((yearlow + yearhigh) / 2)`
+`change = price - ((yearlow + yearhigh) / 2)`
 
 The change is re-calculated every time any relevant field is updated to improve responsiveness.
 

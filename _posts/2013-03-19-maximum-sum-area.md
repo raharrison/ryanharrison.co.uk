@@ -14,7 +14,7 @@ Instead of finding the subsequence of the array that contains the maximum sum, n
 
 ![Maximum Sum Area example](/images/2013/maxsumarea.png){: .center-image width="391"}
 
-Here is the algorithm. Note that this is massively inefficient with an order of `O(n^6)` – meaning that if we double the input size, the time taken calculate the result will increase by a factor of `64 (2^6)`.
+Here is the algorithm. Note that this is massively inefficient with an order of `O(n^6)` - meaning that if we double the input size, the time taken calculate the result will increase by a factor of `64 (2^6)`.
 
 {% highlight java %}  
 /**  
@@ -74,7 +74,7 @@ public static int[]] maxSumArea(int[][] arr) {
 }  
 {% endhighlight %}
 
-Here is also a small tester method displaying how the method can be used with the same 2d as shown in the example above – 
+Here is also a small tester method displaying how the method can be used with the same 2d as shown in the example above - 
 
 {% highlight java %}  
 public static void main(String[] args) {  
@@ -100,7 +100,7 @@ public static void main(String[] args) {
 } 
 {% endhighlight %} 
 
-Which generates the output – 
+Which generates the output - 
 
 {% highlight text %} 
 x1 = 1; 

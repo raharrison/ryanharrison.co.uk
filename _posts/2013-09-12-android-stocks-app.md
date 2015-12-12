@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Android – Stocks app'
+title: 'Android - Stocks app'
 tags:
   - android
   - finance
@@ -8,7 +8,7 @@ tags:
   - java
   - stocks
 ---
-I’ve written and Android app that can be used to view stocks and shares information from a wide variety of different businesses. The user maintains their own stocks portfolio so they only see the latest figures and information for the tickers that they are interested in – be it technology businesses such as Google or Microsoft, or perhaps just the popular financial indicator such as the FTSE or Dow Jones. The portfolio can be added to or removed from at the users convenience.
+I’ve written and Android app that can be used to view stocks and shares information from a wide variety of different businesses. The user maintains their own stocks portfolio so they only see the latest figures and information for the tickers that they are interested in - be it technology businesses such as Google or Microsoft, or perhaps just the popular financial indicator such as the FTSE or Dow Jones. The portfolio can be added to or removed from at the users convenience.
 
 The full source code for this app is available on my [GitHub account][1].
 
@@ -30,11 +30,11 @@ To view more detailed information and figures about a particular ticker in your 
 
 ![Stocks Info](/images/2013/stocks_info.jpg){: .center-image width="338"}
 
-When inside the detailed information view for a particular stock, you can also view various charts for the stock which illustrate the price changes over a certain timeframe. Access this by tapping the ‘View Chart’ button. By default a 3 month chart will be shown however you can change the charts timespan by selecting an option from the top of the page. Here is an example showing the 1 month chart for Yahoo –
+When inside the detailed information view for a particular stock, you can also view various charts for the stock which illustrate the price changes over a certain timeframe. Access this by tapping the ‘View Chart’ button. By default a 3 month chart will be shown however you can change the charts timespan by selecting an option from the top of the page. Here is an example showing the 1 month chart for Yahoo -
 
 ![Stocks Chart](/images/2013/stocks_chart.jpg){: .center-image width="338"}
 
-Each view in the app is fully compatible with a wide range of screen resolutions in both portrait and landscape. For example when flipped to landscape, the detailed information view for a stock is changed to present the information in a more user friendly manner –
+Each view in the app is fully compatible with a wide range of screen resolutions in both portrait and landscape. For example when flipped to landscape, the detailed information view for a stock is changed to present the information in a more user friendly manner -
 
 ![Stocks Info Landscape](/images/2013/stock_info_landscape.jpg){: .center-image width="561"}
 

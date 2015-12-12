@@ -40,7 +40,7 @@ Finally one more line is needed to hook this new function into wordpress with th
 add_shortcode("il", "inlinecode");  
 {% endhighlight %}
 
-And that's it. This is one of the benefits of using WordPress – it's so easy to customise and there are a load of guides and tutorials online to help you do it. Here is the resulting inline code (although it has been used throughout this post already):
+And that's it. This is one of the benefits of using WordPress - it's so easy to customise and there are a load of guides and tutorials online to help you do it. Here is the resulting inline code (although it has been used throughout this post already):
 
 `Some example inline code (in Jekyll)`
 

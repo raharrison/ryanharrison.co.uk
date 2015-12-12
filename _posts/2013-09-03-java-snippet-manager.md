@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Java – Snippet Manager'
+title: 'Java - Snippet Manager'
 tags:
   - github
   - java
@@ -10,7 +10,7 @@ The source code for my Java swing Snippet Manager application is now [on GitHub]
 
 [Download the JAR file][2]
 
-### Main Features –
+### Main Features -
 
   * A centralised repository of all your small code snippets and memos
   * Create, edit and origanise a selection of code, or plain text, snippets with syntax highlighting
