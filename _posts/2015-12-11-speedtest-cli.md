@@ -7,7 +7,7 @@ tags:
   - cli
 ---
 
-Finding your current download and upload speeds as long been the job of <http://www.speedtest.net>. This is fine for machines whereby you have access to a Javascript enabled browser, but particulary for servers, you have to find an alternative that you can use through the terminal.
+Finding your current download and upload speeds as long been the job of <http://www.speedtest.net>. This is fine for machines whereby you have access to a Javascript enabled browser, but particularly for servers, you have to find an alternative that you can use through the terminal.
 
 Handily, there is an [open source project on GitHub ](https://github.com/sivel/speedtest-cli) that provides a command line interface for testing internet bandwidth using speedtest.net. The only prerequisite is that you have Python installed (any version between 2.5 and 3.4 will do).
 

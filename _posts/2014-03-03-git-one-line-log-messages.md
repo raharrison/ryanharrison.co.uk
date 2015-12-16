@@ -5,7 +5,7 @@ tags:
   - git
   - tip
 ---
-A lot of the time when viewing the log in your Git repository you arent that interested in the author and date/time of each commit - the message and the hash are the most important parts. It would therefore be helpful to cut out everything from the log apart from the main details of each commit. Luckily, just like most things in Git, this is pretty straightforward to do:
+A lot of the time when viewing the log in your Git repository you aren't that interested in the author and date/time of each commit - the message and the hash are the most important parts. It would therefore be helpful to cut out everything from the log apart from the main details of each commit. Luckily, just like most things in Git, this is pretty straightforward to do:
 
 `git log --pretty=oneline`
 

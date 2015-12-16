@@ -32,7 +32,7 @@ You have to be logged in to the system to be able to add a new stock to the port
 
 The login page is quite simple - just a username and password field. The system currently only has one registered user with a username of 'admin' and a password of 'pass'. Entering in this two values and then pressing the 'Submit' button should successfully log you in to the system. The page now includes one link that takes you back to the main portfolio page.
 
-The add new stocks page can be accessed from the link at the top of the main portfolio page. Now when following this link, you shouldn't be redirected to the login page as you have already succesfully logged in. Instead the 'Add a new Stock to the Portfolio' should load.
+The add new stocks page can be accessed from the link at the top of the main portfolio page. Now when following this link, you shouldn't be redirected to the login page as you have already successfully logged in. Instead the 'Add a new Stock to the Portfolio' should load.
 
 This page allows the user to enter information about a new stock they wish to add to the current portfolio. In doing so the stock will appear in the main page along with either the top or worst stocks pages where relevant.
 

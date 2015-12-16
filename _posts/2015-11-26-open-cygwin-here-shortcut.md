@@ -15,7 +15,7 @@ After that it's just one command to add the new entry to the right-click context
 
 `chere -i -t mintty`
 
-This will add a new entry to open up a mintty (bash) shell at the current directory. There are also options to specifiy the shell to open (`-s zsh` etc) and the text in the shortcut (`-e "Custom text"` etc). If completed successfully, you should see a new 'Bash Prompt Here' context menu entry:
+This will add a new entry to open up a mintty (bash) shell at the current directory. There are also options to specify the shell to open (`-s zsh` etc) and the text in the shortcut (`-e "Custom text"` etc). If completed successfully, you should see a new 'Bash Prompt Here' context menu entry:
 
 ![Bash Prompt Here Entry](/images/2015/bash_prompt_here.png){: .center-image}
 

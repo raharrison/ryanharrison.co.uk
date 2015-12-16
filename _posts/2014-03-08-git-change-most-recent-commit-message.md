@@ -5,7 +5,7 @@ tags:
   - git
   - tip
 ---
-When using any version control system it’s inevitable that you’re going to make some kind of mistake when writing out your commit messages. Luckily Git makes it extremely simple to change the message of your most recent commit. Simply use the `amend` command:
+When using any version control system it’s inevitable that you're going to make some kind of mistake when writing out your commit messages. Luckily Git makes it extremely simple to change the message of your most recent commit. Simply use the `amend` command:
 
 `git commit --amend -m "new message"`
 

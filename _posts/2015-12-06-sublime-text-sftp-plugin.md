@@ -8,7 +8,7 @@ tags:
   - sublime text
 ---
 
-Amongst one of the best plugins available for Sublime Text 2 & 3 is the SFTP plugin from [wbond](https://wbond.net) (who is known for other great plugins including Alignment, SVN and Package Control itself). The SFTP plugin negates the need for using another dedicated SFTP client such as Filezilla when editing documents on a remote server. From the site, it's features include:
+Amongst one of the best plugins available for Sublime Text 2 & 3 is the SFTP plugin from [wbond](https://wbond.net) (who is known for other great plugins including Alignment, SVN and Package Control itself). The SFTP plugin negates the need for using another dedicated SFTP client such as FileZilla when editing documents on a remote server. From the site, it's features include:
 
 - Work off of a server - edit and manipulate files and folders
 - Map a local folder to a remote folder

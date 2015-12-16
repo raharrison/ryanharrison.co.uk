@@ -20,7 +20,7 @@ Typically, just after I had converted my blog over from Wordpress (you can read 
 
 More information about the release can be found over at it's [news page][2].
 
-Luckily, migrations up to the new version don't seem to be too bad unless you are using a lot of plugins that haven't yet recieved an update. In my case, as of writing, I am just using `jekyll-sitemap` and `jekyll-paginate`. The latter of which is now deprecated which I will come on to.
+Luckily, migrations up to the new version don't seem to be too bad unless you are using a lot of plugins that haven't yet received an update. In my case, as of writing, I am just using `jekyll-sitemap` and `jekyll-paginate`. The latter of which is now deprecated which I will come on to.
 
 To upgrade versions I simply ran:
 

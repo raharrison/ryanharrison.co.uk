@@ -9,7 +9,7 @@ tags:
 
 When I first launched my blog way back [in 2011][1] I didn't really know a whole lot about web hosting at all and just wanted to get something tangible up and running as quick as possible. Therefore of course I had no idea what constituted a half decent web hosting company. At the time I think I was just following some online tutorial which ran through the process of setting up and hosting your own site. I registered my domain with GoDaddy as recommended (and still do with no issues) and then had to move on to actually hosting my site. The tutorial recommended Hostgator and that seemed fine to me. They had pretty good reviews and the prices for shared hosting were good for a minimal setup like mine.
 
-I got myself their most basic shared web hosting plan which consists of a single domain and unlimited (yeah, until you start using too much of course) bandwidth/email/databases. To be honest even by today's standards that's pretty good going. At the time I payed $5.95/mo for 2 years of hosting which included a 20% promotion (which I later learnt is pretty much a contant thing).
+I got myself their most basic shared web hosting plan which consists of a single domain and unlimited (yeah, until you start using too much of course) bandwidth/email/databases. To be honest even by today's standards that's pretty good going. At the time I payed $5.95/mo for 2 years of hosting which included a 20% promotion (which I later learnt is pretty much a constant thing).
 
 ![Hostgator Logo](/images/2015/hostgator.jpg){: .center-image width="300"}
 
