@@ -7,10 +7,12 @@ title: Search
 
 <div>
     <form id="site_search">
-      <label>Search</label><input type="text" id="search_box">
-      <input type="submit" value="Go">
+      <input type="text" id="search_box" placeholder="Enter search term ...">
+      <input id="submit_button" type="submit" value="Search">
     </form>
 </div>
+
+<br><hr><br>
 
 <div class="entry">
     <ul id="search_results" class="post-content"></ul>    
@@ -36,12 +38,17 @@ $(document).ready(function(){
             e.preventDefault();
             var query = $("#search_box").val().toLowerCase(); // Get the value for the text field
            
+           var results = $("#search_results")
+            results.empty()
             $.each(items, function(key, value) {
                 if(value.searchTerm.includes(query)) {
                     var h = "<li id='" + key + "'><a href='" + value.url +  "'>" + value.title + "</a></li>";
-                    $("#search_results").append(h);
+                    results.append(h);
                 }
             });
+            if(results.children().length == 0) {
+                results.append("<p>No results found</p>");
+            }
         });
     });
 });
