@@ -9,7 +9,7 @@ tags:
   - ruby
 ---
 
-**Note: As of writing file watching is currently not implemented in the WSL so you won't be able to use jekyll serve -watch. If you are on an insider preview #14942 you will have access to this feature ([request page](https://wpdev.uservoice.com/forums/266908-command-prompt-console-bash-on-ubuntu-on-windo/suggestions/13469097-support-for-filesystem-watchers-like-inotify)**)
+**Note: As of writing file watching is currently not implemented in the WSL so you won't be able to use `jekyll serve --watch`. If you are on an insider preview #14942 you will have access to this feature ([request page](https://wpdev.uservoice.com/forums/266908-command-prompt-console-bash-on-ubuntu-on-windo/suggestions/13469097-support-for-filesystem-watchers-like-inotify)**)
 
 Thanks to the awesomeness that is the WSL [Windows Subsystem for Linux](https://msdn.microsoft.com/en-gb/commandline/wsl/about), you can now install and use a load of tools on Windows just as you would do under Linux. Previously I used to run Jekyll (running under Ruby) solely through a Unix based environment - creating new blog posts through a system of SSH and SFTP. Ruby development on Windows has never really been that great, but now the whole process has got much easier - run everything locally through the WSL layer.
 
