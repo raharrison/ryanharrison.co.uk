@@ -1,12 +1,41 @@
 
-# Setup
-title:               Lanyon
-tagline:             'A Jekyll theme'
+# Name of your site (displayed in the header)
+title:               Ryan Harrison
+
+# Short bio or description (displayed in the header)
+tagline:             "My blog, portfolio and technology related ramblings"
+
+# Description displayed in the sidebar
 description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:                 http://lanyon.getpoole.com
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  email: mail@ryanharrison.co.uk
+  github: raharrison
+  linkedin: ryanharrison10
+  rss: rss
+  twitter: _ryanharrison10
+
+# Enter your Disqus shortname
+disqus: ryanharrison
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics:
+
+# Used for Sitemap.xml and your RSS feed
+url: https://ryanharrison.co.uk
 baseurl:             ''
+
+
 paginate:            5
-gems:                [jekyll-paginate]
+
+# Use the following plug-ins
+gems:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-paginate # Pagination of posts
+
+# Post excerpts include everything up to this tag
+excerpt_separator: <!--more-->
 
 # About/contact
 author:
@@ -22,3 +51,13 @@ highlighter: rouge
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
+
+# Exclude these files from your production _site
+exclude:
+    - utils
+    - .sass-cache
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
+    - CNAME
