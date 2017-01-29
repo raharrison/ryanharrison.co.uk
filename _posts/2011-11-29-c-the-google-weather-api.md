@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'C# – The Google Weather API'
+title: 'C# - The Google Weather API'
 tags:
   - 'c#'
   - google api
@@ -27,17 +27,17 @@ I hope to post another update soon with examples on how to use alternative API's
 
 You can obtain the current and forecast weather conditions in a user specified city with C# through the free weather API provided by Google. The main concept behind the API is to produce a URL, with a specified city, which then corresponds to an `XML` file that includes the weather forecast. Handily C# makes it easy to obtain this `XML` file, parse it, and finally print out the weather on a large variety of cities.
 
-The URL we will be using, and modifying is –
+The URL we will be using, and modifying is -
 
 `http://www.google.com/ig/api?weather=YOUR_CITY_NAME`
 
-For example – 
+For example - 
 
 <http://www.google.com/ig/api?weather=London>
 
 will return an `XML` file with the weather for London.
 
-Now in C#, we will start by creating a `Conditions` class that will simply contain a bunch of properties that represent the weather in the city at a point in time – 
+Now in C#, we will start by creating a `Conditions` class that will simply contain a bunch of properties that represent the weather in the city at a point in time - 
 
 {% highlight csharp %}  
 class Conditions  
@@ -54,13 +54,13 @@ class Conditions
 }  
 {% endhighlight %}
 
-Now we will move on to the main `Weather` class that will hold two methods – `GetCurrentConditions`, and `GetForecastConditions`. The `GetCurrentConditions` method will return one `Conditions` object – representing the current day, and the `GetForecastedConditions` method will return a `List` of conditions – one for each day of the forecast. Before we begin, make sure to put the following using statement at the top of the file so that we can use the various classes and methods inside the `System.Xml` namespace – 
+Now we will move on to the main `Weather` class that will hold two methods - `GetCurrentConditions`, and `GetForecastConditions`. The `GetCurrentConditions` method will return one `Conditions` object - representing the current day, and the `GetForecastedConditions` method will return a `List` of conditions - one for each day of the forecast. Before we begin, make sure to put the following using statement at the top of the file so that we can use the various classes and methods inside the `System.Xml` namespace - 
 
 {% highlight csharp %}  
 using System.Xml;  
 {% endhighlight %}
 
-Now we can create the public static `GetCurrentConditions` method that takes one string parameter representing the city – 
+Now we can create the public static `GetCurrentConditions` method that takes one string parameter representing the city - 
 
 {% highlight csharp %}  
 public static Conditions GetCurrentConditions(string city)  
@@ -155,7 +155,9 @@ public static List<Conditions> GetForecastConditions(string city)
 }  
 {% endhighlight %}
 
-Finally, we can use the two new methods in a simple Console application (although it could easily be used in a GUI). In this example we prompt the user for whether or not they want the current or forecast conditions, prompt them for a city to search for, and print the corresponding conditions to the Console. A prompt if also shown if the `Conditions` object is null – meaning that an error occurred.
+<!--more-->
+
+Finally, we can use the two new methods in a simple Console application (although it could easily be used in a GUI). In this example we prompt the user for whether or not they want the current or forecast conditions, prompt them for a city to search for, and print the corresponding conditions to the Console. A prompt if also shown if the `Conditions` object is null - meaning that an error occurred.
 
 {% highlight csharp %}  
 using System;  
@@ -233,9 +235,9 @@ namespace Google_Weather
 
         private static void PrintMenu()  
         {  
-            Console.WriteLine("1 – Current Conditions");  
-            Console.WriteLine("2 – Forecast Conditions");  
-            Console.WriteLine("3 – Exit");  
+            Console.WriteLine("1 - Current Conditions");  
+            Console.WriteLine("2 - Forecast Conditions");  
+            Console.WriteLine("3 - Exit");  
             Console.WriteLine();  
         }
 
@@ -248,7 +250,7 @@ namespace Google_Weather
 
         private static bool GetInputChoice(out int op)  
         {  
-            Console.WriteLine("Enter an option – ");  
+            Console.WriteLine("Enter an option - ");  
             string input = Console.ReadLine();
 
             return int.TryParse(input, out op);
@@ -257,7 +259,7 @@ namespace Google_Weather
         private static string GetCity()  
         {  
             Console.WriteLine();  
-            Console.WriteLine("Enter a city – ");  
+            Console.WriteLine("Enter a city - ");  
             return Console.ReadLine();  
         }
 

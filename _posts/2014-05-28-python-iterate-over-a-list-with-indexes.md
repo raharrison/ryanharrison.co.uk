@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Python &#8211; Iterate over a list with indexes'
+title: 'Python - Iterate over a list with indexes'
 tags:
   - python
   - list
@@ -22,7 +22,7 @@ Baz
 Qux  
 {% endhighlight %}
 
-In a lot of cases this is all that&#8217;s needed, however in other circumstances we may need access to the index that each element is at inside the `list` &#8211; most of the time in order to perform some kind of check on the next or previous values in the `list`. The conventional `for` loop above of course simply gives us the values inside the `list`, not the indexes. We could set up a counter variable which increments each time around the loop, yet this seems clumsy. We are increasing the scope of a variable that should ideally be kept local to the loop.
+In a lot of cases this is all that's needed, however in other circumstances we may need access to the index that each element is at inside the `list` - most of the time in order to perform some kind of check on the next or previous values in the `list`. The conventional `for` loop above of course simply gives us the values inside the `list`, not the indexes. We could set up a counter variable which increments each time around the loop, yet this seems clumsy. We are increasing the scope of a variable that should ideally be kept local to the loop.
 
 Another popular solution is to use the `range` function, which returns an `iterator` of values from zero to the number we specify as a parameter. By creating a `list` of numbers from zero to the size of the `list`, we can then use each element as an index in order to extract each value:
 
@@ -52,4 +52,4 @@ The value at index 2 = Baz
 The value at index 3 = Qux  
 {% endhighlight %}
 
-As you can see this is much neater and more efficient than the other solutions. There is no need for extra variables &#8211; everything is provided to us in the loop declaration.
+As you can see this is much neater and more efficient than the other solutions. There is no need for extra variables - everything is provided to us in the loop declaration.

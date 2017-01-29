@@ -14,7 +14,7 @@ For example with the array `{1, 11, -9, -20, 7, 10, -6, 3, 4, -2}`, the maximum 
 
 Here are a few algorithms implemented in Java of increasing efficiency that can be used to solve this problem.
 
-1\. **Brute Force &#8211;** take each element as a starting point and each element after as an ending point, sum the elements in between and keep track of the largest sum.
+1\. **Brute Force -;** take each element as a starting point and each element after as an ending point, sum the elements in between and keep track of the largest sum.
 
 **Efficiency (Order of Growth) = O(n^3)**
 
@@ -83,7 +83,7 @@ public static int[] maximumSumSubsequence(int[] values) {
 
 This optimisation, although small saves a lot of execution time. Now as the size of the input array doubles, the time taken will increase by a factor of 4. However we can still improve this and gain a linear relationship between size and execution time.
 
-3\. **Single loop &#8211;** now we only traverse the array once. We keep track of the maximal sum subsequence so far and the maximal sum subsequence ending at the current position.
+3\. **Single loop -;** now we only traverse the array once. We keep track of the maximal sum subsequence so far and the maximal sum subsequence ending at the current position.
 
 **Efficiency (Order of Growth) = O(n)**
 

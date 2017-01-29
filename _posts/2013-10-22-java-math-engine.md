@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Java – Math Engine'
+title: 'Java - Math Engine'
 tags:
   - java
   - math engine
@@ -79,6 +79,8 @@ The symbolic differentiation package offers support to obtain exact derivatives 
     
 As you can see the symbolic differentiator returns a `Function` representing the equation of the derivative, which in this case is `2*x + 8`. This function is then evaluated at the some point `3.5` to get an answer of `15`. Note how this result is exact and without the small error retrieved from the numeric method of differentiation.
 
+<!--more-->
+
 ### Distributions
 
 The distributions package offers classes to evaluate both discrete and continuous probability distributions.
@@ -118,13 +120,13 @@ will automatically parse the string and use the preset list of units aliases to 
     
 which is 12 miles per hour in kilometres per hour.
 
-![Converter example](http://ryanharrison.co.uk/apps/mathengine/converter.jpg){: .center-image}
+![Converter example](https://ryanharrison.co.uk/apps/mathengine/converter.jpg){: .center-image}
 
 The `HistoricalTextField` offers a custom text-field control which remembers all previous input. This emulates the likes of a terminal window where the arrow keys can be used to navigate a list of previous input. This control is then used in the `MainFrame` class.
 
 The `MainFrame` class provides a graphical user interface that allows the user to use the parser package. Users can simply type in their expression and the parser will evaluate and return a result which will be displayed in the frame. All supported result types are displayed including fractions, vectors, matrices and functions.
 
-![MainFrame example](http://ryanharrison.co.uk/apps/mathengine/mainframe.jpg){: .center-image}
+![MainFrame example](https://ryanharrison.co.uk/apps/mathengine/mainframe.jpg){: .center-image}
 
 ### Integral
 
@@ -297,7 +299,7 @@ The plotting package includes a custom graphical control that plots a `Function`
 
 The control makes extensive usage of the parser package - particularly the `Evaluator` class to evaluate the Function at different points for graphing.
 
-![Plotter Control](http://ryanharrison.co.uk/apps/mathengine/grapher.jpg){: .center-image}
+![Plotter Control](https://ryanharrison.co.uk/apps/mathengine/grapher.jpg){: .center-image}
 
 ### Regression
 

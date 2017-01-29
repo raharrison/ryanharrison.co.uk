@@ -1,16 +1,16 @@
 ---
-title: 'Java Regression Library – Regression Models'
+title: 'Java Regression Library - Regression Models'
 layout: post
 tags:
   - java
   - library
   - regression
 ---
-## Part 1 – Regression Models
+## Part 1 - Regression Models
 
 In this tutorial series we'll be going over how to create a simple Regression Analysis library in Java. If you have any prior knowledge of regression analysis you will probably know that this is a very large field with a great many applications. In this tutorial series we won't be covering any massively advanced techniques. Our final library will be able to produce the same results as you would find in Microsoft Excel (excluding the graph plotting), which in most basic circumstances will be plenty enough to get you some good results.
 
-### Prerequisites –
+### Prerequisites -
 
 It's best if you start this series with a sound knowledge of OOP (object-oriented programming) practices in Java as this series will include the use of abstract classes and polymorphism. You will also need a good knowledge of some of the more basic concepts in Java such as looping, methods and variables. I will do my best to explain the code as much as I can but it is advisable that you have some prior knowledge.
 
@@ -24,13 +24,13 @@ So enough of all the introductions lets get straight in! If you haven't heard of
 
 Well that hasn't really helped much now has it? It is much simpler to understand if you think about the variables as the `X` and `Y` coordinates on a graph. 
 
-Consider the case where you have a simple scatter plot diagram. You have a set of `X` and `Y` coordinates that are plotted on a graph with two axis' – the `x` and `y`. For example this graph where the data runs up until an `X` value of 11. Say these values are from a particular stock on the stock exchange (regression analysis has a lot of applications in stocks and shares). The `X` values represent each a month in the year and the respective `Y` coordinates are the average price of the stock in that particular month. From the graph plot we can see that the price of shares is steadily increasing but we don't possess any data for the 12th month. Is the price going to increase or decrease in December? How can we find out? For market traders this is very important information that can make them or lose them millions. The answer – regression analysis!
+Consider the case where you have a simple scatter plot diagram. You have a set of `X` and `Y` coordinates that are plotted on a graph with two axis' - the `x` and `y`. For example this graph where the data runs up until an `X` value of 11. Say these values are from a particular stock on the stock exchange (regression analysis has a lot of applications in stocks and shares). The `X` values represent each a month in the year and the respective `Y` coordinates are the average price of the stock in that particular month. From the graph plot we can see that the price of shares is steadily increasing but we don't possess any data for the 12th month. Is the price going to increase or decrease in December? How can we find out? For market traders this is very important information that can make them or lose them millions. The answer - regression analysis!
 
 ![Scatter Plot][2]{: .center-image}
 
 So we have data up to November and we want to find out what the `Y` value is when `X` is 12. The trouble is its not December yet so we don't know what it is. We need a forecast model. Lets revisit the situation. We have an `X` value and we need the `Y` value. Hopefully this is ringing some bells. It sounds an awful lot like a good use of an function such as `Y = aX + b` (or it could be any other function). We can insert an `X` value of 12 and we get back the corresponding `Y` value which is the average stock price for December. Sounds great but we have a problem. We don't know the variables `a` and `b`! The function could have any intercept and gradient. We currently don't have a clue. We could make one up but someone like a market trader doesn't want to risk their money on a made up value. We need a way to find the values of a and b which when put into the function will give us back an accurate value for the price in December.
 
-Armed with that knowledge lets go back to the Wikipedia definition. 'estimating the relationships among variables' – this kind of makes more sense now. As `X` increases what does `Y` do? This is called the relationship between the two variables. If the `Y` values are increasing a lot as `X` increases, our forecast should reflect this relationship. We now need to label `X` and `Y` in more formal terms.
+Armed with that knowledge lets go back to the Wikipedia definition. 'estimating the relationships among variables' - this kind of makes more sense now. As `X` increases what does `Y` do? This is called the relationship between the two variables. If the `Y` values are increasing a lot as `X` increases, our forecast should reflect this relationship. We now need to label `X` and `Y` in more formal terms.
 
 `Y` is the dependent variable. It depends on the values of the other independent variables and parameters a, `X` and b to give it a value.
 
@@ -40,7 +40,17 @@ So essentially we want to find some function that best fits the data points that
 
 Lets go back to our example. We want to find the forecast of the stock price in December. We therefore need to find some function that relates the month to the price. This is regression analysis in its simplest form. Things get harder when we have to figure out what function is best to use to model the relationship (is it a linear line, an exponential line etc) and how can we find out how good our model is at describing the relationship, but we will move onto that in later parts of this series.
 
-The most basic form of regression analysis is linear regression – that is finding a linear function that best models the relationship between the two variables. The base linear line function is `Y = aX + b` from earlier. We want to find the price `Y` and `X` is the month. We need to find the best values for `a` and `b` that produce a line that follows our current data as much as possible. If the line is accurate, we can use it to forecast other months. Our function becomes `PRICE = a * MONTH + b`. A huge part of regression analysis is finding the best values of `a` and `b` that produce a line that closely models our current data set.
+The most basic form of regression analysis is linear regression - that is finding a linear function that best models the relationship between the two variables. The base linear line function is `Y = aX + b` from earlier. We want to find the price `Y` and `X` is the month. We need to find the best values for `a` and `b` that produce a line that follows our current data as much as possible. If the line is accurate, we can use it to forecast other months. Our function becomes `PRICE = a * MONTH + b`. A huge part of regression analysis is finding the best values of `a` and `b` that produce a line that closely models our current data set.
+
+ [1]: http://en.wikipedia.org/wiki/Regression_analysis
+ [2]: https://i.imgur.com/32ToM9O.jpg
+ [3]: https://i.imgur.com/zuGTqzG.jpg
+ [4]: https://i.imgur.com/w9Wa8WE.jpg
+ [5]: https://i.imgur.com/yssVg8S.jpg
+ [6]: https://upload.wikimedia.org/math/8/f/b/8fb0426fb13f5e83ac05e208be4f9dfa.png
+ [7]: {{ site.baseurl }}{% post_url 2013-10-07-java-regression-library-linear-model %}
+ 
+<!--more-->
 
 ### What?
 
@@ -50,7 +60,7 @@ That's a lot of words but it will all make sense by the end of this tutorial ser
   * This involves creating functions that model the relationship. For example linear functions or exponential functions.
   * Once we have an accurate model of the sample data we can use it to forecast `Y` values for `X` values that were not in our original data set.
 
-Lets put that into pictures. Take the simple scatter diagram we had before. We want to fit a line onto those data points that closely models the relationship between the variables – we can see this visually if the line that is created passes through or close to all the data points.
+Lets put that into pictures. Take the simple scatter diagram we had before. We want to fit a line onto those data points that closely models the relationship between the variables - we can see this visually if the line that is created passes through or close to all the data points.
 
 ![Bad Model][3]{: .center-image}
 
@@ -64,7 +74,7 @@ Much better. As you can see the new line passes through or very close to all of 
 
 Seems pretty arbitrary but in fact this line is the best linear line that models our current data points. Thus if we used this function to forecast the month of December (by inserting 12 as `X`), we would have a better chance of making some money.
 
-You may or may not be thinking that this looks a bit familiar. Isn't that just a line of best fit? I can do that in Excel by using TrendLines. The answer: yes! When you tell Excel to make a trendline or line of best fit of your data points, internally Excel is performing a Regression Analysis on those data points to find an function of a line that best describes the relationship between your data points. It doesn't call this regression analysis, yet it is in fact doing this exact thing. Pretty cool eh? In this tutorial series we will be using Java to perform this exact same thing on our data. We will even get the same results as Excel! If you look into the TrendLine options in Excel you will see that you have the option to match not only a linear line `Y = aX + b`, but also a whole load of others like logarithmic, exponential etc. If we select logarithmic Excel we perform another regression analysis on our data but this time to match a logarithmic function and not a linear one. This takes the form `Y = a * ln(X) + b`. As it turns out the best logarithmic function (in that form) we can fit to that data set is `Y = 21.688 * ln(x) – 1.0532`. This line doesn't match our data set that well at all yet it is best that the logarithmic regression model can do with two fixed parameter variables.
+You may or may not be thinking that this looks a bit familiar. Isn't that just a line of best fit? I can do that in Excel by using TrendLines. The answer: yes! When you tell Excel to make a trendline or line of best fit of your data points, internally Excel is performing a Regression Analysis on those data points to find an function of a line that best describes the relationship between your data points. It doesn't call this regression analysis, yet it is in fact doing this exact thing. Pretty cool eh? In this tutorial series we will be using Java to perform this exact same thing on our data. We will even get the same results as Excel! If you look into the TrendLine options in Excel you will see that you have the option to match not only a linear line `Y = aX + b`, but also a whole load of others like logarithmic, exponential etc. If we select logarithmic Excel we perform another regression analysis on our data but this time to match a logarithmic function and not a linear one. This takes the form `Y = a * ln(X) + b`. As it turns out the best logarithmic function (in that form) we can fit to that data set is `Y = 21.688 * ln(x) - 1.0532`. This line doesn't match our data set that well at all yet it is best that the logarithmic regression model can do with two fixed parameter variables.
 
 ![Regression Types][5]{: .center-image}
 
@@ -78,7 +88,7 @@ In a linear regression model this function is normally `Y = ß1X + ß2`
 
 In a logarithmic regression model this function is normally `Y = ß1 * ln(X) + ß2`
 
-There are a load of different regression models that you can do, however the model that you choose should be relevant to the data set your are performing it on. For example logarithmic and exponential models are commonly used to analyse the stock market, however these models may not be relevant at all for other sets of data. They may model your current data nicely, however they may not provide good sources of forecasts. That is another area of Regression Analysis – which model should I use for my data and how good is it at modelling it?
+There are a load of different regression models that you can do, however the model that you choose should be relevant to the data set your are performing it on. For example logarithmic and exponential models are commonly used to analyse the stock market, however these models may not be relevant at all for other sets of data. They may model your current data nicely, however they may not provide good sources of forecasts. That is another area of Regression Analysis - which model should I use for my data and how good is it at modelling it?
 
 It is also important to consider how many data points you have in your sample data set upon which your Regression Model will base its results from. The Wikipedia article explains this quite well.
 
@@ -267,11 +277,3 @@ public abstract double evaluateAt(double x);
 That sums up the first tutorial in this series. As I said before there was a lot of theory and not much coding in this one, but there will be more in future tutorials (although there will still be quite a lot of theory).
 
 Check out [Part 2][7] of this tutorial where we get on to implementing a `LinearRegresssionModel`!
-
- [1]: http://en.wikipedia.org/wiki/Regression_analysis
- [2]: http://i.imgur.com/32ToM9O.jpg
- [3]: http://i.imgur.com/zuGTqzG.jpg
- [4]: http://i.imgur.com/w9Wa8WE.jpg
- [5]: http://i.imgur.com/yssVg8S.jpg
- [6]: http://upload.wikimedia.org/math/8/f/b/8fb0426fb13f5e83ac05e208be4f9dfa.png
- [7]: {{ site.baseurl }}{% post_url 2013-10-07-java-regression-library-linear-model %}

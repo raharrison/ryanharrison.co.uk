@@ -5,7 +5,7 @@ tags:
   - java
   - sdk
 ---
-A few days ago Oracle announced the availability of their new Java 7 SDK. Some of of the major changes include &#8211;
+A few days ago Oracle announced the availability of their new Java 7 SDK. Some of of the major changes include -;
 
   * New I/O APIs (Asynchronous I/O)
   * Strings in switch statements

@@ -85,6 +85,16 @@ Which stands for the `covariance` of `x` and `y` divided by the `variance` of `x
 
 We are only really worried about `ß` as finding `a` is easy once we have a value for `ß`. It's just the `mean` of the `y` values minus the found value of `ß` multipled by the `mean` of the `x` values. Great!
 
+ [1]: {{ site.baseurl }}{% post_url 2013-09-24-java-regression-library-regression-models %}
+ [2]: http://en.wikipedia.org/wiki/Simple_linear_regression
+ [3]: https://i.imgur.com/w9Wa8WE.jpg
+ [4]: https://upload.wikimedia.org/math/5/9/9/599c1e72969ec00e4d012146d8f90fbf.png
+ [5]: https://upload.wikimedia.org/math/d/a/a/daadbe12908cba8971ddc97c2904e582.png
+ [6]: https://www.codeproject.com/KB/graphics/Face_Recognition/EQ1.jpg
+ [7]: https://upload.wikimedia.org/math/f/a/d/fadadaf7f3a6b4252ed4c6188999b37c.png
+
+<!--more-->
+
 ### Covariance and Variance methods
 
 We first need to find out more about the `covariance` and `variance` functions and code up two small helper methods that we can then make a good use of in our linear model. Lets start with the covariance. I won't be covering any of the theory about these functions as their is already a wealth of information out there for your to read on your own. We end up with another formula for the `covariance` of `x` and `y`:
@@ -444,11 +454,3 @@ That wraps up this tutorial where we implemented our first regression model. Be 
 Thanks for reading!
 
 Sources: Wikipedia
-
- [1]: {{ site.baseurl }}{% post_url 2013-09-24-java-regression-library-regression-models %}
- [2]: http://en.wikipedia.org/wiki/Simple_linear_regression
- [3]: http://i.imgur.com/w9Wa8WE.jpg
- [4]: http://upload.wikimedia.org/math/5/9/9/599c1e72969ec00e4d012146d8f90fbf.png
- [5]: http://upload.wikimedia.org/math/d/a/a/daadbe12908cba8971ddc97c2904e582.png
- [6]: http://www.codeproject.com/KB/graphics/Face_Recognition/EQ1.jpg
- [7]: http://upload.wikimedia.org/math/f/a/d/fadadaf7f3a6b4252ed4c6188999b37c.png

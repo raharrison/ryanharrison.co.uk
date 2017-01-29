@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 'C# – Re-throwing Exceptions'
+title: 'C# - Re-throwing Exceptions'
 tags:
   - 'c#'
   - exception
   - throw
   - tip
 ---
-In C# it is common that exceptions are re-thrown after some logging has taken place, or perhaps even to alter the exception information to be more user friendly. However there are two different ways of re-throwing exceptions in C# and care needs to be taken when doing so, as one method will loose the stack trace – making things a lot harder to debug.
+In C# it is common that exceptions are re-thrown after some logging has taken place, or perhaps even to alter the exception information to be more user friendly. However there are two different ways of re-throwing exceptions in C# and care needs to be taken when doing so, as one method will loose the stack trace - making things a lot harder to debug.
 
 Consider the following code:
 
@@ -125,8 +125,8 @@ at ScratchPad.Throwing.Run() in C:\Code\ScratchPad\ScratchPad\Program.cs:line 28
 at ScratchPad.Throwing.Main() in C:\Code\ScratchPad\ScratchPad\Program.cs:line 37  
 {% endhighlight %}
 
-We now have the full story in the stack trace. We can see that the exception originated from the `DoSomething()` method and passed through the `Run()` method into `Main()` – much more helpful when debugging.
+We now have the full story in the stack trace. We can see that the exception originated from the `DoSomething()` method and passed through the `Run()` method into `Main()` - much more helpful when debugging.
 
-I don't see any situation when using `throw e;` would be of any use at all. If you wanted to hide the stack trace then you would typically be throwing a completely new exception anyway – with a new message and perhaps other information to pass to the caller. If you didn't want to hide the stack trace then throw; is the statement to use. Resharper even sees `throw e;` as a problem and tries to replace it with the simple throw;.
+I don't see any situation when using `throw e;` would be of any use at all. If you wanted to hide the stack trace then you would typically be throwing a completely new exception anyway - with a new message and perhaps other information to pass to the caller. If you didn't want to hide the stack trace then throw; is the statement to use. Resharper even sees `throw e;` as a problem and tries to replace it with the simple throw;.
 
 Even so I bet this mistake has been made a lot of times by a lot of people. So remember if you are wanting to re-throw an exception, never use throw e; as it will loose your stack trace. Instead always use `throw;`.

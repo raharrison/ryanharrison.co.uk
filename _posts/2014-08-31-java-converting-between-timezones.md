@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Java &#8211; Converting Between Timezones'
+title: 'Java - Converting Between Timezones'
 tags:
   - date
   - java
@@ -8,7 +8,7 @@ tags:
   - tip
   - trick
 ---
-In Java it&#8217;s not too easy to convert `Date` objects between timezones as they always like to store the time in UTC (even though they will happily print BST when converted to a String form). Normal timezone conversion in Java is done through the `Calendar` class which is, as all Java developers know, really heavy and a nightmare to use. Even using a `Calendar` though, getting a `Date` object out if it in a different timezone doesn&#8217;t seem to happen at all. But it can be useful to have a `Date` object represent a time in a different timezone, so here is a little helper method that gets around it. Included is also another handy helper method that creates a `Date` object at a certain time (something that you often want to do but don&#8217;t want to see or use a `Calendar` directly):
+In Java it's not too easy to convert `Date` objects between timezones as they always like to store the time in UTC (even though they will happily print BST when converted to a String form). Normal timezone conversion in Java is done through the `Calendar` class which is, as all Java developers know, really heavy and a nightmare to use. Even using a `Calendar` though, getting a `Date` object out if it in a different timezone doesn't seem to happen at all. But it can be useful to have a `Date` object represent a time in a different timezone, so here is a little helper method that gets around it. Included is also another handy helper method that creates a `Date` object at a certain time (something that you often want to do but don't want to see or use a `Calendar` directly):
 
 {% highlight java %}
 import java.util.Calendar;  

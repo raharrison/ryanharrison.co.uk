@@ -9,11 +9,11 @@ tags:
 ---
 **NOTE: The Google Finance API has now been deprecated so this code will no longer work**
 
-After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example &#8211; 
+After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example -; 
 
 [http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd][2]
 
-which gives back this JSON object &#8211; 
+which gives back this JSON object -; 
 
 `{lhs: "1 000 000 British pounds",rhs: "1.6399 million U.S. dollars",error: "",icc: true}`
 
@@ -21,14 +21,14 @@ As you can see, instead of returning just a decimal number, it gives a number fo
 
 In this case to fix the bug, the Regex needs to be modified so that it returns not only the number, but also the new String in the same match. With this information, the number can then be multiplied to give the final result as a single decimal.
 
-The Regex now becomes &#8211;
+The Regex now becomes -;
 `rhs: \\\"((\\d|\\s|\\.)*)(\\s[^\\s]+)`
 
-(the cluster of backslashes are to escape the possible escape sequences of &#8216;/d&#8217; and &#8216;/s&#8217; for example)
+(the cluster of backslashes are to escape the possible escape sequences of '/d' and '/s' for example)
 
-The new Regular Expression makes use of &#8216;Groups&#8217; to store the two pieces of data in the same match &#8211; the first groups contains the number, and the third contains the String due to the way this pattern is designed (it&#8217;s probably possible to modify this, yet it doesn&#8217;t create too much of a problem and so isn&#8217;t worth the effort).
+The new Regular Expression makes use of 'Groups' to store the two pieces of data in the same match -; the first groups contains the number, and the third contains the String due to the way this pattern is designed (it's probably possible to modify this, yet it doesn't create too much of a problem and so isn't worth the effort).
 
-We can now produce a match from the response using the same code as before &#8211; 
+We can now produce a match from the response using the same code as before -; 
 
 {% highlight csharp %}
 WebClient client = new WebClient();
@@ -41,7 +41,7 @@ Regex pattern = new Regex("rhs: \\\"((\\d|\\s|\\.)*)(\\s[^\\s]+)");
 Match match = pattern.Match(response);  
 {% endhighlight %}
 
-Once we have access to the match, we can extract the data into our own variables &#8211; 
+Once we have access to the match, we can extract the data into our own variables -; 
 
 {% highlight csharp %}
 string number = match.Groups[1].Value;  
@@ -51,9 +51,9 @@ decimal num = System.Convert.ToDecimal(number);
 string units = match.Groups[3].Value.Replace(" ","");  
 {% endhighlight %}
 
-Here, the number is stored as a String from the first group and the &#8216;spaces&#8217; are removed (for some reason in the returned String, &#8216;spaces&#8217; have a Unicode value of 160, which is called the &#8216;Non-breaking space&#8217;). Next, the number is converted into a decimal and the units are extracted from the match and stored in the &#8216;units&#8217; variable.
+Here, the number is stored as a String from the first group and the 'spaces' are removed (for some reason in the returned String, 'spaces' have a Unicode value of 160, which is called the 'Non-breaking space'). Next, the number is converted into a decimal and the units are extracted from the match and stored in the 'units' variable.
 
-As the only possible values of the &#8216;units&#8217; variable are &#8216;millions&#8217;, &#8216;billions&#8217; and &#8216;trillions&#8217;, we can simply test the variable against each and multiply the number correspondingly to get the overall result. Finally, we just need to round the number to two decimal places to signify a currency, and return the value. Here is the full updated code which hopefully is bug free. The full source code can be found in [GitHub][3].
+As the only possible values of the 'units' variable are 'millions', 'billions' and 'trillions', we can simply test the variable against each and multiply the number correspondingly to get the overall result. Finally, we just need to round the number to two decimal places to signify a currency, and return the value. Here is the full updated code which hopefully is bug free. The full source code can be found in [GitHub][3].
 
 {% highlight csharp %}
 using System;  

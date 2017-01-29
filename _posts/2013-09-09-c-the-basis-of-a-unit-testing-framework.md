@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'C# – The basis of a unit testing framework'
+title: 'C# - The basis of a unit testing framework'
 tags:
   - attributes
   - 'c#'

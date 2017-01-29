@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'C# – Auto Clicker'
+title: 'C# - Auto Clicker'
 tags:
   - 'c#'
 ---
@@ -10,7 +10,7 @@ After a bit of research I came across two functions from MSDN named `SendInput` 
 
 In this example I will only be using the `mouse_event` function, however an implementation of `SendInput` is included in the sources files, which are available for download at the bottom of this post.
 
-The MSDN page of the `mouse_event` function gives us some good information on how to implement the function, including a function header and a rundown on each of the parameters. They give the `mouse_event` function the following header –
+The MSDN page of the `mouse_event` function gives us some good information on how to implement the function, including a function header and a rundown on each of the parameters. They give the `mouse_event` function the following header -
 
 {% highlight cpp %}  
 VOID WINAPI mouse_event(  
@@ -22,7 +22,7 @@ VOID WINAPI mouse_event(
 );  
 {% endhighlight %}
 
-Which can then be imported for use in our C# application using using the DLLImport attribute and the `extern` keyword (which simply indicates that the method is implemented externally) –
+Which can then be imported for use in our C# application using using the DLLImport attribute and the `extern` keyword (which simply indicates that the method is implemented externally) -
 
 {% highlight csharp %}  
 [DllImport("user32.dll")]  
@@ -31,22 +31,22 @@ public static extern void mouse_event(int dwFlags, int dx, int dy, int dwData, i
 
 We can now call this unmanaged function as we would any other method already in our project. However to make good use of them, we need to find out a bit more information on each of the parameters. 
 
-They can be summed up as follows –
+They can be summed up as follows -
 
-  * **dwFlags** – In our case this parameter specifies which mouse button we would like to press depending on the integer value we pass
-  * **dx** – The relative mouse position along the x-axis
-  * **dy** – The relative mouse position along the y-axis
-  * **dwData** – Contains how much we would like to move the mouse wheel and in which direction
-  * **dwExtraInfo** – Contains extra information on the function call (not needed in our case)
+  * **dwFlags** - In our case this parameter specifies which mouse button we would like to press depending on the integer value we pass
+  * **dx** - The relative mouse position along the x-axis
+  * **dy** - The relative mouse position along the y-axis
+  * **dwData** - Contains how much we would like to move the mouse wheel and in which direction
+  * **dwExtraInfo** - Contains extra information on the function call (not needed in our case)
 
-In the case of this example we only have a need for the dwFlags parameter as we can easily set the cursor position using C# –
+In the case of this example we only have a need for the dwFlags parameter as we can easily set the cursor position using C# -
 
 {% highlight csharp %}  
 Cursor.Position.X = ...
 Cursor.Position.Y = ...
 {% endhighlight %}
 
-Before we finally call this method, it is a good idea to declare some constants, each describing which mouse button we would like to press. Details can again be found on the relevant MSDN page –
+Before we finally call this method, it is a good idea to declare some constants, each describing which mouse button we would like to press. Details can again be found on the relevant MSDN page -
 
 {% highlight csharp %}  
 public const int MOUSEEVENTF_LEFTDOWN = 0x0002;  
@@ -57,7 +57,7 @@ public const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
 public const int MOUSEEVENTF_MIDDLEUP = 0x0040;  
 {% endhighlight %}
 
-Finally we can now call the function, which will be wrapped into two methods –
+Finally we can now call the function, which will be wrapped into two methods -
 
 {% highlight csharp %}
 
@@ -80,11 +80,16 @@ private void ClickRightMouseButtonMouseEvent()
 
 As you can see we actually need to call the function twice, once for the mouse down action, and again for the mouse up action, to simulate a full mouse click. In this example we only use the `dwFlags` parameter and pass zero for the rest as we have no need for them.
 
-So we now have two methods that we can use to simulate a mouse click, yet no way of letting the user determine where to click, how many times to click, and what mouse button to click – the perfect chance to create a C# Windows Forms Application (a.ka. GUI) to make our program a little more presentable.
+So we now have two methods that we can use to simulate a mouse click, yet no way of letting the user determine where to click, how many times to click, and what mouse button to click - the perfect chance to create a C# Windows Forms Application (a.ka. GUI) to make our program a little more presentable.
 
 In my program, I have created a simple User Interface containing a list view, a few buttons, and a couple of textboxes, which will allow the user to specify a queue of points to click in sequence, as well as the ability to insert additional information for each click (button to press, time in between, etc).
 
-![Screenshot of the final Auto Clicker programe]({{ site.url }}/blog/images/2011/Auto_Clicker.jpg){: .center-image width="527" height="276"}
+![Screenshot of the final Auto Clicker programe](/images/2011/Auto_Clicker.jpg){: .center-image width="527"}
+
+[1]: http://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
+[2]: http://apps.facebook.com/myclickchallenge/
+
+<!--more-->
 
 The meat of the application happens in two methods. The first is the `StartClickingButton_Click` event handler, where a new thread is created to handle the mouse clicks so that the main form does not become completely unresponsive when the program is clicking every couple of milliseconds.
 
@@ -129,7 +134,7 @@ private void StartClickingButton_Click(object sender, EventArgs e)
 }  
 {% endhighlight %}
 
-In this method a few `List` collections are made to to store each portion of data about each click in the queue in a parallel manner. The corresponding information is added to each collection before they are passed into a new `ClickThreadHelper` object which will handle the mouse clicking. Next, a new thread is created and the `Run` method inside the `ClickThreadHelper` object is assigned to it. Finally, the thread is started, leaving all the work to `Run` method –
+In this method a few `List` collections are made to to store each portion of data about each click in the queue in a parallel manner. The corresponding information is added to each collection before they are passed into a new `ClickThreadHelper` object which will handle the mouse clicking. Next, a new thread is created and the `Run` method inside the `ClickThreadHelper` object is assigned to it. Finally, the thread is started, leaving all the work to `Run` method -
 
 {% highlight csharp %}  
 public void Run()  
@@ -175,7 +180,7 @@ Hope you enjoyed.
 
 The Facebook app can be found [HERE][2]
 
-MSDN links to the Win32 functions –
+MSDN links to the Win32 functions -
 
 mouse_event = <http://msdn.microsoft.com/en-us/library/ms646260>  
 SendInput = <http://msdn.microsoft.com/en-us/library/ms646310(v=vs.85).aspx>  
@@ -184,6 +189,3 @@ Pages on the two custom structures for the SendInput function
 
   * <http://msdn.microsoft.com/en-us/library/ms646270(v=vs.85).aspx>  
   * <http://msdn.microsoft.com/en-us/library/ms646273(v=vs.85).aspx>
-
-[1]: http://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
-[2]: http://apps.facebook.com/myclickchallenge/

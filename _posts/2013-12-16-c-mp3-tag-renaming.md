@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 'C# – MP3 Tag Renaming'
+title: 'C# - MP3 Tag Renaming'
 tags:
   - 'c#'
   - library
 ---
-After a recent migration away from iTunes (thankfully), I realised that a lot of the tags for my music files were pretty messy (thanks iTunes). Particularly the title tags for a few albums consisted of the artist name, a dash, and then the actual title of the song itself. For example `album artist – song title`. This quickly got annoying when scrolling through my library.
+After a recent migration away from iTunes (thankfully), I realised that a lot of the tags for my music files were pretty messy (thanks iTunes). Particularly the title tags for a few albums consisted of the artist name, a dash, and then the actual title of the song itself. For example `album artist - song title`. This quickly got annoying when scrolling through my library.
 
 It seemed like a good opportunity to play with the [Id3Lib][1] library for C#.
 

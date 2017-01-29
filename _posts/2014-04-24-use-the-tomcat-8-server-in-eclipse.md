@@ -16,6 +16,6 @@ The current version of Eclipse (Kepler as of writing) doesn’t natively support
   1. Extract the archive somewhere and copy all of the files in the ‘features’ and ‘plugins’ directories’ into the corresponding directories in your Eclipse folder (overwriting the existing files).
   1. That’s it. Open up Eclipse and you should see the option for a Tomcat 8 server.
 
-![Tomcat 8 Server in Eclipse]({{ site.url }}/blog/images/2014/tomcat8.jpg){: .center-image width="508" height="393"}
+![Tomcat 8 Server in Eclipse](/images/2014/tomcat8.jpg){: .center-image width="508"}
 
  [1]: http://download.eclipse.org/webtools/downloads/

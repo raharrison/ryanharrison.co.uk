@@ -5,9 +5,9 @@ tags:
   - git
   - github
 ---
-Upon my [recent post][1] on my transferral from SVN to Git, I&#8217;ve now signed myself for a GitHub account.
+Upon my [recent post][1] on my transferral from SVN to Git, I've now signed myself for a GitHub account.
 
-I&#8217;m now in the process of uploading some previous projects up to GitHub for safe keeping which no doubt will prove helpful at some point.
+I'm now in the process of uploading some previous projects up to GitHub for safe keeping which no doubt will prove helpful at some point.
 
 Additionally this will enable me to simply link to a repository on GitHub instead of hosting project zip files here on this blog. This will no doubt make it much easier to give updates on any new changes to the code.
 
