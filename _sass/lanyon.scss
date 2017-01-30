@@ -305,7 +305,9 @@ a.sidebar-nav-item:focus {
 
 .page,
 .post {
-  margin-bottom: 4em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1.5em;
 }
 
 /* Blog post or page title */
@@ -350,6 +352,18 @@ a.sidebar-nav-item:focus {
 }
 .related-posts li a:hover small {
   color: inherit;
+}
+
+/**
+ * Site footer
+ */
+.site-footer {
+  border-top: 1px solid lighten(#828282, 40%);
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #eee;
+  padding: 20px 0;
+  text-align: center;
 }
 
 
