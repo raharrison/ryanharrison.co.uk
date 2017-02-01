@@ -11,14 +11,14 @@ Python comes with a really handy built-in HTTP server that you can get up and ru
 
 The command to start the server unsurprisingly differs from Python 2 to Python 3, but either way it's really easy to remember. Simply open up a terminal, change directory to the folder containing the files you want to serve and either of the following to start the server depending on your Python version:
 
-####Python 2:
+### Python 2:
 
     cd files/my-directory
     python -m SimpleHTTPServer
 
     Serving HTTP on 0.0.0.0 port 8000 ...
 
-####Python 3:
+### Python 3:
 
     cd files/my-directory
     python -m http.server

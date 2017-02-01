@@ -8,7 +8,7 @@ tags:
   - stderr
 ---
 
-####Redirect `stdout`/`stderr` to a truncated file:
+#### Redirect `stdout`/`stderr` to a truncated file:
 
 {% highlight bash %}
 # StdOut
@@ -17,7 +17,7 @@ cmd > out.txt # (stderr printed to console)
 cmd 2> err.txt # (stdout printed to console)
 {% endhighlight %}
 
-####Redirect `stdout`/`stderr` to a file (appending):
+#### Redirect `stdout`/`stderr` to a file (appending):
 
 {% highlight bash %}
 # StdOut
@@ -26,13 +26,13 @@ cmd >> out.txt # (stderr printed to console)
 cmd 2>> err.txt # (stdout printed to console)
 {% endhighlight %}
 
-####Redirect both `stdout` and `stderr` in same command to different files (truncating):
+#### Redirect both `stdout` and `stderr` in same command to different files (truncating):
 
 {% highlight bash %}
 cmd > out.txt 2> err.txt
 {% endhighlight %}
 
-####Redirect both `stdout` and `stderr` to same output (truncating):
+#### Redirect both `stdout` and `stderr` to same output (truncating):
 
 {% highlight bash %}
 cmd > out.txt 2>&1

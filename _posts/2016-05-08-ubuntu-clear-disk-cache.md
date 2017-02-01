@@ -13,6 +13,6 @@ The Linux kernel often uses available memory for disk caching unless its otherwi
 
 If you really want to clear the disk cache and free the memory, run the following command:
 
-    sudo sync && sudo echo 3 | sudo tee /proc/sys/vm/drop_caches
+`sudo sync && sudo echo 3 | sudo tee /proc/sys/vm/drop_caches`
 
 **Note**: there isn't much point though, as the kernel will just start using the memory again for disk caching straight after you free it.
