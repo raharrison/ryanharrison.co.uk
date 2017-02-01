@@ -180,8 +180,7 @@ blockquote p:last-child {
 img {
   display: block;
   max-width: 100%;
-  margin: 0 0 1rem;
-  border-radius: 5px;
+  margin: 0 auto;
 }
 
 /* Tables */
@@ -190,6 +189,7 @@ table {
   width: 100%;
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 td,
 th {
@@ -232,12 +232,13 @@ tbody tr:nth-child(odd) th {
 }
 @media (min-width: 38em) {
   .container {
-    max-width: 32rem;
+    max-width: 36rem;
+    padding-left:  2rem;
   }
 }
 @media (min-width: 56em) {
   .container {
-    max-width: 38rem;
+    max-width: 42rem;
   }
 }
 
