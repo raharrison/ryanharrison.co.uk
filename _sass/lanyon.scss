@@ -467,11 +467,10 @@ a.sidebar-nav-item:focus {
  * page is wrapped in `.page` and is only used on the page layout.
  */
 
-.page,
 .post {
   margin-bottom: 2em;
-  border-bottom: 1px solid #eee;
   padding-bottom: 1.5em;
+  border-bottom: 1px solid #eee;
 }
 
 /* Blog post or page title */
@@ -614,4 +613,49 @@ a.pagination-item:hover {
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
+}
+
+.contact-form {
+  label {
+    width: 4.5rem;
+    margin: 5px 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+  input, textarea, button {
+    margin: 5px 0;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+
+    &:focus {
+      outline-color: #268bd2;
+    }
+  }
+  input.field, textarea {
+    min-width: 16rem;
+  }
+  input[name=subject], textarea {
+    width: 74%;
+  }
+  textarea {
+    height: 150px;
+  }
+  button {
+    border: 0;
+    background-color: #268bd2;
+    padding: 10px 22px;
+    color: #fff;
+    margin-top: 20px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(#268bd2, 10%);
+      color: darken(#fff, 10%);
+    }
+  }
 }
