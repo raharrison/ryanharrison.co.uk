@@ -8,6 +8,8 @@ tagline: "My blog, portfolio and technology related ramblings"
 # Description displayed in the sidebar
 description: 'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
 
+avatar: "/images/avatar.png"
+
 # Includes an icon in the footer for each username you enter
 footer-links:
   email: mail@ryanharrison.co.uk
@@ -46,6 +48,7 @@ sass:
 
 # Exclude these files from your production _site
 exclude:
+    - debug.log
     - utils
     - .sass-cache
     - Gemfile
