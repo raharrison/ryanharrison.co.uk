@@ -668,3 +668,9 @@ a.pagination-item:hover {
     width: 60%;
   }
 }
+
+#topcontrol {
+  @media (max-width: 38rem) {
+      display: none;
+  }
+}
