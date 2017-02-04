@@ -5,21 +5,22 @@ title: Contact Me
 
 <p>
 
-    <form id="contact-form" class="contact-form" method="POST" action="https://www.formingo.co/submit/john@example.com">
+    <form id="contact-form" class="contact-form" method="POST" action="https://www.formingo.co/submit/0e403989-1118-46b6-b186-344ed0aeb968">
 
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" class="field" placeholder="Required" required autofocus /><br/>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" class="field" placeholder="Optional" autofocus /><br/>
 
-    <label for="__replyto">E-mail</label>
-    <input id="email" type="email" name="__replyto" class="field" id="__replyto" placeholder="Required" required /><br/>
+        <label for="__replyto">E-mail</label>
+        <input id="email" type="email" name="__replyto" class="field" id="__replyto" placeholder="Required" required /><br/>
 
-    <label for="message">Message</label>
-    <textarea id="message" name="message" placeholder="Required" required ></textarea><br/>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Required" required ></textarea><br/>
 
-    <input type="hidden" name="__redirect" value="{{ site.baseurl | prepend: site.url }}">
-    <input type="hidden" name="__subject" value="Blog Contact Form Submission">
+        <input type="hidden" name="__redirect" value="https://ryanharrison.co.uk">
+        <input type="hidden" name="__subject" value="Blog Contact Form Submission">
 
-    <button type="submit">SEND</button>
+        <button type="submit">SEND</button>
+
     </form>
 
 </p>
