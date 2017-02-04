@@ -9,8 +9,6 @@ tags:
   - preview
 ---
 
-## Visual Studio Code - Markdown Preview
-
 [Visual Studio Code ](https://code.visualstudio.com/) has now replaced Sublime Text as my editor of choice due to it's speed and first class support for a number of features that were previously only available through extensions (of varying quality and often outdated). One such example is a live preview of a markdown page - something essential when writing blog posts or pretty much any documentation these days.
 
 Thankfully, Visual Studio Code not only provides native support for Markdown, but also a great live preview of the results as you type - all without any extensions. To enable the live preview within a new editor tab, use the keyboard shortcut `Ctrl+Shift+V` when any Markdown (.md) file is open. This works, but it's much better to have the live preview of the HTML in a split editor so you can see it as you type. VS Code allows you to do this through the shortcut `Ctrl+K V`. Alternatively, for either of these options you can go through the Command Palette `Ctrl+Shift+P` and select either of the 'Markdown Preview' options.
