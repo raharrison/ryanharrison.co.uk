@@ -23,7 +23,7 @@ tags:
       <span class="post-date">{{ post.date | date_to_string }}</span>
 
       <div>
-        {{ post.content }}
+        {{ post.excerpt }}
         <a href="{{ post.url | prepend: site.baseurl }}" class="read-more">Read More</a>
       </div>
 
