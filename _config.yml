@@ -9,7 +9,6 @@ avatar: "/images/avatar.png"
 
 # Includes an icon in the footer for each username you enter
 footer-links:
-  email: mail@ryanharrison.co.uk
   github: raharrison
   linkedin: ryanharrison10
   rss: rss
@@ -19,7 +18,7 @@ footer-links:
 disqus: ryanharrison
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics:
+google_analytics: UA-90740127-1
 
 # Used for Sitemap.xml and your RSS feed
 url: https://ryanharrison.co.uk
