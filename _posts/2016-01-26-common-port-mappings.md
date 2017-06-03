@@ -20,6 +20,7 @@ List of common ports and their uses/associated urls:
 | 8080| Tomcat Server | <http://localhost:8080/> |
 | 3000| BrowserSync | <http://localhost:3000/> |
 | 9200| ElasticSearch | <http://localhost:9200/> |
+| 5000| Flask | <http://localhost:5000/> |
 | 8000 | Python HTTP Server | python2 -m SimpleHTTPServer / python3 -m http.server |
 | 3306 | MySQL Server | |
 | 25 | SMTP (Postfix Mail Forwarding) | |
