@@ -21,34 +21,39 @@ title: Search
 
 <script>
   
-    $(document).ready(function(){
-    $.getJSON( "search.json", function( data ) {
-        var items = [];
-        $.each(data, function(key, value) {
-            items.push(
-            {
-                url : value.url,
-                title : value.title,
-                searchTerm : value.title.toLowerCase()
-            });
-        });
+    $(document).ready(function() {
+
+        $("#search_box").focus();
         $("#site_search").submit(function(e){
             e.preventDefault();
-            var query = $("#search_box").val().toLowerCase(); // Get the value for the text field
-           
-           var results = $("#search_results")
-            results.empty()
-            $.each(items, function(key, value) {
-                if(value.searchTerm.includes(query)) {
-                    var h = "<li id='" + key + "'><a href='" + value.url +  "'>" + value.title + "</a></li>";
-                    results.append(h);
+            var userQuery = $("#search_box").val(); // Get the value for the text field
+        
+            var results = $("#search_results");
+            results.empty();
+
+            var sendQuery = {
+                q : userQuery
+            };
+
+            $.ajax({
+                url: 'http://localhost:5000/search',
+                type: 'POST',
+                data: "q="+userQuery,
+                dataType: 'jsonp',
+                success: function(data) {
+                    $.each(data, function(key, value) {
+                        var link = "<li id='" + key + "'><a href='" + value.url +  "'>" + value.title + "</a></li>";
+                        var highlight = "<p><small>" + value.highlight + "</small></p>";
+                        results.append(link);
+                        results.append(highlight);
+                    });
+
+                    if(results.children().length == 0) {
+                        results.append("<p>No results found</p>");
+                    }
                 }
             });
-            if(results.children().length == 0) {
-                results.append("<p>No results found</p>");
-            }
         });
     });
-});
 
 </script>
