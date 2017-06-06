@@ -41,7 +41,7 @@ title: Search
                 dataType: 'jsonp',
                 success: function(data) {
                     $.each(data, function(key, value) {
-                        var link = "<li id='" + key + "'><a href='" + value.url +  "'>" + value.title + "</a></li>";
+                        var link = "<li id='" + key + "'><a target=\"_blank\" href='" + value.url +  "'>" + value.title + "</a></li>";
                         var highlight = "<p><small>" + value.highlight + "</small></p>";
                         results.append(link);
                         results.append(highlight);
