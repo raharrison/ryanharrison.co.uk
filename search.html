@@ -36,8 +36,7 @@ title: Search
             };
 
             $.ajax({
-                url: 'http://ryanharrison.co.uk:5000/search',
-                type: 'POST',
+                url: 'https://api.ryanharrison.co.uk/search',
                 data: "q="+userQuery,
                 dataType: 'jsonp',
                 success: function(data) {
