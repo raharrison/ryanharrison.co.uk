@@ -1,0 +1,9 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+    <script/>
+    <ShortName>Ryan Harrison</ShortName>
+    <Description>My blog and technology related ramblings</Description>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/x-icon">https://ryanharrison.co.uk/favicon.ico</Image>
+    <Url type="text/html" method="GET" template="https://ryanharrison.co.uk/search.html/?q={searchTerms}"/>
+    <SearchForm>https://ryanharrison.co.uk/search.html</SearchForm>
+</OpenSearchDescription>
