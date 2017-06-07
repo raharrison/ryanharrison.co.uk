@@ -18,15 +18,38 @@ title: Search
     <ul id="search_results" class="post-content"></ul>    
 </div>
 
-
 <script>
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function setQueryAndSubmit(query) {
+        $("#search_box").val(query);
+        $("#site_search").submit();
+    }
+
+    window.onpopstate = function(e) {
+        if(e.state){
+            setQueryAndSubmit(e.state.q);
+        }
+    };
   
     $(document).ready(function() {
 
         $("#search_box").focus();
         $("#site_search").submit(function(e){
             e.preventDefault();
-            var userQuery = $("#search_box").val(); // Get the value for the text field
+            var userQuery = $("#search_box").val();
+
+            var params = {q: userQuery};
+            history.pushState({"q": userQuery}, null, "/search.html?q=" + encodeURIComponent(userQuery));
         
             var results = $("#search_results");
             results.empty();
@@ -53,6 +76,12 @@ title: Search
                 }
             });
         });
+
+        // if query string set search with it
+        var qs = getParameterByName("q");
+        if(qs) {
+            setQueryAndSubmit(qs);
+        }
     });
 
 </script>
