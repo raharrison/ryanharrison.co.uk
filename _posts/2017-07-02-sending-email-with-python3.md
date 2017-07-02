@@ -13,7 +13,7 @@ The below snippet can be used to accomplish this, just change the variables depe
 
 {% highlight python %}  
 sender = "sender@domain.co.uk"
-sender_name = "Sender Name
+sender_name = "Sender Name"
 receiver = "receiver@example.co.uk"
 receiver_name = "Receiver Name"
 subject = "This is the subject line"
@@ -40,3 +40,5 @@ You can also add additional properties to the MIME message for extra functionali
 
   * `Reply-To: Name <address>` to specify who the receiver should send their replies to
   * Change the `Content-type` to `text/html` if you want to use HTML within your message body for styling
+
+For more information take a look at the [smptlib docs](https://docs.python.org/2/library/smtplib.html).
