@@ -25,6 +25,6 @@ Some of the prizes you can get include:
  - Xbox Live Gold (3 months for 15000 points or 12 months for 29000 points)
  - Xbox gift card (£10 for 12000 points)
 
-As you can see my 15000 points equates to around £13 already which is pretty good. Annoyingly the UK version doesn't include Amazon gift cards like the US one seems to - which is frustrating as that is pretty much the only thing I would redeem for. They have also removed the Groove music passes which seems strange to me. Maybe they will bring that back at some point.
+As you can see my 15000 points equates to around £13 already which is pretty good. Annoyingly the UK version doesn't include Amazon gift cards like the US one seems to - which is frustrating as that is pretty much the only thing I would redeem for. They have also removed the Groove music passes which seems strange to me. Maybe they will bring that back at some point. **Edit -** Microsoft is now apparently [killing off Groove Music](https://www.neowin.net/news/groove-music-passes-away-to-be-replaced-with-spotify) which explains why it suddenly disappeared from the rewards.
 
 Visit the [Microsoft Rewards](https://account.microsoft.com/rewards/) page to sign up (you will need an account obviously).
