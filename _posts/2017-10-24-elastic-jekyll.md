@@ -60,11 +60,11 @@ def connect_elastic(host="localhost", port=9200):
 For simplicity, the library will currently blow away any existing blog index that may already exist on the Elastic instance and recreate a new one from scratch. You could of course figure out delta's from the version control history etc, but for a small set of data it's way easier just to re-index everything each time:
 
 {% highlight python %}
-    # remove existing blog index and create a new blank one
-    def refresh_index(es):
-        if es.indices.exists(index=index_name):
-            es.indices.delete(index=index_name)
-        es.indices.create(index=index_name)
+# remove existing blog index and create a new blank one
+def refresh_index(es):
+    if es.indices.exists(index=index_name):
+        es.indices.delete(index=index_name)
+    es.indices.create(index=index_name)
 {% endhighlight %}
 
 Then we just loop through each of the posts we got from the previous step and push them into the index:
@@ -118,7 +118,7 @@ for hit in res['hits']['hits']:
     print(hit["_source"])
 {% endhighlight %}
 
-This snippet will connect to your ElasticSearch instance running under `localhost` and query the `blog` index with a search term of `python`. The `query` object is an Elastic specific search DSL which you can read more about in [their documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html). ElasticSearch is a complicated and powerful beast with a ton of options at your disposal. In this case we are doing a simple `multi_match` query on the title and body fields (providing more weight onto the `title` field). We also use fuzziness to resolve any potential spelling mistakes in the user input. ElasticSearch will return us a set of `hits` which consist of objects containing just the `title` and `url` fields as specified in the `_source` field. We have no use for the others so no point in bloating the response. One cool feature is the use of highlighting which will add `\<i\>` tags into the body field within the response. This can then be used to apply styling on the client side to show much sections of text the engine has matched on.
+This snippet will connect to your ElasticSearch instance running under `localhost` and query the `blog` index with a search term of `python`. The `query` object is an Elastic specific search DSL which you can read more about in [their documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html). ElasticSearch is a complicated and powerful beast with a ton of options at your disposal. In this case we are doing a simple `multi_match` query on the title and body fields (providing more weight onto the `title` field). We also use fuzziness to resolve any potential spelling mistakes in the user input. ElasticSearch will return us a set of `hits` which consist of objects containing just the `title` and `url` fields as specified in the `_source` field. We have no use for the others so no point in bloating the response. One cool feature is the use of highlighting which will add `<i>` tags into the body field within the response. This can then be used to apply styling on the client side to show much sections of text the engine has matched on.
 
 This search query seems to work well for my use cases and I've literally just copied the above into the corresponding `Flask` endpoint. On the client side in your Jekyll search page, I've just used a but of good old `JQuery` to perform the Ajax call and fill in a list with the search results. Keep it simple. You can find the JS I use in the [search page](https://ryanharrison.co.uk/search.html) source.
 
