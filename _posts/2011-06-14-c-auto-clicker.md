@@ -84,9 +84,9 @@ So we now have two methods that we can use to simulate a mouse click, yet no way
 
 In my program, I have created a simple User Interface containing a list view, a few buttons, and a couple of textboxes, which will allow the user to specify a queue of points to click in sequence, as well as the ability to insert additional information for each click (button to press, time in between, etc).
 
-![Screenshot of the final Auto Clicker programe](/images/2011/Auto_Clicker.jpg){: .center-image width="527"}
+![Screenshot of the final Auto Clicker program](/images/2011/Auto_Clicker.jpg){: .center-image width="527"}
 
-[1]: http://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
+[1]: https://ryanharrison.co.uk/apps/autoclicker/Auto_Clicker.zip
 [2]: http://apps.facebook.com/myclickchallenge/
 
 <!--more-->

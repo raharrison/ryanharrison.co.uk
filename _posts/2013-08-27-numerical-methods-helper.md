@@ -42,5 +42,5 @@ This screenshot shows the integration tab of the program. The user is able to en
 For more information about the application, download the [User Manual][2] along with the executable from [GitHub][1] or as a [zip file][3].
 
  [1]: https://github.com/raharrison/NumericalMethodsHelper
- [2]: http://ryanharrison.co.uk/apps/numericalmethodshelper/User%20Manual.docx
- [3]: http://ryanharrison.co.uk/apps/numericalmethodshelper/NumericalMethodsHelper.zip
+ [2]: https://ryanharrison.co.uk/apps/numericalmethodshelper/User%20Manual.docx
+ [3]: https://ryanharrison.co.uk/apps/numericalmethodshelper/NumericalMethodsHelper.zip

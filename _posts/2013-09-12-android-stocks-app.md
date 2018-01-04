@@ -45,4 +45,4 @@ Get the full source code from my [GitHub account][1].
 [Download the .apk file][2] to install the app on your own devices (Froyo and above).
 
  [1]: https://github.com/raharrison/Stocks
- [2]: http://ryanharrison.co.uk/apps/stocks/Stocks.apk
+ [2]: https://ryanharrison.co.uk/apps/stocks/Stocks.apk

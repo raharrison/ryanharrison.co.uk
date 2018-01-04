@@ -14,4 +14,4 @@ Currently my hosting plan only includes support for one domain name, so raharris
 
 In the meantime I also need to update a load of links in my previous posts which might take a while. So some links might be broken at the moment until I fix them.
 
- [1]: http://ryanharrison.co.uk
+ [1]: https://ryanharrison.co.uk

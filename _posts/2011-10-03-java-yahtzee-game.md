@@ -14,4 +14,4 @@ Here is a small game of Yahtzee I have been recently working on in Java. At the 
 [Download the game (.jar)][2]
 
 [1]: http://grail.sourceforge.net/demo/yahtzee/rules.html
-[2]: http://ryanharrison.co.uk/apps/yahtzee/YahtzeeGame.zip
+[2]: https://ryanharrison.co.uk/apps/yahtzee/YahtzeeGame.zip

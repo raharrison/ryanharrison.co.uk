@@ -26,4 +26,4 @@ The source code for my Java swing Snippet Manager application is now [on GitHub]
 [Download an exectuable JAR file][2]
 
  [1]: https://github.com/raharrison/SnippetManager
- [2]: http://ryanharrison.co.uk/apps/snippetmanager/snippetmanager.zip
+ [2]: https://ryanharrison.co.uk/apps/snippetmanager/snippetmanager.zip
