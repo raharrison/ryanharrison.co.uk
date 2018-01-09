@@ -13,7 +13,7 @@ My overall plan and thought process was to go full out on the new parts - which 
 
 ### CPU - Intel Core i7 8700k @ 4.8ghz
 
-![Intel Core i7 8700k](/images/2018/i7-8700k.jpg)
+![Intel Core i7 8700k](/images/2018/i7-8700k.png)
 
 Starting with perhaps the main part which ultimately determines the platform you will need - this one changed significantly over the course of last year. With the very successful launch of the Ryzen series of processors by AMD last year, I was initially planning on getting a Ryzen 1700 (8 cores/16 threads) as for raw price/performance you couldn't (and still can't really) do much better. The launch didn't go without a few hiccups, mainly around memory compatibility on a new platform, but it seems to have gotten a lot better. With a very significant ~50%+ improvement to IPC, AMD are finally able to compete with Intel again in the CPU space. The problem however is the clock speeds are still very limited compared to their Intel counterparts. They provide a staggering number of cores for the price point, but the vast majority of users are never going to utilise them all unless you are a hardcore video editor etc. For me personally, having 16 threads isn't all that important when compared to clock speed - which undeniably still causes the biggest performance difference in todays (mainly single threaded) applications. The low powered 14nm process used in the Ryzen processors can barely break 4ghz even with an overclock, although hopefully this will improve with the next generation on the 12nm high powered process.
 
@@ -34,8 +34,6 @@ Most people with the 8700k are using all in one liquid CPU coolers or even custo
 It didn't take much research to find that Noctua is the clear winner in this department. Their coolers are very well manufactured, perform brilliantly and also use their own fans which are already some of the best in the market. Put all that together and you get something that can easily tame even the 8700k. I eventually chose the NH-D15S dual tower cooler over the very similar NH-D15, which although only includes one fan, still performs very similarly and is slightly less large.
 
 The Noctua coolers aren't cheap by any means, but I think it's definitely worth the price. The packaging is great and their unique mounting system is probably the best out of any manufacturer. At idle, my 8700k barely breaks 30C (it downclocks to 800mhz) and at full load doesn't go much above 80C even when running Prime95 (which is the worst case scenario that won't be met in every day use). The best thing however, is just how quiet it is. At idle I can't really hear it at all and even at full load it remains surprisingly quiet considering how much heat it manages to dissipate. Again, I would definitely recommend these Noctua coolers, just make sure you have enough room in your case to accommodate them.
-
-<!--more-->
 
 ### Motherboard - Gigabyte Z370 Gaming 5
 
