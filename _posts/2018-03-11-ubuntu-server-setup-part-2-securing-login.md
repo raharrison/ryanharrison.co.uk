@@ -7,7 +7,9 @@ tags:
   - server
 ---
 
-In the previous section we covered logging into the server with the `root` user. At that point we were using a simple password, which is less than ideal. In this part we will be setting up public key authentication for the new user in order to better secure our logins. Login to the `root` user will be disabled via `ssh` as well, forcing you to go through your newly created user and use `sudo` commands to get `root` access.
+Before reading this, make sure to go over [part 1][1] which covers initial login and setting up a new user.
+
+In the [previous section][1] we covered logging into the server with the `root` user. At that point we were using a simple password, which is less than ideal. In this part we will be setting up public key authentication for the new user in order to better secure our logins. Login to the `root` user will be disabled via `ssh` as well, forcing you to go through your newly created user and use `sudo` commands to get `root` access.
 
 ## Generating an RSA public/private keypair
 
@@ -75,3 +77,5 @@ Reload the ssh daemon to reflect the changes
     $ sudo systemctl reload sshd
 
 With these settings active, you will be forced into logging in via the `Fred` or `Wilma` users (`root` being disabled) by public key authentication on port 23401.
+
+[1]: {% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %}
