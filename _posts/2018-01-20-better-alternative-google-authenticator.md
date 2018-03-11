@@ -22,7 +22,7 @@ Many websites will also give you another security code when you enable 2-factor 
 
 And that's only taking into account those sites which *do* offer you a recovery code. For the no doubt significant number which do not, you are locked out of your account if you lose your phone. It's going to be in a case by case basis that some providers may let you back in if you contact them, but I'm not sure how they are going to know it's you. For any site that stores sensitive data, I don't see this as an option.
 
-### A Solution
+### A Solution - Authy
 
 Maybe a lot of users will be put off enabling 2FA for this reason, or more likely a lot of people have never really thought about the potential consequences. Either way, just like your main data, you need to also have a solid backup solution for your 2FA codes.
 
