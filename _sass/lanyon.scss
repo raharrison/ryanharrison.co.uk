@@ -625,6 +625,10 @@ a.pagination-item:hover {
     display: inline-block;
     vertical-align: top;
   }
+  label.robot-label {
+      width: 4rem;
+      margin-right: 0.5rem;
+  }
   input, textarea, button {
     margin: 5px 0;
     padding: 5px;

@@ -5,7 +5,7 @@ title: Contact Me
 
 <p>
 
-    <form id="contact-form" class="input-form" method="POST" action="https://api.ryanharrison.co.uk/contact">
+    <form id="contact-form" class="input-form" method="POST" action="https://api.ryanharrison.co.uk/contact" >
 
         <label for="name">Name</label>
         <input id="name" type="text" name="name" class="field" placeholder="Optional" autofocus /><br/>
@@ -16,6 +16,11 @@ title: Contact Me
         <label for="message">Message</label>
         <textarea id="message" name="message" placeholder="Required" required ></textarea><br/>
 
+        <label for="robot" class="robot-label"></label>
+        <input id="robot" type="text" name="robot" class="field" placeholder="I am not a robot" required /><br/>
+
+        <div id="invalid-answer" style="color:red"></div>
+
         <input type="hidden" name="redirect" value="https://ryanharrison.co.uk/thanks.html">
 
         <button type="submit">SEND</button>
@@ -23,3 +28,32 @@ title: Contact Me
     </form>
 
 </p>
+
+<script>
+    $(function() {
+        let  a = Math.floor(Math.random() * 14) + 3;
+        let b = Math.floor(Math.random() * 14) + 3;
+
+        showInvalidAnswer = function() {
+            $("#invalid-answer").text("Invalid answer");
+        }
+
+        $("label[for=robot]").text("What is " + a + " + " + b + "?");
+
+        $('#contact-form').on('submit', function(e) {
+            e.preventDefault();
+            let val = $("#robot").val();
+            try {
+                let num = parseInt(val);
+                if(num == a + b) {
+                    this.submit();
+                } else {
+                    showInvalidAnswer();
+                }
+            } catch(exc) {
+                showInvalidAnswer();
+            }
+        });
+    });
+
+</script>
