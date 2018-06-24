@@ -7,7 +7,7 @@ tags:
   - favourite
 ---
 
-This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018-05-13-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
+This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018-05-15-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
 
 ## Higher Order Functions and First Class Lambdas
 
