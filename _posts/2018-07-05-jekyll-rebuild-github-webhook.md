@@ -16,7 +16,7 @@ That gets old and fast. Ideally you want a similar experience to GitHub Pages in
 
 If your site is hosted on GitHub (presumably other providers have something similar), go into your `Repo -> Settings -> Webhooks` and click on `Add Webhook`.
 
-![GitHub Webhook](images/2018/github-webhook.png)
+![GitHub Webhook](/images/2018/github-webhook.png)
 
 Here you can choose a URL which will be called by GitHub when certain actions happen (if you choose the 'let me select' option you can see the comprehensive list). In this case we are going to install a simple endpoint on our blog server, which when called will rebuild the Jekyll blog and redeploy.
 
