@@ -7,6 +7,14 @@ tags:
   - tip
   - trick
 ---
+
+### TL;DR
+
+```python
+for (index, value) in enumerate(values):  
+	print "The value at index {0} = {1}".format(index, value)
+```
+
 In Python the typical way to iterate over a loop is to use the conventional `foreach` loop, as `lists` expose `iterators`:
 
 {% highlight python %}
