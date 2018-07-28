@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Server Setup Part 2
+title: Ubuntu Server Setup Part 2 - Secure Login
 tags:
   - dns
   - google
