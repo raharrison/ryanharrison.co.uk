@@ -120,3 +120,23 @@ Finally you can disable the firewall by running:
 ```shell
 $ sudo ufw disable
 ```
+
+## Allow or Deny Specific IP's
+
+You can also `allow` or `deny` access from specific ip addresses. For example, to allow connections from only `151.80.44.180`:
+
+```shell
+$ sudo ufw allow from 151.80.44.180
+```
+
+Or to only allow access to only port `22` from that specific ip:
+
+```shell
+$ sudo ufw allow from 151.80.44.180 to any port 22
+```
+
+Similarly, if you want to `deny` all connections from a specific ip use:
+
+```shell
+$ sudo ufw deny from 151.80.44.180
+```
