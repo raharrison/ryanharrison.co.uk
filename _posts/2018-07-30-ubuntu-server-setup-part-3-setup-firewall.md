@@ -90,6 +90,8 @@ You can then pass in the app name to the `allow/deny` commands:
 $ sudo ufw allow OpenSSH
 ```
 
+Refer to my post on [Common Port Mappings]({{ site.baseurl }}{% post_url 2016-01-26-common-port-mappings %}) to find out which ports you might need to allow through your firewall.
+
 ## List and remove rules
 
 To delete a rule, you first need to get the index:
