@@ -28,7 +28,7 @@ baseurl: ''
 paginate: 5
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-paginate # Pagination of posts
 
