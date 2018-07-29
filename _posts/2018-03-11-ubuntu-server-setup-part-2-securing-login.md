@@ -2,9 +2,9 @@
 layout: post
 title: Ubuntu Server Setup Part 2 - Secure Login
 tags:
-  - dns
-  - google
+  - ubuntu
   - server
+  - ssh
 ---
 
 Before reading this, make sure to go over [part 1][1] which covers initial login and setting up a new user.
@@ -66,7 +66,7 @@ If you're using the ssh command, place the file under `~/.ssh/id_rsa` and it wil
 In order to further secure the server, it's best to prevent direct login to the `root` user. I have also changed the port for `ssh` to something other than `22` to prevent a lot of automated attacks and disabled password authentication (forcing you to use public keys).
 
     $ nano /etc/ssh/sshd_config
-
+    
     PermitRootLogin no
     Port 23401
     PasswordAuthentication no
