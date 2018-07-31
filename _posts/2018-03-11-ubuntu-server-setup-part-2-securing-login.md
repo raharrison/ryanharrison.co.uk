@@ -7,6 +7,10 @@ tags:
   - ssh
 ---
 
+- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+
 Before reading this, make sure to go over [part 1][1] which covers initial login and setting up a new user.
 
 In the [previous section][1] we covered logging into the server with the `root` user. At that point we were using a simple password, which is less than ideal. In this part we will be setting up public key authentication for the new user in order to better secure our logins. Login to the `root` user will be disabled via `ssh` as well, forcing you to go through your newly created user and use `sudo` commands to get `root` access.

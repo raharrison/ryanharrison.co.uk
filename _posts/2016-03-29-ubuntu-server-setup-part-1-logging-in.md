@@ -8,6 +8,10 @@ tags:
   - ssh
 ---
 
+- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+
 In this set of posts I'll be running through setting up a new Ubuntu server - from initial setup and security through to installation of some of the most common packages. You can get your very own server/VPS through companies such as [DigitalOcean](http://digitalocean.com/) or [OVH](https://www.ovh.co.uk/) - in this case we'll be using Ubuntu Server 14.04, but the same concepts should apply to previous and future releases as well.
 
 In this post we'll be covering how to login to your server for the first time through SSH and creating a new user with root privileges.

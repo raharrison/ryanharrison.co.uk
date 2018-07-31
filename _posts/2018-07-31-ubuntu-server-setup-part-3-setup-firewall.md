@@ -8,6 +8,10 @@ tags:
 typora-root-url: ..
 ---
 
+- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+
 By default, your server may not come with a firewall enabled - meaning that external users will have direct access to any applications listening on any open port. This is of course a massive security risk and you should generally seek to minimise the surface area exposed to the public internet. This can be done using some kind of firewall - which will deny any traffic to ports that you haven't explicitly allowed.
 
 I personally only allow a few ports through the firewall and make use of reverse proxies through [Nginx](https://www.nginx.com/) to route traffic to internal apps. That way you can have many applications running on your server, but all traffic is run through port `443` (with `HTTPS` for free) first.
