@@ -172,6 +172,33 @@ server {
 
 The above uses the same configuration as Let's Encrypt to set strong ciphers and disable old versions of SSL. This should get you an A in [SSLTest](https://www.ssllabs.com/ssltest/). I will also add a post on setting up [Let's Encrypt](https://letsencrypt.org/) with Nginx to automate the process of using free SSL certificates for your site.
 
+## Custom Error Pages
+
+By default, Nginx will display it's own error pages in the event of a `404/50x` error etc. If you have your own versions, you can use the `error_pages` directive to specify a new path. Open up your server block config and add the following:
+
+```nginx
+server {
+    ...
+    error_page 404 /custom_404.html;
+    error_page 500 502 503 504 /custom_50x.html;
+    ...
+}
+```
+
+If required, you can also specify a completely new location (not in the main `root` directory of the server block) for your error pages by providing a `location` block which resolves the specified error page path:
+
+```nginx
+server {
+    ...
+    error_page 404 /custom_404.html;
+    location = /custom_404.html {
+        root /var/html/custom;
+        internal;
+    }
+    ...
+}
+```
+
 ## Log File Locations
 
 - `/var/log/nginx/access.log`: Every request to your web server is recorded in this log file unless Nginx is configured to do otherwise.
