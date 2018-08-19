@@ -68,7 +68,7 @@ The web browser approach works well enough, but it is a bit cumbersome to have t
 
 There isn't much to `wscat`, just point it to your server URL and it will log out any messages received or send any as you type them. It's based on Node (see below for similar alternatives in other environments) so just install through `npm` and run directly within the console.
 
-https://github.com/websockets/wscat
+<https://github.com/websockets/wscat>
 
 ```shell
 npm install -g wscat
@@ -87,17 +87,17 @@ connected (press CTRL+C to quit)
 
 Here are some other related tools (most just like `wscat`). [This GitHub repo guide](https://github.com/facundofarias/awesome-websockets) also has plenty of other websocket related tools you might want to check out.
 
-https://github.com/thehowl/claws
+<https://github.com/thehowl/claws>
 
 - Go based
 - Json formatting and pipes
 
-https://github.com/esphen/wsta
+<https://github.com/esphen/wsta>
 - Rust based
 - most advanced
 - very pipe friendly
 - configuration profiles
 
-https://github.com/progrium/wssh
+<https://github.com/progrium/wssh>
 - Python based
 - equivalent of `wscat` if `Node` is not your thing
