@@ -11,7 +11,7 @@ typora-root-url: ..
 
 The default package structure for a new [Kotlin](https://kotlinlang.org/) project generated through [IntelliJ](https://www.jetbrains.com/idea/) looks like the following, whereby you have a main source folder with `source sets` (modules) for your `main` files and then `test` source files.
 
-![GitHub Webhook](/images/2018/kotlin-default-project.png)
+![Kotlin Default Project](/images/2018/kotlin-default-project.png)
 
 Typically, you would place your unit tests within the auto-generated `test` module, and then run them all at once (within one JVM). IntelliJ is generally set up to support this use case and if that's all you need, requires minimal setup and effort.
 
@@ -79,6 +79,6 @@ idea {
 
 Now you will see the desired output after Gradle runs:
 
-![GitHub Webhook](/images/2018/kotlin-integration-test-module.png)
+![With Integration tests module](/images/2018/kotlin-integration-test-module.png)
 
 **WARNING** - This approach is not without problems. If you look at the `Test Output Path` of the new module, it is defined as `\kotlin-scratchpad\out\test\classes` which is the same as the main `test` module. Therefore, all the compiled test classes will end up in the same directory - which causes issues if you try to `Run All` for example.  To fix this, you have to manually update the path to `\kotlin-scratchpad\out\testIntegration\classes`. Alternatively, you might not apply the `idea` plugin and just mark the module for tests each time Gradle runs. Hopefully I will find a fix for this at some point.
