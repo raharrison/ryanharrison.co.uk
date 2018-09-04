@@ -82,5 +82,7 @@ if signature != digest:
 ```
 
 [Automate Jekyll with GitHub Webhooks]({% post_url 2018-07-05-jekyll-rebuild-github-webhook %})
+
 <https://docs.python.org/3.7/library/hmac.html>
+
 <https://developer.github.com/webhooks>
