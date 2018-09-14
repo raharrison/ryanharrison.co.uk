@@ -10,6 +10,8 @@ tags:
 - [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
 - [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
 - [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
 
 Before reading this, make sure to go over [part 1][1] which covers initial login and setting up a new user.
 

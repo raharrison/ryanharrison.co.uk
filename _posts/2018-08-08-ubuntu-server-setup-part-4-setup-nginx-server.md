@@ -11,6 +11,8 @@ typora-root-url: ..
 - [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
 - [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
 - [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
 
 Serving web pages is one of the most common and useful use cases of a cloud server. [Nginx](https://www.nginx.com/) is popular and handles some of the largest sites on the web. It's configuration is simplistic but very powerful and Nginx can often use less resources than an equivalent Apache server.
 
