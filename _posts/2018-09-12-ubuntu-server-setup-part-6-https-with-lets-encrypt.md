@@ -19,7 +19,7 @@ typora-root-url: ..
 
 `HTTPS` is a must have nowadays with sites served under plain `HTTP` being downgraded in search results by Google and marked as insecure by browsers. The process of obtaining an `SSL` certificate used to be cumbersome and expensive, but now thankfully because of Let's Encrypt it completely free and you can automate the process with just a few commands.
 
-This part assumes that you already have an active `Nginx` server running (as described in Part 4) and so will go over how to use Let's Encrypt with Nginx. `Certbot` (the client software) has a number of plugins that make the process just as easy if you are running another web server such as `Apache`.
+This part assumes that you already have an active `Nginx` server running (as described in [Part 4]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})) and so will go over how to use Let's Encrypt with Nginx. `Certbot` (the client software) has a number of plugins that make the process just as easy if you are running another web server such as `Apache`.
 
 ## Prepare the Nginx Server
 
