@@ -18,13 +18,13 @@ body {
 }
 
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
 @media (min-width: 38em) {
   html {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
@@ -246,7 +246,7 @@ figure {
 }
 @media (min-width: 58em) {
   .container {
-    max-width: 44rem;
+    max-width: 46rem;
   }
 }
 
