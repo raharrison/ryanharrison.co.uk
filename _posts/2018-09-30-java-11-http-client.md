@@ -72,7 +72,8 @@ One of the best features of the API is the ability to perform completely asynchr
 The `HttpClient.sendAsync` method takes the same parameters as the synchronous version, but returns a `CompletableFuture<HttpResponse<T>>` instead of just the raw `HttpResponse<T>`. Just as with any other `CompletableFuture`, you can chain together callbacks to be executed when the response is available. In this case, the body of the response is extracted and printed out. [More details here](https://www.callicoder.com/java-8-completablefuture-tutorial/) on how to work with `CompletableFuture`.
 
 ```java
-CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, BodyHandlers.ofString());
+CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, 
+        BodyHandlers.ofString());
 
 future.thenApply(HttpResponse::body) // retrieve body of response
       .thenAccept(System.out::println); // use body as String
@@ -132,4 +133,3 @@ return suspendCancellableCoroutine { cont: CancellableContinuation<T> ->
 <http://openjdk.java.net/groups/net/httpclient/intro.html>
 
 <https://www.youtube.com/watch?list=PLX8CzqL3ArzXyA_lJzaNmrFqpLOL4aCEz&v=sZSdWq490Vw>
-
