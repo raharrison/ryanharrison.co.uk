@@ -9,7 +9,40 @@ tags:
   - fuel
 ---
 
+**Updated 09/18 - Add section on the new HTTP Client in JDK 11**
+
 These days making `HTTP` requests in any language is a staple of many common workflows and features. This post will go through a few of the methods in which you can make such requests in Kotlin using some of the great open source libraries available.
+
+## [JDK 11 HTTP Client API](https://download.java.net/java/early_access/jdk11/docs/api/java.net.http/java/net/http/package-summary.html)
+
+If you are using the latest JDK release, you can make use of the new built-in `HttpClient` API which is now modern and fully feature complete. It supports `HTTP 2.0` (header compression, server push, multiplexing etc), WebSockets and can be fully asynchronous - which integrates brilliantly with Kotlin coroutines.
+
+**[Please refer to full post on the API here]({{ site.baseurl }}{% post_url 2018-09-30-java-11-http-client %})**
+
+In short, you create a new `HttpClient` and pass `HttpRequest` objects in (the below example is synchronous). Note that you could easily create some helper/extension functions to make this code much neater:
+
+```kotlin
+val client = HttpClient.newBuilder().build();
+val request = HttpRequest.newBuilder()
+               .uri(URI.create("https://something.com"))
+               .build();
+val response = client.send(request, BodyHandlers.ofString());
+println(response.body())
+```
+
+The API also has support for performing completely asynchronous requests (using non-blocking IO). In this case a `CompletableFuture` is returned instead of the raw `HttpResponse`. If you are using coroutines, you can use the `CompletionStage.await()` extension function defined within the [JDK integration library](https://github.com/Kotlin/kotlinx.coroutines/blob/master/integration/kotlinx-coroutines-jdk8/README.md) to suspend the current coroutine until the response is available. No need to deal with chaining together callbacks!
+
+```kotlin
+suspend fun getData(): String {
+    // above code to construct client + request
+    val response = client.sendAsync(request, BodyHandlers.ofString());
+    return response.await().body() // suspend and return String not a Future
+}
+
+// in some other coroutine (suspend block)
+val someData = getData()
+process(someData) // just as if you wrote it synchronously
+```
 
 ## [Fuel](https://github.com/kittinunf/Fuel)
 
@@ -94,7 +127,7 @@ val response = try {
                 .use { it.readText() }
 ```
 
-Other notable mentions include:
+### Other notable mentions:
 
 [khttp library](http://khttp.readthedocs.io/en/latest/)
 
