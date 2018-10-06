@@ -6,12 +6,16 @@ tags:
   - jdk
   - http
   - client
+  - api
+  - java 11
+  - jdk 11
+  - request
 typora-root-url: ..
 ---
 
-One of the more noteworthy features of the new [Java/JDK 11](http://jdk.java.net/11/) release is the new `HttpClient` API which has been in incubator status since JDK 9. Previously, the process of sending and retrieving data over `HTTP` has been very cumbersome in Java. Either you went through the hassle of using `HttpURLConnection`, or you bring in a library to abstract over it such as the `HttpClient` from [Apache](http://hc.apache.org/index.html). Notably, both solutions would also block threads whilst doing so.
+One of the more noteworthy features of the new [Java 11](http://jdk.java.net/11/) release is the new `HttpClient` API within the standard library, which has been in incubator status since JDK 9. Previously, the process of sending and retrieving data over `HTTP` has been very cumbersome in Java. Either you went through the hassle of using `HttpURLConnection`, or you bring in a library to abstract over it such as the `HttpClient` from [Apache](http://hc.apache.org/index.html). Notably, both solutions would also block threads whilst doing so.
 
-As these days dealing with `HTTP` connections is so common, the JDK finally has a modern API which can deal with these scenarios - including support for `HTTP 2` (server push etc) and `WebSockets`.
+As these days dealing with `HTTP` connections is so common, JDK 11 finally has a modern API which can deal with these scenarios - including support for `HTTP 2` (server push etc) and `WebSockets`.
 
 ## Create a Client
 
@@ -63,7 +67,8 @@ HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 System.out.println(response.statusCode());
 System.out.println(response.body());
 ```
-When receiving responses, a `BodyHandler` is provided to instruct the client on how to process the response body.  The `BodyHandlers` class includes default handlers for the most common scenarios. `ofString` will return the body as an UTF-8 encoded String, `ofFile` accepts a `Path` to write the response to a file and `ofByteArray` will give you the raw bytes.
+
+When receiving responses, a `BodyHandler` is provided to instruct the client on how to process the response body. The `BodyHandlers` class includes default handlers for the most common scenarios. `ofString` will return the body as an UTF-8 encoded String, `ofFile` accepts a `Path` to write the response to a file and `ofByteArray` will give you the raw bytes.
 
 ### Async
 
@@ -72,7 +77,7 @@ One of the best features of the API is the ability to perform completely asynchr
 The `HttpClient.sendAsync` method takes the same parameters as the synchronous version, but returns a `CompletableFuture<HttpResponse<T>>` instead of just the raw `HttpResponse<T>`. Just as with any other `CompletableFuture`, you can chain together callbacks to be executed when the response is available. In this case, the body of the response is extracted and printed out. [More details here](https://www.callicoder.com/java-8-completablefuture-tutorial/) on how to work with `CompletableFuture`.
 
 ```java
-CompletableFuture<HttpResponse<String>> future = client.sendAsync(request, 
+CompletableFuture<HttpResponse<String>> future = client.sendAsync(request,
         BodyHandlers.ofString());
 
 future.thenApply(HttpResponse::body) // retrieve body of response
