@@ -13,6 +13,7 @@ typora-root-url: ..
 - [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
 - [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
 - [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
 
 By default, your server may not come with a firewall enabled - meaning that external users will have direct access to any applications listening on any open port. This is of course a massive security risk and you should generally seek to minimise the surface area exposed to the public internet. This can be done using some kind of firewall - which will deny any traffic to ports that you haven't explicitly allowed.
 
@@ -39,7 +40,7 @@ The first thing you want to do is ensure that the port `ssh` is running under is
 ```shell
 $ sudo ufw allow 22
 or
-$ sudo ufw allow ssh 
+$ sudo ufw allow ssh
 ```
 
 Then start the firewall by running:
