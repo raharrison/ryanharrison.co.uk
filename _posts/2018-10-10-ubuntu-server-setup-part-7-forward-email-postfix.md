@@ -114,7 +114,7 @@ $ sudo service postfix restart # or perform a restart
 
 ## Configure Firewall
 
-`SMTP` traffic (which Postfix is handling and forwarding) runs on port 25, so makes sure to allow it through your firewall:
+`SMTP` traffic (which Postfix is handling and forwarding) runs on port 25, so makes sure to allow it through your firewall. Refer to [Part 3]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %}) for info on how to set one up.
 
 ```shell
 $ ufw allow 25/tcp
