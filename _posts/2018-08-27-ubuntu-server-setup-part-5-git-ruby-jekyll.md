@@ -16,6 +16,7 @@ typora-root-url: ..
 - [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
 - [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
 - [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
 
 This part will take care of installing everything necessary to allow the new server to host your personal blog (or other [Jekyll](https://jekyllrb.com/) site). As a prerequisite, you will also need some kind of web server installed (such as [Nginx](https://www.nginx.com/) or [Apache](https://httpd.apache.org/)) to take care of serving your `HTML` files over the web. [Part 4]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %}) covers the steps for my favourite - Nginx.
 

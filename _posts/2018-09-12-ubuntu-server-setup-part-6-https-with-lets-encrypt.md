@@ -17,6 +17,7 @@ typora-root-url: ..
 - [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
 - [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
 - [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
 
 `HTTPS` is a must have nowadays with sites served under plain `HTTP` being downgraded in search results by Google and marked as insecure by browsers. The process of obtaining an `SSL` certificate used to be cumbersome and expensive, but now thankfully because of Let's Encrypt it completely free and you can automate the process with just a few commands.
 

@@ -14,6 +14,7 @@ typora-root-url: ..
 - [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
 - [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
 - [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
 
 By default, your server may not come with a firewall enabled - meaning that external users will have direct access to any applications listening on any open port. This is of course a massive security risk and you should generally seek to minimise the surface area exposed to the public internet. This can be done using some kind of firewall - which will deny any traffic to ports that you haven't explicitly allowed.
 
