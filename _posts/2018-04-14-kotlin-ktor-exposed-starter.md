@@ -7,6 +7,8 @@ tags:
   - exposed
 ---
 
+**Updated for Ktor 1.0 and stable coroutines in Kotlin 1.3+**
+
 I've been writing a lot more Kotlin recently and have been really liking the language so far. I'll probably write another post pointing out some of my favourite features, but in short it's basically Java, but without all the annoying stuff. I think in terms of adoption it's still very early days for Kotlin, but due to the great interop with Java and being an official language for Android development, I wouldn't be surprised if it doesn't start to become extremely popular over the next few years.
 
 Kotlin is pretty versatile, even though most people no doubt focus on the Android side of things. That doesn't mean however that server side development isn't also supported - in fact, quite the opposite. The Spring framework already has built-in support for Kotlin and many other libraries are also focusing attention on it. You *could* use such Java focused libraries, but instead you could use the dedicated Kotlin libraries - some of which are supported by [JetBrains](https://www.jetbrains.com/) themselves.
@@ -34,12 +36,6 @@ repositories {
     mavenCentral()
     maven { url "https://dl.bintray.com/kotlin/kotlinx" }
     maven { url "https://dl.bintray.com/kotlin/ktor" }
-}
-
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
 }
 
 dependencies {
@@ -70,7 +66,7 @@ fun Application.module() {
 }
 
 fun main(args: Array<String>) {
-    embeddedServer(Netty, 8080, watchPaths = listOf("MainKt"), module = Application::module).start()
+    embeddedServer(Netty, 8080, module = Application::module).start()
 }
 ```
 
@@ -191,17 +187,11 @@ This presents a problem when using standard `JDBC` to query our database because
 4. Background coroutine `B` finishes after database query. Thread is returned to the thread pool for other queries etc
 5. `A` resumes execution by restoring the previous state it had before suspension. It now has access to the query results which can be passed back as the response. Note that the coroutine `A` may now be executing on a different thread than in step 1 (pretty cool right?)
 
-This might sound like a lot of work (and it is), but thanks to the coroutines library in Kotlin, this is thankfully very easy to accomplish. First, we need to create the dedicated thread pool for database queries. This takes the form of a `coroutine context`:
-
-```kotlin
-val dispatcher: CoroutineContext = newFixedThreadPoolContext(5, "database-pool")
-```
-
-Now we can also define a helper method to execute queries on this pool:
+This might sound like a lot of work (and it is), but thanks to the coroutines library in Kotlin, this is thankfully very easy to accomplish. The following helper method, which is used across all database interaction in our service class, runs a block of code inside a transaction in this new coroutine.  `Dispatchers.IO` references a thread pool managed by Kotlin coroutines that is meant for blocking IO operations like these. Once called, this function will suspend the current coroutine and launch a new one on the special `IO` thread pool - which will then block whilst the database transaction is performed. When the result is ready, the coroutine is resumed and returned to the initial caller.
 
 ```kotlin
 suspend fun <T> dbQuery(block: () -> T): T =
-    withContext(dispatcher) {
+    withContext(Dispatchers.IO) {
         transaction { block() }
     }
 }
