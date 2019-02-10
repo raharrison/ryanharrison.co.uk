@@ -15,13 +15,13 @@ If you're not writing a Spring application, creating good integration tests for 
 
 In the following examples, a simple Kotlin web service written with [Ktor](https://ktor.io/) and [Exposed](https://github.com/JetBrains/Exposed) is tested using `Rest Assured` and `JUnit`. Note that this isn't a simple unit test of the endpoint, an actual instance of the server is started up and tested via requests to `localhost`.
 
-### Add Rest Assured as a dependency
+## Add Rest Assured as a dependency
 
 The first step is to add Rest Assured as a test dependency in your project, just open up your `build.gradle` file and add the following to the `dependencies` section (3.3.0 is the latest version as of writing):
 
 `testCompile "io.rest-assured:rest-assured:3.3.0"`
 
-### Create Kotlin aliases
+## Create Kotlin aliases
 
 Before we start getting into using Rest Assured, because Kotlin is being used, a couple function aliases need to be created because of some methods overlapping with Kotlin keywords. In this case `when` (which is pretty vital in Rest Assured) and a helper function taking advantage of reified generics in Kotlin to convert a response object to the type we expect for further assertions.
 
@@ -36,7 +36,7 @@ protected inline fun <reified T> ResponseBodyExtractionOptions.to(): T {
 }
 ```
 
-### Define a base Integration Test
+## Define a base Integration Test
 
 In this example, all the concrete test cases which test our server endpoints will inherit from this base class. Because `Ktor` is being used, it's very straightforward to start the server up at the start of the test run and close it down at the end.
 
@@ -141,7 +141,7 @@ fun testDeleteInvalidWidget() {
 }
 ```
 
-### Docs
+## Docs
 
 The Rest Assured [usage guide](https://github.com/rest-assured/rest-assured/wiki/Usage) is very comprehensive and gives a good overview of what Rest Assured can accomplish. In the examples above I have showed only the basic functionality - but to be honest for a lot of cases this is all your really need.
 
