@@ -12,7 +12,7 @@ typora-root-url: ..
 
 SSH Tunneling, is the ability to use `ssh` to create a bi-directional encrypted network connections between machines over which data can be exchanged, typically TCP/IP. This allows us to easily & securely make services available between machines with minimal effort, while at the same time leveraging `ssh` for user authentication (public-key) and encryption with little overhead.
 
-### Local Port Forwarding
+## Local Port Forwarding
 
 ```
 $ ssh -nNT -L 8000:localhost:3306 user@server.com
@@ -24,7 +24,7 @@ Since port `3306` is the default for MySQL, you could now access a database runn
 
 In the above command, the `-nNT` options prevent a shell from being created, so we just get the port forwarding behaviour (not strictly needed but you probably don't also want a new `tty` session).
 
-### Remote Port Forwarding
+## Remote Port Forwarding
 
 ```
 $ ssh -nNT -R 4000:localhost:3000 user@server.com
@@ -34,7 +34,7 @@ The  above command sets up an `ssh` tunnel between your machine and the  server,
 
 You could then access a service running locally on port `3000` on the remote server through port `4000` (again as if it was running locally on the remote server). This is useful because it allows you to expose a  locally running service through your server to others on the internet  without having to deploy it / setup on the server. Note: to get this working you also need to set `GatewayPorts yes` in the `/etc/ssh/sshd_config` file as `ssh` doesn't allow remote hosts to forward ports by default.
 
-### SOCKS Proxy
+## SOCKS Proxy
 
 ```
 $ ssh -D 5000 -nNT user@server.com
@@ -46,7 +46,7 @@ The above command sets up a `SOCKS` proxy server supporting `SOCKS4` and `SOCKS5
 - As all web traffic goes through the `SOCKS` proxy, you will be able to access web sites that your ISP/firewall may have blocked.
 - Potentially helps protect your privacy since the web services you access will see requests coming from the remote server and not from your local machine. This could prevent some (IP based) identity/location tracking for example.
 
-### Advanced Use Cases
+## Advanced Use Cases
 
 The  above-mentioned use cases are the most commonly used, however, they can  be modified slightly and used in interesting ways to be able to establish the `ssh` tunnel not only between your local machine and your server, but also additional machines, either internal to your network or internal to your servers network:
 
