@@ -27,7 +27,7 @@ In the [previous part]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-se
 
 A reverse proxy can be thought of as a simple 'passthrough', whereby specific requests made to your web server get routed to other applications running locally and their responses returned as though they were all handled by the one server. For example, you wanted to give public access to a Python server you have running on port 8080. Instead of directly opening up the port and thus increasing the overall attack surface, Nginx can be configured to proxy certain requests to that server instead. This also has the advantage of easily enabling HTTPS for all services without having to configure each application separately and you get all the other advantages of a high performance web server like load balancing etc.
 
-Follow the steps in the [previous tutorial](% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %) to setup Nginx and also optionally [enable HTTPS](% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %). The rest of this part assumes you have another server running on your machine listening on localhost under port `8080`.
+Follow the steps in the [previous tutorial]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %}) to setup Nginx and also optionally [enable HTTPS]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %}). The rest of this part assumes you have another server running on your machine listening on localhost under port `8080`.
 
 ## Configure NGINX
 

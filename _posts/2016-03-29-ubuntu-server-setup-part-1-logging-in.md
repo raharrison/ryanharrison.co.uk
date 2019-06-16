@@ -15,6 +15,7 @@ tags:
 - [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
 - [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
 - [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
 In this set of posts I'll be running through setting up a new Ubuntu server - from initial setup and security through to installation of some of the most common packages. You can get your very own server/VPS through companies such as [DigitalOcean](http://digitalocean.com/) or [OVH](https://www.ovh.co.uk/) - in this case we'll be using Ubuntu Server 18.04, but the same concepts should apply to previous and future releases as well.
 
