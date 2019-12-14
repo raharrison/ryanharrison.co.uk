@@ -668,6 +668,16 @@ a.pagination-item:hover {
   @media (max-width: 38rem) {
       display: none;
   }
+  
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  opacity: 0;
+  cursor: pointer;
+  -webkit-transition: opacity 400ms ease-in-out;
+  -moz-transition: opacity 400ms ease-in-out;
+  -o-transition: opacity 400ms ease-in-out;
+  transition: opacity 400ms ease-in-out;
 }
 
 #search_results {

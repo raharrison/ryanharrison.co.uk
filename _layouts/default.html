@@ -48,6 +48,20 @@
                     },
                     false
                 );
+				
+				// scroll to top button
+				const topbutton = document.getElementById("topcontrol");
+                topbutton.onclick = function(e) {
+                    window.scrollTo({top: 0, behavior: "smooth"});
+                }
+
+                window.onscroll = function() {
+					if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                        topbutton.style.opacity = "1";
+                    } else {
+                        topbutton.style.opacity = "0";
+                    }
+				};
             })(document);
         </script>
     </body>
