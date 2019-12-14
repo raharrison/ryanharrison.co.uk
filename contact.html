@@ -30,30 +30,30 @@ title: Contact Me
 </p>
 
 <script>
-    $(function() {
-        let  a = Math.floor(Math.random() * 14) + 3;
-        let b = Math.floor(Math.random() * 14) + 3;
+	ready(function() {
+		const a = Math.floor(Math.random() * 14) + 3;
+		const b = Math.floor(Math.random() * 14) + 3;
 
-        showInvalidAnswer = function() {
-            $("#invalid-answer").text("Invalid answer");
-        }
+		showInvalidAnswer = function() {
+			document.getElementById("invalid-answer").innerText =
+				"Invalid answer";
+		};
+		document.querySelector("label[for=robot]").innerText =
+			"What is " + a + " + " + b + "?";
 
-        $("label[for=robot]").text("What is " + a + " + " + b + "?");
-
-        $('#contact-form').on('submit', function(e) {
-            e.preventDefault();
-            let val = $("#robot").val();
-            try {
-                let num = parseInt(val);
-                if(num == a + b) {
-                    this.submit();
-                } else {
-                    showInvalidAnswer();
-                }
-            } catch(exc) {
-                showInvalidAnswer();
-            }
-        });
-    });
-
+		document.getElementById("contact-form").onsubmit = function(e) {
+			e.preventDefault();
+			const val = document.getElementById("robot").value;
+			try {
+				let num = parseInt(val);
+				if (num == a + b) {
+					this.submit();
+				} else {
+					showInvalidAnswer();
+				}
+			} catch (exc) {
+				showInvalidAnswer();
+			}
+		};
+	});
 </script>

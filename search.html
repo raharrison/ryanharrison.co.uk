@@ -19,69 +19,83 @@ title: Search
 </div>
 
 <script>
+	function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return "";
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
 
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
+	function setQueryAndSubmit(query) {
+		document.getElementById("search_box").value = query;
+		var form = document.getElementById("site_search");
+		form.dispatchEvent(new CustomEvent("submit"));
+	}
 
-    function setQueryAndSubmit(query) {
-        $("#search_box").val(query);
-        $("#site_search").submit();
-    }
+	window.onpopstate = function(e) {
+		if (e.state) {
+			setQueryAndSubmit(e.state.q);
+		}
+	};
 
-    window.onpopstate = function(e) {
-        if(e.state){
-            setQueryAndSubmit(e.state.q);
-        }
-    };
-  
-    $(document).ready(function() {
+	function searchSuccess(data) {
+		var results = document.getElementById("search_results");
+		data.forEach(function(value, key) {
+			var link =
+				"<li id='" +
+				key +
+				"'><a target=\"_blank\" href='" +
+				value.url +
+				"'>" +
+				value.title +
+				"</a></li>";
+			var highlight =
+				"<p><small>" + value.highlight + "</small></p>";
+			results.innerHTML += link;
+			results.innerHTML += highlight;
+		});
 
-        $("#search_box").focus();
-        $("#site_search").submit(function(e){
-            e.preventDefault();
-            var userQuery = $("#search_box").val();
+		if (results.children.length == 0) {
+			results.innerHTML += "<p>No results found</p>";
+		}
+	}
 
-            var params = {q: userQuery};
-            history.pushState({"q": userQuery}, null, "/search.html?q=" + encodeURIComponent(userQuery));
-        
-            var results = $("#search_results");
-            results.empty();
+	ready(function() {
+		document.getElementById("search_box").focus();
+		document.getElementById("site_search").onsubmit = function(e) {
+			e.preventDefault();
+			var userQuery = document.getElementById("search_box").value;
 
-            var sendQuery = {
-                q : userQuery
-            };
+			var params = { q: userQuery };
+			history.pushState(
+				{ q: userQuery },
+				null,
+				"/search.html?q=" + encodeURIComponent(userQuery)
+			);
 
-            $.ajax({
-                url: 'https://api.ryanharrison.co.uk/search',
-                data: "q="+userQuery,
-                dataType: 'jsonp',
-                success: function(data) {
-                    $.each(data, function(key, value) {
-                        var link = "<li id='" + key + "'><a target=\"_blank\" href='" + value.url +  "'>" + value.title + "</a></li>";
-                        var highlight = "<p><small>" + value.highlight + "</small></p>";
-                        results.append(link);
-                        results.append(highlight);
-                    });
+			var results = document.getElementById("search_results");
+			while (results.firstChild)
+				results.removeChild(results.firstChild);
 
-                    if(results.children().length == 0) {
-                        results.append("<p>No results found</p>");
-                    }
-                }
-            });
-        });
+			var sendQuery = {
+				q: userQuery
+			};
 
-        // if query string set search with it
-        var qs = getParameterByName("q");
-        if(qs) {
-            setQueryAndSubmit(qs);
-        }
-    });
+			var script = document.createElement("script");
+			script.src =
+				"https://api.ryanharrison.co.uk/search?q=" +
+				userQuery +
+				"&callback=searchSuccess";
+			document.head.appendChild(script);
+		};
 
+		// if query string set search with it
+		var qs = getParameterByName("q");
+		if (qs) {
+			setQueryAndSubmit(qs);
+		}
+	});
 </script>

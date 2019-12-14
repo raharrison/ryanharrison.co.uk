@@ -29,6 +29,13 @@
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
     <script>
+	  function ready(fn) {
+		  if (document.readyState != "loading") {
+			  fn();
+		  } else {
+			  document.addEventListener("DOMContentLoaded", fn);
+		  }
+	  }
       (function(document) {
         var toggle = document.querySelector('.sidebar-toggle');
         var sidebar = document.querySelector('#sidebar');
