@@ -31,5 +31,14 @@
   <!-- Tab to search -->
   <link rel="search" type="application/opensearchdescription+xml" title="Ryan Harrison" href="/opensearch.xml" />
 
+  <script>
+	function ready(fn) {
+	  if (document.readyState != "loading") {
+		  fn();
+	  } else {
+		  document.addEventListener("DOMContentLoaded", fn);
+	  }
+	}
+  </script>
   <script src="{{ "/js/site.js" | prepend: site.baseurl }}"></script>
 </head>
