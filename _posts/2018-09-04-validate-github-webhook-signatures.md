@@ -2,10 +2,10 @@
 layout: post
 title: Validate GitHub Webhook Signatures
 tags:
-  - github
-  - webhook
-  - signature
-  - HMAC
+    - github
+    - webhook
+    - signature
+    - HMAC
 typora-root-url: ..
 ---
 
@@ -47,6 +47,9 @@ As mentioned in the [docs](https://developer.github.com/webhooks/#payloads), the
 Sounds complicated, but it's really quite simple to construct this value in most popular languages. In this case I'm using Python with `Flask` to access the payload and headers. The below snippet defines a `Flask` endpoint which the webhook will hit and accesses the signature and payload of the request:
 
 ```python
+import hmac
+import hashlib
+
 @app.route('/refresh', methods=['POST'])
 def refresh():
     if not "X-Hub-Signature" in request.headers:
@@ -56,7 +59,7 @@ def refresh():
     payload = request.data
 ```
 
-Next, you need to get hold of the `secret` which is used as the `HMAC` key. You *could* hardcode this, but that's generally a bad idea. Instead, store the value in a permissioned file and read the contents in the script:
+Next, you need to get hold of the `secret` which is used as the `HMAC` key. You _could_ hardcode this, but that's generally a bad idea. Instead, store the value in a permissioned file and read the contents in the script:
 
 ```python
 with open(os.path.expanduser('~/github_secret'), 'r') as secret_file:
@@ -74,7 +77,7 @@ hmac_gen = hmac.new(secret, payload, hashlib.sha1)
 # create the hex digest and append prefix to match the GitHub request format
 digest = "sha1=" + hmac_gen.hexdigest()
 
-if signature != digest:
+if not hmac.compare_digest(digest, signature):
     abort(400) # if the signatures don't match, bad request not from GitHub
 
 # do real work after
