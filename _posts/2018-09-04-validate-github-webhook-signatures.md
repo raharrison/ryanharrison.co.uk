@@ -84,6 +84,8 @@ if not hmac.compare_digest(digest, signature):
 ...
 ```
 
+**Update 06/02/2020: Use `hmac.compare_digest` instead of `==`. Thanks @webknaz**
+
 [Automate Jekyll with GitHub Webhooks]({% post_url 2018-07-05-jekyll-rebuild-github-webhook %})
 
 <https://docs.python.org/3.7/library/hmac.html>
