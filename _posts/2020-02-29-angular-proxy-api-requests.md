@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Angular - Create proxy for API Requests
+title: Angular - Proxy API Requests
 tags:
   - angular
   - proxy
