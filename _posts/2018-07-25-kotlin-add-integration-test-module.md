@@ -27,7 +27,7 @@ However, if you also need to add integration tests (or end-to-end etc), then thi
 
 You can't merge all the tests into one module and run them all at once because you would need to start up multiple database instances etc. Conflicts arise and it's apparent that you need to run them separately in their own dedicated JVM.
 
-To add the above mentioned `test-integration` module, you can make some edits to your `build.gradle` file to define a new `source set` (IntelliJ module):
+To add the above mentioned `testIntegration` module, you can make some edits to your `build.gradle` file to define a new `source set` (IntelliJ module):
 
 ```groovy
 sourceSets {
@@ -47,7 +47,7 @@ Then, we provide a `configuration` and `task` for the new source set to ensure t
 
 ```groovy
 configurations {
-    testIntegrationCompile.extendsFrom testCompile
+    testIntegrationImplementation.extendsFrom testImplementation
     testIntegrationRuntime.extendsFrom testRuntime
 }
 
