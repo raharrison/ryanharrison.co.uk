@@ -83,6 +83,7 @@ Because we just set up our `Action` to be run automatically on any PR or push to
 
 If you run the above `Action` you will probably notice that it takes some time to execute. This is because it has to go out and download all of your JAR dependencies every time it runs. To speed this up, you can use a caching mechanism. After your workflow is executed successfully, the local Gradle package cache will be [stored in Github](https://help.github.com/en/actions/language-and-framework-guides/building-and-testing-java-with-gradle) to allow it to be restored on other subsequent runs.
 
+{% raw %}
 ```yaml
 steps:
   - uses: actions/checkout@v2
@@ -99,6 +100,7 @@ steps:
   - name: Build with Gradle
     run: ./gradlew build
 ```
+{% endraw %}
 
 ### More information
 
