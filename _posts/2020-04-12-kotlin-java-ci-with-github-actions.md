@@ -113,8 +113,8 @@ This just touches the surface of what you can do with Github Actions (it is a CI
 
 See the below links for more info and how to find some of the more popular packages created by the community. There is probably already something covering your use case:
 
-- Main Github Docs - https://help.github.com/en/actions
+- Main Github Docs - <https://help.github.com/en/actions>
 
-- Github Action Marketplace -  https://github.com/marketplace?type=actions
+- Github Action Marketplace - <https://github.com/marketplace?type=actions>
 
-- Curated list of helpful actions - https://github.com/sdras/awesome-actions
+- Curated list of helpful actions - <https://github.com/sdras/awesome-actions>
