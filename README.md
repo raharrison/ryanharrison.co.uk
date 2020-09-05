@@ -1,5 +1,7 @@
-# Ryan Harrison
+![Jekyll Build](https://github.com/raharrison/ryanharrison.co.uk/workflows/Jekyll%20site%20CI/badge.svg)
 
-My personal website and blog. Now powered by Jekyll after I moved away from Wordpress.
+# Ryan Harrison's Blog
 
-The site can be accessed at http://ryanharrison.co.uk
+My personal website and blog. Powered by [Jekyll](https://jekyllrb.com/)
+
+Accessible at http://ryanharrison.co.uk
