@@ -11,7 +11,7 @@ typora-root-url: ..
 
 A collection of some interesting Java libraries and frameworks (not including the big ones everyone uses such as Spring or JUnit). Hopefully it contains some lesser known libraries which you might not have heard of before and may find useful.
 
-| Name                                                         | Description                                                  |
+| <div style="width:20%">Name</div>                                                          | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [ArchUnit](https://www.archunit.org/)                        | Write unit tests to enforce the architecture of your Java code. E.g. all your service classes follow established conventions for naming and package layout through to finding cyclic dependencies. |
 | [AssertJ](https://assertj.github.io/doc/)                    | Forget `Hamcrest` or those provided by `JUnit`, `AssertJ` is the only library you will need for writing assertions. Provides countless rich integrations which are easily discoverable through auto-completion. |
