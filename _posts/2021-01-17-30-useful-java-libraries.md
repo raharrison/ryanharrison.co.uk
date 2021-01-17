@@ -11,7 +11,7 @@ typora-root-url: ..
 
 A collection of some interesting Java libraries and frameworks (not including the big ones everyone uses such as Spring or JUnit). Hopefully it contains some lesser known libraries which you might not have heard of before and may find useful.
 
-| <div style="width:20%">Name</div>                                                          | Description                                                  |
+| Name                                                         | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [ArchUnit](https://www.archunit.org/)                        | Write unit tests to enforce the architecture of your Java code. E.g. all your service classes follow established conventions for naming and package layout through to finding cyclic dependencies. |
 | [AssertJ](https://assertj.github.io/doc/)                    | Forget `Hamcrest` or those provided by `JUnit`, `AssertJ` is the only library you will need for writing assertions. Provides countless rich integrations which are easily discoverable through auto-completion. |
@@ -43,5 +43,6 @@ A collection of some interesting Java libraries and frameworks (not including th
 | [Verbal Expressions](https://github.com/VerbalExpressions/JavaVerbalExpressions) | A library that helps to construct difficult regular expressions with a fluent and human-readable API. |
 | [WireMock](https://github.com/tomakehurst/wiremock)          | A library for stubbing and mocking HTTP services. Allows you to construct a standalone local web server that can be used within integration tests to verify expected behaviour against external API's. Also integrates with [Spring Cloud Contract](https://spring.io/projects/spring-cloud-contract). |
 | [Yavi](https://github.com/making/yavi)                       | A lambda-based, type-safe validation library with no reflection, annotations or dependencies. For those who are not fans of using the [Bean Validation](https://beanvalidation.org/) frameworks. |
+{: style="table-layout:auto"}
 
 For even more Java libraries check out <https://github.com/akullpp/awesome-java>
