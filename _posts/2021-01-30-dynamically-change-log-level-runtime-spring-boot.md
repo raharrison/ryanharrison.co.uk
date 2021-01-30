@@ -18,7 +18,7 @@ By default, most if not all of our loggers will probably be set to `INFO` level.
 
 I bet most people reading this can remember that instance in which they were debugging an issue, were able to focus down on a particular segment of code, only to find that the log line that gave them that critical piece of information was set to `DEBUG` level and so was unavailable to them. We may have 6 different log levels available, but without finer control over their configuration at runtime, we may as well only have half that.
 
-### Spring Boot Logging Properties
+## Spring Boot Logging Properties
 
 Log configuration within Spring Boot applications takes a number of different forms these days, but in this post we'll focus just on the main ones (excluding specific `logback.xml` modifications etc). A lot of the same configuration changes you would previously have made in those dedicated files can now also be set as simple application properties. For example, to change the global root log level to `DEBUG`, we can just add the following to `application.properties` (or `YAML` equivalent):
 
@@ -69,7 +69,7 @@ This is another improvement, but still has one big problem - you need to restart
 
 As a last improvement, it would be great if you could dynamically change the log levels for particular targeted areas at runtime - without having to rebuild, redeploy *or* restart.
 
-### Spring Boot Actuator
+## Spring Boot Actuator
 
 [Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), amongst other things, allows you to do just this through one of it's administration endpoints. To enable this functionality we first need to add the starter dependency to the `build.gradle` file:
 
@@ -106,7 +106,7 @@ If we now visit `http://localhost:8080/actuator` in the browser (or as `GET` req
 
 Actuator hooks into the log system used within your app (be it `Logback` or` Log4j`) and allows you to interact with these endpoints as an API to query and modify the underlying log levels.
 
-#### Viewing Current Log Levels
+### Viewing Current Log Levels
 
 First of all visit `http://localhost:8080/actuator/loggers` (via `GET` request) to see all the loggers configured within your application and their current levels (it will likely be quite a large list):
 
@@ -147,7 +147,7 @@ If you want to explicitly target a specific logger, you can add the name to the 
 }
 ```
 
-#### Modifying Log Levels
+### Modifying Log Levels
 
 In the above examples we have been using simple `GET` requests to query the current log configuration. The `/actuator/loggers/{name}` endpoint however also lets you send a `POST` request that allows you to update the configured level for a particular logger. For example, to change our service loggers to `DEBUG` level, send a `POST` request to `http://localhost:8080/actuator/loggers/com.example.demo.service` with the JSON body:
 
@@ -177,14 +177,14 @@ To confirm the update, we can also try querying actuator again with the same log
 
 ```json
 {
-	configuredLevel: "DEBUG",
-	effectiveLevel: "DEBUG"
+    "configuredLevel": "DEBUG",
+    "effectiveLevel": "DEBUG"
 }
 ```
 
 Pretty cool! This gives you a lot of flexibility at runtime to better utilize your logs at different levels to debug and resolve issues. If you so wanted to, you can also target the the `ROOT` logger at `http://localhost:8080/actuator/loggers/ROOT`, but of course be aware of the potential noise.
 
-### Takeaways (TL;DR)
+## Takeaways (TL;DR)
 
 - Logs are a vital tool when debugging issues, but only if you can see the right lines when you need them. These might not be at  `INFO` level.
 - Developers should be using the various log levels `TRACE`, `DEBUG`, `INFO`, `ERROR` accordingly to add additional data points to your log output. In general volume should increase as the level decreases, but more detailed data points will be included.
