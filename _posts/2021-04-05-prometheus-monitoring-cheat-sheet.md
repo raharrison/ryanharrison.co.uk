@@ -17,12 +17,11 @@ An open-source systems monitoring and alerting toolkit. Now a standalone open so
 - metrics are stored in a `multi-dimensional` data model instead of `hierarchical`, where each measurement consists of a name and a number of key/value pairs
   - `http.server.requests.count(uri="/endpoint", method="GET") 12` instead of `http.server.requests.GET.endpoint=12`
   - backed by it's own custom time-series database built specifically for metrics
-- provides it's own query language `PromQL` as a read-only and flexible query language for aggregation on time series data
+  - provides it's own query language `PromQL` as a read-only and flexible query language for aggregation on time series data
 - no reliance on distributed storage; single server nodes are autonomous
 - time series collection happens via a pull model over HTTP
 - targets are discovered via service discovery or static configuration
 - multiple modes of graphing and dashboarding support
-
 - Alternative to `Graphite`, `InfluxDB`
 - Ecosystem provides a number of pre-built `exporters` that expose metrics ready for Prometheus to scrape
 
@@ -50,19 +49,12 @@ An open-source systems monitoring and alerting toolkit. Now a standalone open so
 ## Installation
 
 - provided as a single Go binary from <https://prometheus.io/download/> so can be executed directly
-
   - `./prometheus`
   - by default looks for `prometheus.yml` config file in the same directory (by default will only scrape Prometheus itself)
-
 - Prometheus Web UI available at `http://localhost:9090`
-
   - allows you to view current targets, configuration and run queries. For more complex visualizations use `Grafana`
-
 - or can be executed through `Docker`
-
-  - ```
-    docker run -p 9090:9090 -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
-    ```
+  - `docker run -p 9090:9090 -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus`
 
 ## Configuration
 
@@ -381,7 +373,6 @@ Prometheus's query language supports basic logical and arithmetic operators. For
 
 - binary arithmetic operators are defined between scalar/scalar, vector/scalar, and vector/vector value pairs. (`+, -, *, /, %, ^`)
 - comparison operators are defined between scalar/scalar, vector/scalar, and vector/vector value pairs. By default they filter. Their behaviour can be modified by providing `bool` after the operator, which will return `0` or `1` for the value rather than filtering (`==, !=, >, >=`)
-
 - operations between vectors attempt to find a matching element in the right-hand side vector for each entry in the left-hand side.
   - when applying operators Prometheus attempts to find a matching element in both vectors by labels. Can ignore labels to get matches
   - `method_code:http_errors:rate5m{code="500"} / ignoring(code) method:http_requests:rate5m`

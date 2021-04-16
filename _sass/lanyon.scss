@@ -93,7 +93,7 @@ strong {
 /* Lists */
 ul, ol, dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+//   margin-bottom: 1rem;
 }
 
 dt {
@@ -239,7 +239,7 @@ figure {
 }
 @media (min-width: 58em) {
   .container {
-    max-width: 46rem;
+    max-width: 50rem;
   }
 }
 
