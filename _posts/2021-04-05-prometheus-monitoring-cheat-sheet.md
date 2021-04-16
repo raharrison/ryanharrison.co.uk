@@ -500,6 +500,8 @@ Alerting rules allow you to define alert conditions based on Prometheus expressi
 
 Alerting rules are configured in Prometheus in the same way as recording rules:
 
+{% raw %}
+
 ```yaml
 # rules/alert_rules.yml
 groups:
@@ -515,6 +517,8 @@ groups:
       summary: "High request latency on {{ $labels.instance }}"
       description: "{{ $labels.instance }} has a median request latency above 1s (current value: {{ $value }}s)"
 ```
+
+{% endraw %}
 
 - **for** - wait for a certain duration between first encountering a new expression output vector element and counting an alert as firing for this element
 - **labels** - specifying a set of additional labels to be attached to the alert
