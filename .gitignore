@@ -7,6 +7,10 @@ _site
 .sass-cache
 sftp-config.json
 .jekyll-metadata
+.jekyll-cache/
+
+.bundle/
+vendor/
 
 # Numerous always-ignore extensions
 *.diff
