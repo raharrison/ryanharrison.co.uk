@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 'Maven - Adding Dependencies'
+title: "Maven - Adding Dependencies"
 tags:
-  - java
-  - maven
+    - java
+    - maven
 ---
 
- [1]: {{ site.baseurl }}{% post_url 2014-05-05-maven-installation-getting-started %}
+[1]: {{ site.baseurl }}{% post_url 2014/2014-05-05-maven-installation-getting-started %}
 
 ### Prerequisites -
 
@@ -42,9 +42,9 @@ Here is the XML snippet we obtained from the repository explorer:
 
 {% highlight xml %}  
 <dependency>  
-    <groupId>com.google.guava</groupId>  
-    <artifactId>guava</artifactId>  
-    <version>17.0</version>  
+ <groupId>com.google.guava</groupId>  
+ <artifactId>guava</artifactId>  
+ <version>17.0</version>  
 </dependency>  
 {% endhighlight %}
 
@@ -52,30 +52,31 @@ As you can see it's really quite simple. It merely defines the `groupId` and `ar
 
 In order to tell Maven about this new dependency, we simply add it to the existing `pom.xml` for your project. The `dependency` tag goes inside a container `dependencies` tag - meaning that we can have as many dependencies as we like in our project. The edited `pom.xml` looks like this:
 
-{% highlight xml %} 
+{% highlight xml %}
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
-    <modelVersion>4.0.0</modelVersion>
+ <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.ryanharrison.app</groupId>  
-    <artifactId>MavenTutorial</artifactId>  
-    <version>1.0-SNAPSHOT</version><packaging>jar</packaging> 
+    <groupId>net.ryanharrison.app</groupId>
+    <artifactId>MavenTutorial</artifactId>
+    <version>1.0-SNAPSHOT</version><packaging>jar</packaging>
 
-    <name>MavenTutorial</name>  
-    <url>http://maven.apache.org</url><properties> <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> </properties> 
+    <name>MavenTutorial</name>
+    <url>http://maven.apache.org</url><properties> <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> </properties>
 
-    <dependencies>  
-        <dependency>  
-            <groupId>com.google.guava</groupId>  
-            <artifactId>guava</artifactId>  
-            <version>17.0</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>junit</groupId>  
-            <artifactId>junit</artifactId>  
-            <version>3.8.1</version>  
-            <scope>test</scope>  
-        </dependency>  
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
 </project>
 {% endhighlight %}
 
@@ -91,11 +92,11 @@ package net.ryanharrison.app;
 import com.google.common.base.Joiner;
 
 public class App {  
-    public static void main(String[] args) {  
-        String[] words = {"Hello", "World", "using", "the", "Guava", "library"};  
-        String joined = Joiner.on(" ").join(words);  
-        System.out.println(joined);  
-    }  
+ public static void main(String[] args) {  
+ String[] words = {"Hello", "World", "using", "the", "Guava", "library"};  
+ String joined = Joiner.on(" ").join(words);  
+ System.out.println(joined);  
+ }  
 }
 {% endhighlight %}
 
@@ -109,11 +110,11 @@ Finally, in order to compile the application (including Maven downloading the de
 
 `mvn compile`
 
-    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom  
-    > Downloaded: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom (6 KB at 13.6 KB/sec)  
-    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom  
-    > Downloaded: http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom (8 KB at 78.9  
-    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar  
+    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom
+    > Downloaded: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom (6 KB at 13.6 KB/sec)
+    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom
+    > Downloaded: http://repo.maven.apache.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom (8 KB at 78.9
+    > Downloading: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar
     > Downloaded: http://repo.maven.apache.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar (2191 KB at 1622.6 KB/sec)
 
 In the output you should see something like the above where Maven is downloading the dependency from the repository and placing it into your local repository (that way it doesn't have to be downloaded every time and can be shared across all your projects).
@@ -124,21 +125,21 @@ In order to tell Maven to package the dependencies inside the same `.jar` file, 
 
 {% highlight xml %}
 <build>
-    <plugins> 
-        <plugin> 
-            <artifactId>maven-assembly-plugin</artifactId>
-            <configuration>  
-                <archive>  
-                    <manifest>  
-                        <mainClass>net.ryanharrison.app</mainClass>  
-                    </manifest>  
-                </archive>  
-                <descriptorRefs>  
-                    <descriptorRef>jar-with-dependencies</descriptorRef>  
-                </descriptorRefs>  
-            </configuration> 
-        </plugin>
-    </plugins>
+<plugins>
+<plugin>
+<artifactId>maven-assembly-plugin</artifactId>
+<configuration>  
+ <archive>  
+ <manifest>  
+ <mainClass>net.ryanharrison.app</mainClass>  
+ </manifest>  
+ </archive>  
+ <descriptorRefs>  
+ <descriptorRef>jar-with-dependencies</descriptorRef>  
+ </descriptorRefs>  
+ </configuration>
+</plugin>
+</plugins>
 </build>
 {% endhighlight %}
 
@@ -150,7 +151,7 @@ A new `.jar` file should now have been created in the target folder called `Mave
 
 Finally, we can run the `.jar` file and get our output:
 
-    > C:\Projects\MavenTutorial>java -jar target/MavenTutorial-1.0-SNAPSHOT-jar-with-dependencies.jar  
+    > C:\Projects\MavenTutorial>java -jar target/MavenTutorial-1.0-SNAPSHOT-jar-with-dependencies.jar
     > Hello World using the Guava library
 
 As you can see we get the joined output from our program. That's it for this tutorial, thanks for reading!

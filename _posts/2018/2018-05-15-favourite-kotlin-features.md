@@ -2,9 +2,9 @@
 layout: post
 title: Favourite Kotlin Features
 tags:
-  - kotlin
-  - features
-  - favourite
+    - kotlin
+    - features
+    - favourite
 ---
 
 Kotlin has many great language features which, in my view, put it way ahead of Java in terms of expressiveness and overall productivity. Here are a few of the notable examples:
@@ -36,13 +36,13 @@ fun say() {
 
 This is cool and all, but the great thing about this is that from day one Kotlin has fantastic 3rd party library support. Everyone knows that there is pretty much a library for everything in Java-land - well you get to use each and every one of those in your Kotlin code for free. This massively lowers the barrier to entry for Kotlin compared to so many other languages when you have extremely stable libraries at your disposal:
 
-- Apache commons and all the rest of them
-- Guava, collections etc
-- Kafka, ElasticSearch, Hadoop etc
-- Spring Framework (which now has first class Kotlin support)
-- Hibernate, JooQ
-- Logback, Log4j, AssertJ, Hamcrest
-- The list goes on, and this doesn't even include Kotlin specific libraries!
+-   Apache commons and all the rest of them
+-   Guava, collections etc
+-   Kafka, ElasticSearch, Hadoop etc
+-   Spring Framework (which now has first class Kotlin support)
+-   Hibernate, JooQ
+-   Logback, Log4j, AssertJ, Hamcrest
+-   The list goes on, and this doesn't even include Kotlin specific libraries!
 
 This feature also means that you don't have to go head first into Kotlin for new or existing projects. There are a lot of developers on larger systems who have begun migrating over data classes and tests to Kotlin, leaving the core business logic in Java. That's perfectly feasible and probably recommended to keep it slow and appease those who are less than emphatic about using a new language.
 
@@ -54,22 +54,22 @@ Probably one of the headline features in Kotlin - and it really does save you so
 public class Person {
     private String name;
     private int age;
-    
+
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
-    
+
     public String getName() {
         return name;
     }
-     
+
     // other getters and setters
-   
+
     // equals and hashcode generated
-    
+
     // generated toString()
-    
+
     // clone/copy method
 }
 ```
@@ -82,11 +82,11 @@ data class Person(val name: String, val age: Int)
 
 This one line is equivalent to all that code above. The `data` keyword will instruct the compiler to generate the following for all attributes:
 
-- constructor to set all attributes (in this case they are `val` so are immutable)
-- getters (optional setters if `var`) for all attributes - implemented as Kotlin `properties`
-- `equals` and `hashcode` methods
-- `toString` method
-- `copy()` method similar to cloning in Java
+-   constructor to set all attributes (in this case they are `val` so are immutable)
+-   getters (optional setters if `var`) for all attributes - implemented as Kotlin `properties`
+-   `equals` and `hashcode` methods
+-   `toString` method
+-   `copy()` method similar to cloning in Java
 
 ## Extension Functions
 
@@ -143,7 +143,7 @@ val person = Person().apply {
 }
 ```
 
-A somewhat simple example, but it provides a really nice syntax for the `builder` pattern as described in [this article](https://kotlinlang.org/docs/reference/type-safe-builders.html). And it gets used all over the place in newer Kotlin libraries. Take a route definition in [Ktor](http://ktor.io/) for example (take a look at [this post]({{ site.baseurl }}{% post_url 2018-04-14-kotlin-ktor-exposed-starter  %}) on how to get started with `Ktor`):
+A somewhat simple example, but it provides a really nice syntax for the `builder` pattern as described in [this article](https://kotlinlang.org/docs/reference/type-safe-builders.html). And it gets used all over the place in newer Kotlin libraries. Take a route definition in [Ktor](http://ktor.io/) for example (take a look at [this post]({{ site.baseurl }}{% post_url 2018/2018-04-14-kotlin-ktor-exposed-starter  %}) on how to get started with `Ktor`):
 
 ```kotlin
 route("/widget") {

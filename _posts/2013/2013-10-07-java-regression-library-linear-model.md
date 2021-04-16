@@ -1,11 +1,12 @@
 ---
-title: 'Java Regression Library - Linear Regression Model'
+title: "Java Regression Library - Linear Regression Model"
 layout: post
 tags:
-  - java
-  - library
-  - regression
+    - java
+    - library
+    - regression
 ---
+
 ## Part 2 - Linear Regression Model
 
 Welcome to part 2 of this tutorial series where we will be creating a Regression Analysis library in Java. In the last tutorial we covered a lot of theory about the foundations and applications of regression analysis. We finished off by coding up the RegressionModel abstract class, which will become the base of all our models in this library.
@@ -22,7 +23,7 @@ In this tutorial we will be covering and implementing our first regression model
 
 To start off with lets consider the first the Wikipedia article definition for the [Simple Linear Regression Model][2]:
 
-  > Simple linear regression is the least squares estimator of a linear regression model with a single explanatory variable. In other words, simple linear regression fits a straight line through the set of n points in such a way that makes the sum of squared residuals of the model (that is, vertical distances between the points of the data set and the fitted line) as small as possible.
+> Simple linear regression is the least squares estimator of a linear regression model with a single explanatory variable. In other words, simple linear regression fits a straight line through the set of n points in such a way that makes the sum of squared residuals of the model (that is, vertical distances between the points of the data set and the fitted line) as small as possible.
 
 This is perhaps one of the easier to understand definitions. So in this model we have a single explanatory variable (`X` in our case) and we want to match a straight line through our points that that somehow 'best fits' all the points. in our data set.
 
@@ -70,8 +71,8 @@ Handily there is a nice formula for it (for those of us who don't want to derive
 
 Ok perhaps that formula isn't that nice after all then at first glance. The good thing is it really isn't all that bad when you get to know the symbols:
 
-  * x with a line over the top is called xbar = the mean of the `X` values in our data set  
-  * y with a line over the top is called xbar = the mean of the `Y` values in our data set
+-   x with a line over the top is called xbar = the mean of the `X` values in our data set
+-   y with a line over the top is called xbar = the mean of the `Y` values in our data set
 
 The `sigma` (the symbol that looks like a capital E) is the sumnation operator. The good news for us programmers is that this symbol can be nicely converted into something we can all understand - the `for loop` - as we will see in a minute!
 
@@ -85,13 +86,13 @@ Which stands for the `covariance` of `x` and `y` divided by the `variance` of `x
 
 We are only really worried about `ß` as finding `a` is easy once we have a value for `ß`. It's just the `mean` of the `y` values minus the found value of `ß` multipled by the `mean` of the `x` values. Great!
 
- [1]: {{ site.baseurl }}{% post_url 2013-09-24-java-regression-library-regression-models %}
- [2]: http://en.wikipedia.org/wiki/Simple_linear_regression
- [3]: https://i.imgur.com/w9Wa8WE.jpg
- [4]: https://upload.wikimedia.org/math/5/9/9/599c1e72969ec00e4d012146d8f90fbf.png
- [5]: https://upload.wikimedia.org/math/d/a/a/daadbe12908cba8971ddc97c2904e582.png
- [6]: https://www.codeproject.com/KB/graphics/Face_Recognition/EQ1.jpg
- [7]: https://upload.wikimedia.org/math/f/a/d/fadadaf7f3a6b4252ed4c6188999b37c.png
+[1]: {{ site.baseurl }}{% post_url 2013/2013-09-24-java-regression-library-regression-models %}
+[2]: http://en.wikipedia.org/wiki/Simple_linear_regression
+[3]: https://i.imgur.com/w9Wa8WE.jpg
+[4]: https://upload.wikimedia.org/math/5/9/9/599c1e72969ec00e4d012146d8f90fbf.png
+[5]: https://upload.wikimedia.org/math/d/a/a/daadbe12908cba8971ddc97c2904e582.png
+[6]: https://www.codeproject.com/KB/graphics/Face_Recognition/EQ1.jpg
+[7]: https://upload.wikimedia.org/math/f/a/d/fadadaf7f3a6b4252ed4c6188999b37c.png
 
 <!--more-->
 
@@ -107,33 +108,35 @@ It's probably easier if I show the code and then explain it.
 
 {% highlight java %}
 public static double covariance(double[] x, double[] y) {  
-    // Get the means of the x and y data first  
-    double xmean = mean(x);  
-    double ymean = mean(y);
+ // Get the means of the x and y data first  
+ double xmean = mean(x);  
+ double ymean = mean(y);
 
     double result = 0;
 
-    // loop through from i = 0 to the length of the data set (N in the formula)  
-    for (int i = 0; i < x.length; i++) { 
-        // Perform the calculation in the formula, adding each time to the result variable to get the final sum 
-        result += (x[i] - xmean) * (y[i] - ymean);  
+    // loop through from i = 0 to the length of the data set (N in the formula)
+    for (int i = 0; i < x.length; i++) {
+        // Perform the calculation in the formula, adding each time to the result variable to get the final sum
+        result += (x[i] - xmean) * (y[i] - ymean);
     }
 
-    // Finally divide by the data set - 1 to get our final result  
+    // Finally divide by the data set - 1 to get our final result
     result /= x.length - 1;
 
-    return result;  
+    return result;
+
 }
 
 // Calculate the mean of an array of data  
 public static double mean(double[] data) {  
-    double sum = 0;
+ double sum = 0;
 
-    for (int i = 0; i < data.length; i++) { 
-        sum += data[i];  
+    for (int i = 0; i < data.length; i++) {
+        sum += data[i];
     }
 
-    return sum / data.length;  
+    return sum / data.length;
+
 }
 {% endhighlight %}
 
@@ -149,21 +152,22 @@ The formula for the variance is extremely simple if you understand the covarianc
 
 The variance is also known as the sum of the squared deviations over the length of the data set, which can easily be seen by the formula. Again we have a simple sumnation that sums the differences between the data elements and the mean of the data set squared. We then divide this result by the length of the data set minus 1. Here is the code which makes use of the mean method from above:
 
-{% highlight java %} 
+{% highlight java %}
 public static double variance(double[] data) {  
-    // Get the mean of the data set  
-    double mean = mean(data);
+ // Get the mean of the data set  
+ double mean = mean(data);
 
     double sumOfSquaredDeviations = 0;
 
-    // Loop through the data set  
-    for (int i = 0; i < data.length; i++) { 
-        // sum the difference between the data element and the mean squared 
-        sumOfSquaredDeviations += Math.pow(data[i] - mean, 2);  
+    // Loop through the data set
+    for (int i = 0; i < data.length; i++) {
+        // sum the difference between the data element and the mean squared
+        sumOfSquaredDeviations += Math.pow(data[i] - mean, 2);
     }
 
-    // Divide the sum by the length of the data set - 1 to get our result  
-    return sumOfSquaredDeviations / (data.length - 1);  
+    // Divide the sum by the length of the data set - 1 to get our result
+    return sumOfSquaredDeviations / (data.length - 1);
+
 }
 {% endhighlight %}
 
@@ -178,266 +182,278 @@ We first create a new class called `LinearRegressionModel` that inherits from ou
 {% highlight java %}
 public class LinearRegressionModel extends RegressionModel {
 
-    // The y intercept of the straight line  
-    private double a;
-
-    // The gradient of the line
-    private double b;
-
-    /**  
-    * Construct a new LinearRegressionModel with the supplied data set  
-    * @param x The x data points  
-    * @param y The y data points  
-    */  
-    public LinearRegressionModel(double[] x, double[] y) {  
-        super(x, y);  
-        a = b = 0;  
-    }  
-}
-{% endhighlight %}
-
-We have two private fields representing the coefficients of our fitted straight line. Now all we need to do is code up the overriden methods. First up is the `.getCoefficients()` method which returns an array containing the two coefficients:
-
-{% highlight java %} 
-/**  
-* Get the coefficents of the fitted straight line  
-*  
-* @return An array of coefficients {intercept, gradient}  
-*  
-* @see RegressionModel#getCoefficients()  
-*/  
-@Override  
-public double[] getCoefficients() {  
-    if (!computed)  
-        throw new IllegalStateException("Model has not yet computed");
-
-    return new double[] { a, b };  
-}
-{% endhighlight %}
-
-Then there is the `evaluateAt(double)` method which allows us to evaluate the fitted line at a certain point:
-
-{% highlight java %} 
-/**  
-* Evaluate the computed model at a certain point  
-*  
-* @param x  
-* The point to evaluate at  
-* @return The value of the fitted straight line at the point x  
-*  
-* @see RegressionModel#evaluateAt(double)  
-*/  
-@Override  
-public double evaluateAt(double x) {  
-    if (!computed)  
-        throw new IllegalStateException("Model has not yet computed");
-
-    return a + b * x;  
-}
-{% endhighlight %}
-
-Both methods are pretty easy. They both first check of the model has computed before returning a result. If not an exception is thrown. Now we only have to implement the `compute()` method to find the coefficients of our fitted line and we are done:
-
-{% highlight java %} 
-/**  
-* Compute the coefficients of a straight line the best fits the data set  
-*  
-* @see RegressionModel#compute()  
-*/  
-@Override  
-public void compute() {
-
-    // throws exception if regression can not be performed  
-    if (xValues.length < 2 | yValues.length < 2) { 
-        throw new IllegalArgumentException("Must have more than two values"); 
-    } 
-
-    // get the value of the gradient using the formula b = cov[x,y] / var[x] 
-    b = MathUtils.covariance(xValues, yValues) / MathUtils.variance(xValues);
-
-    // get the value of the y-intercept using the formula a = ybar + b * xbar
-    a = MathUtils.mean(yValues) - b * MathUtils.mean(xValues); 
-    
-    // set the computed flag to true after we have calculated the coefficients 
-    computed = true; 
-}
-{% endhighlight %} 
-
-Before we compute the values we must first check that both data sets have at least two values (refer to Part 1 for more details on why). If there are then we use the two formulas along with the helper methods (now inside a `MathUtils` class) to find the values of a and b that make up our line of best fit. It's really not all that complicated when you separate it all out. 
-
-### The Full Code
-  
-#### MathUtils:
-
-{% highlight java %}
-/**  
-* Various helpful math functions for use throughout the library  
-*/  
-public class MathUtils {
-    /**  
-    * Calculate the covariance of two sets of data  
-    *  
-    * @param x  
-    * The first set of data  
-    * @param y  
-    * The second set of data  
-    * @return The covariance of x and y  
-    */  
-    public static double covariance(double[] x, double[] y) {  
-        double xmean = mean(x);  
-        double ymean = mean(y);
-
-        double result = 0;
-
-        for (int i = 0; i < x.length; i++) { 
-            result += (x[i] - xmean) * (y[i] - ymean);  
-        }
-
-        result /= x.length - 1;
-
-        return result;  
-    }
-
-    /**  
-    * Calculate the mean of a data set  
-    *  
-    * @param data  
-    * The data set to calculate the mean of  
-    * @return The mean of the data set  
-    */  
-    public static double mean(double[] data) {  
-        double sum = 0;
-
-        for (int i = 0; i < data.length; i++) { 
-            sum += data[i];  
-        }
-
-        return sum / data.length;  
-    }
-
-    /**  
-    * Calculate the variance of a data set  
-    *  
-    * @param data  
-    * The data set to calculate the variance of  
-    * @return The variance of the data set  
-    */  
-    public static double variance(double[] data) {  
-        // Get the mean of the data set  
-        double mean = mean(data);
-
-        double sumOfSquaredDeviations = 0;
-
-        // Loop through the data set  
-        for (int i = 0; i < data.length; i++) { 
-            // sum the difference between the data element and the mean squared 
-            sumOfSquaredDeviations += Math.pow(data[i] - mean, 2);  
-        }
-
-        // Divide the sum by the length of the data set - 1 to get our result  
-        return sumOfSquaredDeviations / (data.length - 1);  
-    }  
-}
-{% endhighlight %}
-
-#### LinerRegressionModel:
-
-{% highlight java %}
-/**  
-* A RegressionModel that fits a straight line to a data set  
-*/  
-public class LinearRegressionModel extends RegressionModel {
-
     // The y intercept of the straight line
     private double a;
 
     // The gradient of the line
     private double b;
 
-    /**  
-    * Construct a new LinearRegressionModel with the supplied data set  
-    *  
-    * @param x  
-    * The x data points  
-    * @param y  
-    * The y data points  
-    */  
-    public LinearRegressionModel(double[] x, double[] y) {  
-        super(x, y);  
-        a = b = 0;  
+    /**
+    * Construct a new LinearRegressionModel with the supplied data set
+    * @param x The x data points
+    * @param y The y data points
+    */
+    public LinearRegressionModel(double[] x, double[] y) {
+        super(x, y);
+        a = b = 0;
     }
 
-    /**  
-    * Get the coefficents of the fitted straight line  
-    *  
-    * @return An array of coefficients {intercept, gradient}  
-    *  
-    * @see RegressionModel#getCoefficients()  
-    */  
+}
+{% endhighlight %}
+
+We have two private fields representing the coefficients of our fitted straight line. Now all we need to do is code up the overriden methods. First up is the `.getCoefficients()` method which returns an array containing the two coefficients:
+
+{% highlight java %}
+/\*\*
+
+-   Get the coefficents of the fitted straight line
+-
+-   @return An array of coefficients {intercept, gradient}
+-
+-   @see RegressionModel#getCoefficients()  
+    \*/  
     @Override  
     public double[] getCoefficients() {  
-        if (!computed)  
-            throw new IllegalStateException("Model has not yet computed");
+     if (!computed)  
+     throw new IllegalStateException("Model has not yet computed");
 
-        return new double[] { a, b };  
+        return new double[] { a, b };
+
     }
+    {% endhighlight %}
 
-    /**  
-    * Compute the coefficients of a straight line the best fits the data set  
-    *  
-    * @see RegressionModel#compute()  
-    */  
+Then there is the `evaluateAt(double)` method which allows us to evaluate the fitted line at a certain point:
+
+{% highlight java %}
+/\*\*
+
+-   Evaluate the computed model at a certain point
+-
+-   @param x
+-   The point to evaluate at
+-   @return The value of the fitted straight line at the point x
+-
+-   @see RegressionModel#evaluateAt(double)  
+    \*/  
+    @Override  
+    public double evaluateAt(double x) {  
+     if (!computed)  
+     throw new IllegalStateException("Model has not yet computed");
+
+        return a + b * x;
+
+    }
+    {% endhighlight %}
+
+Both methods are pretty easy. They both first check of the model has computed before returning a result. If not an exception is thrown. Now we only have to implement the `compute()` method to find the coefficients of our fitted line and we are done:
+
+{% highlight java %}
+/\*\*
+
+-   Compute the coefficients of a straight line the best fits the data set
+-
+-   @see RegressionModel#compute()  
+    \*/  
     @Override  
     public void compute() {
 
-    // throws exception if regression can not be performed  
-    if (xValues.length < 2 | yValues.length < 2) { 
-        throw new IllegalArgumentException("Must have more than two values");
+        // throws exception if regression can not be performed
+        if (xValues.length < 2 | yValues.length < 2) {
+            throw new IllegalArgumentException("Must have more than two values");
+        }
+
+        // get the value of the gradient using the formula b = cov[x,y] / var[x]
+        b = MathUtils.covariance(xValues, yValues) / MathUtils.variance(xValues);
+
+        // get the value of the y-intercept using the formula a = ybar + b * xbar
+        a = MathUtils.mean(yValues) - b * MathUtils.mean(xValues);
+
+        // set the computed flag to true after we have calculated the coefficients
+        computed = true;
+
     }
+    {% endhighlight %}
 
-     // get the value of the gradient using the formula b = cov[x,y] / var[x] 
-     b = MathUtils.covariance(xValues, yValues) / MathUtils.variance(xValues); 
+Before we compute the values we must first check that both data sets have at least two values (refer to Part 1 for more details on why). If there are then we use the two formulas along with the helper methods (now inside a `MathUtils` class) to find the values of a and b that make up our line of best fit. It's really not all that complicated when you separate it all out.
 
-     // get the value of the y-intercept using the formula a = ybar + b \* xbar 
-     a = MathUtils.mean(yValues) - b * MathUtils.mean(xValues);
+### The Full Code
 
-      // set the computed flag to true after we have calculated the coefficients 
-      computed = true; 
-    } 
+#### MathUtils:
 
-    /** 
-    * Evaluate the computed model at a certain point
-    *
-    * @param x The point to evaluate at
-    * @return The value of the fitted straight line at the point x
-    * @see RegressionModel#evaluateAt(double)
-    */
-    @Override 
-    public double evaluateAt(double x) { 
-        if (!computed) 
-            throw new IllegalStateException("Model has not yet computed"); 
-        return a + b * x; 
-    } 
- }
-{% endhighlight %} 
+{% highlight java %}
+/\*\*
+
+-   Various helpful math functions for use throughout the library  
+    _/  
+    public class MathUtils {
+    /\*\*  
+     _ Calculate the covariance of two sets of data  
+     \*  
+     _ @param x  
+     _ The first set of data  
+     _ @param y  
+     _ The second set of data  
+     _ @return The covariance of x and y  
+     _/  
+     public static double covariance(double[] x, double[] y) {  
+     double xmean = mean(x);  
+     double ymean = mean(y);
+
+            double result = 0;
+
+            for (int i = 0; i < x.length; i++) {
+                result += (x[i] - xmean) * (y[i] - ymean);
+            }
+
+            result /= x.length - 1;
+
+            return result;
+        }
+
+        /**
+        * Calculate the mean of a data set
+        *
+        * @param data
+        * The data set to calculate the mean of
+        * @return The mean of the data set
+        */
+        public static double mean(double[] data) {
+            double sum = 0;
+
+            for (int i = 0; i < data.length; i++) {
+                sum += data[i];
+            }
+
+            return sum / data.length;
+        }
+
+        /**
+        * Calculate the variance of a data set
+        *
+        * @param data
+        * The data set to calculate the variance of
+        * @return The variance of the data set
+        */
+        public static double variance(double[] data) {
+            // Get the mean of the data set
+            double mean = mean(data);
+
+            double sumOfSquaredDeviations = 0;
+
+            // Loop through the data set
+            for (int i = 0; i < data.length; i++) {
+                // sum the difference between the data element and the mean squared
+                sumOfSquaredDeviations += Math.pow(data[i] - mean, 2);
+            }
+
+            // Divide the sum by the length of the data set - 1 to get our result
+            return sumOfSquaredDeviations / (data.length - 1);
+        }
+
+    }
+    {% endhighlight %}
+
+#### LinerRegressionModel:
+
+{% highlight java %}
+/\*\*
+
+-   A RegressionModel that fits a straight line to a data set  
+    \*/  
+    public class LinearRegressionModel extends RegressionModel {
+
+        // The y intercept of the straight line
+        private double a;
+
+        // The gradient of the line
+        private double b;
+
+        /**
+        * Construct a new LinearRegressionModel with the supplied data set
+        *
+        * @param x
+        * The x data points
+        * @param y
+        * The y data points
+        */
+        public LinearRegressionModel(double[] x, double[] y) {
+            super(x, y);
+            a = b = 0;
+        }
+
+        /**
+        * Get the coefficents of the fitted straight line
+        *
+        * @return An array of coefficients {intercept, gradient}
+        *
+        * @see RegressionModel#getCoefficients()
+        */
+        @Override
+        public double[] getCoefficients() {
+            if (!computed)
+                throw new IllegalStateException("Model has not yet computed");
+
+            return new double[] { a, b };
+        }
+
+        /**
+        * Compute the coefficients of a straight line the best fits the data set
+        *
+        * @see RegressionModel#compute()
+        */
+        @Override
+        public void compute() {
+
+        // throws exception if regression can not be performed
+        if (xValues.length < 2 | yValues.length < 2) {
+            throw new IllegalArgumentException("Must have more than two values");
+        }
+
+         // get the value of the gradient using the formula b = cov[x,y] / var[x]
+         b = MathUtils.covariance(xValues, yValues) / MathUtils.variance(xValues);
+
+         // get the value of the y-intercept using the formula a = ybar + b \* xbar
+         a = MathUtils.mean(yValues) - b * MathUtils.mean(xValues);
+
+          // set the computed flag to true after we have calculated the coefficients
+          computed = true;
+        }
+
+        /**
+        * Evaluate the computed model at a certain point
+        *
+        * @param x The point to evaluate at
+        * @return The value of the fitted straight line at the point x
+        * @see RegressionModel#evaluateAt(double)
+        */
+        @Override
+        public double evaluateAt(double x) {
+            if (!computed)
+                throw new IllegalStateException("Model has not yet computed");
+            return a + b * x;
+        }
+
+    }
+    {% endhighlight %}
 
 ### Making sure it works
 
 I will cover testing our Regression Library in depth in a later tutorial, but for now we will simply make sure that we get the same results as Microsoft Excel does for the same data set (from above).
 
-{% highlight java %} 
+{% highlight java %}
 public static void main(String[] args) {  
-    double[] x = { 2, 3, 4, 5, 6, 8, 10, 11 };
+ double[] x = { 2, 3, 4, 5, 6, 8, 10, 11 };
 
     double[] y = { 21.05, 23.51, 24.23, 27.71, 30.86, 45.85, 52.12, 55.98 };
 
     System.out.println("Expected output from Excel: y = 9.4763 + 4.1939x");
 
-    RegressionModel model = new LinearRegressionModel(x, y);  
-    model.compute();  
+    RegressionModel model = new LinearRegressionModel(x, y);
+    model.compute();
     double[] coefficients = model.getCoefficients();
 
-    System.out.printf("Actual output from our code: y = %.4f + %.4fx", coefficients[0], coefficients[1]);  
+    System.out.printf("Actual output from our code: y = %.4f + %.4fx", coefficients[0], coefficients[1]);
+
 }
 {% endhighlight %}
 

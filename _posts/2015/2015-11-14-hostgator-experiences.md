@@ -2,9 +2,9 @@
 layout: post
 title: My Experiences with Hostgator
 tags:
-  - hostgator
-  - hosting
-  - server
+    - hostgator
+    - hosting
+    - server
 ---
 
 When I first launched my blog way back [in 2011][1] I didn't really know a whole lot about web hosting at all and just wanted to get something tangible up and running as quick as possible. Therefore of course I had no idea what constituted a half decent web hosting company. At the time I think I was just following some online tutorial which ran through the process of setting up and hosting your own site. I registered my domain with GoDaddy as recommended (and still do with no issues) and then had to move on to actually hosting my site. The tutorial recommended Hostgator and that seemed fine to me. They had pretty good reviews and the prices for shared hosting were good for a minimal setup like mine.
@@ -19,7 +19,7 @@ Throughout my use of Hostgator speed wasn't an issue - although granted I wasn't
 
 Then my initial two year contract expired and I realised why the initial price was so cheap. The renewal invoice was sent to me and the price had increased by a third (about $70 for the two years). Not only had the base price increased slightly, but you don't get that nice 20% discount that you take for granted when you initially sign on. There are never any renewal discounts that I can make out. Even if you have marketing emails from them, their offers are always for new accounts - never for existing customers which is a real shame. I can of course understand why they do that in the business sense, but still I would expect some kind of special offer on renewals once in a blue moon. With hindsight, I should have threatened to leave which is when they start trying to discount things, but at the time I really didn't want the hassle of moving everything over to a new host and was happy with the service I was getting. Another two years with Hostgator it was.
 
-[1]: {% post_url 2011-06-08-hello-world %}
+[1]: {% post_url 2011/2011-06-08-hello-world %}
 
 <!--more-->
 
@@ -32,6 +32,3 @@ And so started the search for a new VPS plan. I first started at Hostgator, but 
 I will write another post on the hosting I eventually settled on, but it did however unfortunately mean an end to my days with Hostgator. The process of cancelling your account is pretty easy - just have to create a ticket and state why you are leaving. I told them how I was looking to upgrade to a VPS and that I thought they were too expensive compared to similar solutions on the market. I waited a couple days for them to get back to me, probably give me some kind of discount on their VPS's to try and keep me as a customer and that would be that. Strangely enough I was offered the same original 20% discount on shared hosting packages - exactly what I was trying to get away from. I think their custom retention department needs a little work. After I obviously refused their offer, it took another week and a half for my plan to actually get cancelled. Not a massive problem for me as I wasn't paying for anything at this point, but getting to the point where I would have to start following up on it myself.
 
 To be clear, this isn't in any way a bash on Hostgator. I had no problems with them through 4 years of hosting and I still think the pricing for shared hosting is reasonable (as long as you pick at least the 2 year option, which of course might not be for some people). I'm not sure what other companies offer these days in terms of shared hosting but I doubt you could do much better. It's a lot more work now with no cPanel, but still a really useful experience in setting up and securing a Unix environment from scratch. I would recommend it to any developer and you don't even need a fully fledged VPS or dedicated server - you can just spin up an environment at [DigitalOcean](https://www.digitalocean.com/) for an hour or two and then pull it down as needed.
-
-
-

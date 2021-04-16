@@ -2,12 +2,12 @@
 layout: post
 title: More Favourite Kotlin Features
 tags:
-  - kotlin
-  - features
-  - favourite
+    - kotlin
+    - features
+    - favourite
 ---
 
-This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018-05-15-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
+This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018/2018-05-15-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
 
 ## Higher Order Functions and First Class Lambdas
 
@@ -96,7 +96,7 @@ str = null // Compile-time error
 str.length // will never generate a null pointer exception
 ```
 
-However, having the concept of 'no value' is actually quite useful. In Kotlin you *can* assign `null` to a variable, but you have to explicitly define that capability in the variable definition, and more importantly you have to perform a null check every time you use the variable. In Java-land the equivalent would be using the `Optional<T>` class in the standard library.
+However, having the concept of 'no value' is actually quite useful. In Kotlin you _can_ assign `null` to a variable, but you have to explicitly define that capability in the variable definition, and more importantly you have to perform a null check every time you use the variable. In Java-land the equivalent would be using the `Optional<T>` class in the standard library.
 
 ```kotlin
 val str:String? = "name"

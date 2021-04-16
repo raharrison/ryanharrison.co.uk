@@ -2,18 +2,19 @@
 layout: post
 title: C# The Google Currency API Update
 tags:
-  - C#
-  - google api
-  - JSON
-  - regular expressions
+    - C#
+    - google api
+    - JSON
+    - regular expressions
 ---
+
 **NOTE: The Google Finance API has now been deprecated so this code will no longer work**
 
-After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example -; 
+After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example -;
 
 [http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd][2]
 
-which gives back this JSON object -; 
+which gives back this JSON object -;
 
 `{lhs: "1 000 000 British pounds",rhs: "1.6399 million U.S. dollars",error: "",icc: true}`
 
@@ -28,7 +29,7 @@ The Regex now becomes -;
 
 The new Regular Expression makes use of 'Groups' to store the two pieces of data in the same match -; the first groups contains the number, and the third contains the String due to the way this pattern is designed (it's probably possible to modify this, yet it doesn't create too much of a problem and so isn't worth the effort).
 
-We can now produce a match from the response using the same code as before -; 
+We can now produce a match from the response using the same code as before -;
 
 {% highlight csharp %}
 WebClient client = new WebClient();
@@ -37,11 +38,11 @@ string url = string.Format("http://www.google.com/ig/calculator?hl=en&q={0}{1}=?
 
 string response = client.DownloadString(url);
 
-Regex pattern = new Regex("rhs: \\\"((\\d|\\s|\\.)*)(\\s[^\\s]+)");  
+Regex pattern = new Regex("rhs: \\\"((\\d|\\s|\\.)\*)(\\s[^\\s]+)");  
 Match match = pattern.Match(response);  
 {% endhighlight %}
 
-Once we have access to the match, we can extract the data into our own variables -; 
+Once we have access to the match, we can extract the data into our own variables -;
 
 {% highlight csharp %}
 string number = match.Groups[1].Value;  
@@ -61,41 +62,42 @@ using System.Text.RegularExpressions;
 
 public static class Currency  
 {  
-	public static decimal Convert(decimal amount, string from, string to)  
-	{  
-		WebClient client = new WebClient();
+ public static decimal Convert(decimal amount, string from, string to)  
+ {  
+ WebClient client = new WebClient();
 
-		string url = string.Format("http://www.google.com/ig/calculator?hl=en&q={0}{1}=?{2}", amount, from.ToUpper(), to.ToUpper());
+    	string url = string.Format("http://www.google.com/ig/calculator?hl=en&q={0}{1}=?{2}", amount, from.ToUpper(), to.ToUpper());
 
-		string response = client.DownloadString(url);
+    	string response = client.DownloadString(url);
 
-		Regex pattern = new Regex("rhs: \\\"((\\d|\\s|\\.)*)(\\s[^\\s]+)");  
-		Match match = pattern.Match(response);
+    	Regex pattern = new Regex("rhs: \\\"((\\d|\\s|\\.)*)(\\s[^\\s]+)");
+    	Match match = pattern.Match(response);
 
-		string number = match.Groups[1].Value;  
-		number = number.Replace(((char)160).ToString(), "");
+    	string number = match.Groups[1].Value;
+    	number = number.Replace(((char)160).ToString(), "");
 
-		decimal num = System.Convert.ToDecimal(number);  
-		string units = match.Groups[3].Value.Replace(" ","");
+    	decimal num = System.Convert.ToDecimal(number);
+    	string units = match.Groups[3].Value.Replace(" ","");
 
-		if(units.Equals("million"))  
-		{  
-			num *= 1000000;  
-		}  
-		else if (units.Equals("billion"))  
-		{  
-			num *= 1000000000;  
-		}  
-		else if (units.Equals("trillion"))  
-		{  
-			num *= 1000000000000;  
-		}
+    	if(units.Equals("million"))
+    	{
+    		num *= 1000000;
+    	}
+    	else if (units.Equals("billion"))
+    	{
+    		num *= 1000000000;
+    	}
+    	else if (units.Equals("trillion"))
+    	{
+    		num *= 1000000000000;
+    	}
 
-		return Math.Round(num, 2);  
-	}  
+    	return Math.Round(num, 2);
+    }
+
 }  
 {% endhighlight %}
 
- [1]: {{ site.baseurl }}{% post_url 2011-07-15-c-the-google-currency-api %}
- [2]: http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd
- [3]: https://github.com/raharrison/GoogleAPI
+[1]: {{ site.baseurl }}{% post_url 2011/2011-07-15-c-the-google-currency-api %}
+[2]: http://www.google.com/ig/calculator?hl=en&q=1000000gbp=?usd
+[3]: https://github.com/raharrison/GoogleAPI

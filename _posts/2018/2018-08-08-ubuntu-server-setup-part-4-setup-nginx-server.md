@@ -2,20 +2,20 @@
 layout: post
 title: Ubuntu Server Setup Part 4 - Setup Nginx Web Server
 tags:
-  - ubuntu
-  - server
-  - nginx
+    - ubuntu
+    - server
+    - nginx
 typora-root-url: ..
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
-- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
-- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
-- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018/2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018/2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+-   [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+-   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+-   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
 Serving web pages is one of the most common and useful use cases of a cloud server. [Nginx](https://www.nginx.com/) is popular and handles some of the largest sites on the web. It's configuration is simplistic but very powerful and Nginx can often use less resources than an equivalent Apache server.
 
@@ -57,7 +57,7 @@ $ sudo systemctl disable nginx # don't start nginx on boot
 $ sudo systemctl enable nginx # do start nginx on boot
 ```
 
-Also check that your firewall (if any) is setup to allow connections on port 80 (for `HTTP`). Refer to the [previous part in this series]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %}) for instructions using `ufw`.
+Also check that your firewall (if any) is setup to allow connections on port 80 (for `HTTP`). Refer to the [previous part in this series]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %}) for instructions using `ufw`.
 
 Now you can check that everything is working correctly by accessing your web server through the internet. If you don't already know the external IP for you server, run the following command:
 
@@ -206,5 +206,5 @@ server {
 
 ## Log File Locations
 
-- `/var/log/nginx/access.log`: Every request to your web server is recorded in this log file unless Nginx is configured to do otherwise.
-- `/var/log/nginx/error.log`: Any Nginx errors will be recorded in this log file.
+-   `/var/log/nginx/access.log`: Every request to your web server is recorded in this log file unless Nginx is configured to do otherwise.
+-   `/var/log/nginx/error.log`: Any Nginx errors will be recorded in this log file.

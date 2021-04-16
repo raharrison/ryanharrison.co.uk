@@ -2,11 +2,11 @@
 layout: post
 title: Make HTTP Requests in Kotlin
 tags:
-  - kotlin
-  - http
-  - request
-  - ktor
-  - fuel
+    - kotlin
+    - http
+    - request
+    - ktor
+    - fuel
 ---
 
 **Updated 09/18 - Add section on the new HTTP Client in JDK 11**
@@ -17,7 +17,7 @@ These days making `HTTP` requests in any language is a staple of many common wor
 
 If you are using the latest JDK release, you can make use of the new built-in `HttpClient` API which is now modern and fully feature complete. It supports `HTTP 2.0` (header compression, server push, multiplexing etc), WebSockets and can be fully asynchronous - which integrates brilliantly with Kotlin coroutines.
 
-**[Please refer to full post on the API here]({{ site.baseurl }}{% post_url 2018-09-30-java-11-http-client %})**
+**[Please refer to full post on the API here]({{ site.baseurl }}{% post_url 2018/2018-09-30-java-11-http-client %})**
 
 In short, you create a new `HttpClient` and pass `HttpRequest` objects in (the below example is synchronous). Note that you could easily create some helper/extension functions to make this code much neater:
 
@@ -99,11 +99,11 @@ Note that in this case, `get` is a `suspending` function so you would have to ca
 ```kotlin
 suspend fun parallelRequests() {
     val client = HttpClient(Apache)
-    
+
     // Start two requests asynchronously.
     val req1 = async { client.call("https://127.0.0.1:8080/a").response.readBytes() }
     val req2 = async { client.call("https://127.0.0.1:8080/b").response.readBytes() }
-    
+
     // Get the request contents without blocking threads, but suspending the function until both
     // requests are done.
     val bytes1 = req1.await() // Suspension point.

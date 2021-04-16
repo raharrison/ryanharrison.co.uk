@@ -2,26 +2,26 @@
 layout: post
 title: Ubuntu Server Setup Part 8 - Sending Email Through Gmail
 tags:
-  - ubuntu
-  - server
-  - email
-  - mail
-  - gmail
-  - send
-  - relay
+    - ubuntu
+    - server
+    - email
+    - mail
+    - gmail
+    - send
+    - relay
 typora-root-url: ..
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
-- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
-- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
-- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018/2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+-   [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018/2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+-   [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+-   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
-In the [previous part]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %}) we covered how to setup Postfix to receive emails for our custom domain name and forward them onto a personal Gmail account. With that solution, you can get access to all incoming mail via the forwarding, but you have no way of sending mail as owner of your domain.
+In the [previous part]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %}) we covered how to setup Postfix to receive emails for our custom domain name and forward them onto a personal Gmail account. With that solution, you can get access to all incoming mail via the forwarding, but you have no way of sending mail as owner of your domain.
 
 You could still add the address as a `Send Mail As` option within Gmail, but your underlying address would still be visible to the receiver. This is also how you see the `Sent on Behalf Of` message in Outlook etc. Ideally, we want to be able to send email in Gmail, but use our server as an intermediate. This is great because we can still use the Gmail interface and tooling without having to setup a real mailbox (Roundcube etc) on our server.
 
@@ -60,7 +60,7 @@ $ sudo chown postfix /etc/sasldb2
 
 ### Create an SSL Certificate
 
-Because all traffic between Gmail and our server will be sent under `TLS`, we need an `SSL` certificate. If you already have a certificate (e.g from [Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})), you can use that, but otherwise a [simple self signed cert](https://www.shellhacks.com/create-self-signed-certificate-openssl/) works just as well:
+Because all traffic between Gmail and our server will be sent under `TLS`, we need an `SSL` certificate. If you already have a certificate (e.g from [Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})), you can use that, but otherwise a [simple self signed cert](https://www.shellhacks.com/create-self-signed-certificate-openssl/) works just as well:
 
 ```shell
 $ openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -nodes -days 3650
@@ -152,5 +152,5 @@ Finally, start composing a new email or reply to an existing one and you should 
 
 In the last two sections we set up a Postfix email server for own domain name `yourdomain.com`:
 
-- All emails sent to `me@yourdomain.com` (or any listed in the `virtual` file) on port `25`, will be forwarded on to `you@gmail.com` and be visible in your standard Gmail inbox.
-- Gmail will let you select `me@yourdomain.com` as the `From` address when sending or replying to any mail. The message will be relayed onto our Postfix server with `TLS` on port `587` and then passed on to the destination. Any message sent in this fashion will look to the receiver as though it was sent directly by your domain and your underlying Gmail address will not be visible.
+-   All emails sent to `me@yourdomain.com` (or any listed in the `virtual` file) on port `25`, will be forwarded on to `you@gmail.com` and be visible in your standard Gmail inbox.
+-   Gmail will let you select `me@yourdomain.com` as the `From` address when sending or replying to any mail. The message will be relayed onto our Postfix server with `TLS` on port `587` and then passed on to the destination. Any message sent in this fashion will look to the receiver as though it was sent directly by your domain and your underlying Gmail address will not be visible.

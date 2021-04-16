@@ -2,24 +2,24 @@
 layout: post
 title: Ubuntu Server Setup Part 7 - Email Forwarding with Postfix
 tags:
-  - ubuntu
-  - server
-  - email
-  - mail
-  - postfix
-  - domain
-  - forward
+    - ubuntu
+    - server
+    - email
+    - mail
+    - postfix
+    - domain
+    - forward
 typora-root-url: ..
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
-- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
-- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
-- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018/2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+-   [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018/2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+-   [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+-   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
 One of the best things about owning your own domain name is being able to use it as a custom email address. Many companies provide this service for a monthly fee, but if you have your own personal server/VPS already anyway, then you might as well take advantage of it.
 
@@ -35,10 +35,10 @@ In short, at the end of this part all email to `me@yourdomain.com` will be forwa
 
 The first step is to configure a couple of DNS records to ensure that email traffic gets routed to your server correctly (`MX` record). The others are to help out in the battle against Gmail thinking that all your mail is spam and for them to correctly validate your server as being in control over your domains mailbox. In whatever DNS control panel your have, create the following:
 
-- An `A` record pointing `yourdomain.com` to your servers IP address
-- An `MX` record pointing `yourdomain.com` to the IP of your server (or `@` to point to your `A` record)
-- A `PTR` (reverse DNS) record pointing your servers IP to `yourdomain.com`. This allows Gmail to verify the legitimacy of our server via its IP when Gmail receives a forwarded e-mail from it.
-- An `SPF` record with the contents `v=spf1 mx a ip4:<yourip>/32 include:_spf.google.com ~all` (replacing with your own IP address)
+-   An `A` record pointing `yourdomain.com` to your servers IP address
+-   An `MX` record pointing `yourdomain.com` to the IP of your server (or `@` to point to your `A` record)
+-   A `PTR` (reverse DNS) record pointing your servers IP to `yourdomain.com`. This allows Gmail to verify the legitimacy of our server via its IP when Gmail receives a forwarded e-mail from it.
+-   An `SPF` record with the contents `v=spf1 mx a ip4:<yourip>/32 include:_spf.google.com ~all` (replacing with your own IP address)
 
 The SPF record tells Gmail that only the servers specified are allowed to send e-mails purporting to be from `yourdomain.com` All other servers attempting to do the same will be rejected - which helps a lot with spam.
 
@@ -116,7 +116,7 @@ $ sudo service postfix restart # or perform a restart
 
 ## Configure Firewall
 
-`SMTP` traffic (which Postfix is handling and forwarding) runs on port 25, so makes sure to allow it through your firewall. Refer to [Part 3]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %}) for info on how to set one up.
+`SMTP` traffic (which Postfix is handling and forwarding) runs on port 25, so makes sure to allow it through your firewall. Refer to [Part 3]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %}) for info on how to set one up.
 
 ```shell
 $ ufw allow 25/tcp

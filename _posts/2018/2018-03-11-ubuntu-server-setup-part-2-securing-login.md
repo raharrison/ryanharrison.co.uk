@@ -2,19 +2,19 @@
 layout: post
 title: Ubuntu Server Setup Part 2 - Secure Login
 tags:
-  - ubuntu
-  - server
-  - ssh
+    - ubuntu
+    - server
+    - ssh
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
-- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
-- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
-- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
-- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+-   [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018/2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+-   [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+-   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+-   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
 Before reading this, make sure to go over [part 1][1] which covers initial login and setting up a new user.
 
@@ -75,7 +75,7 @@ If you're using the ssh command, place the file under `~/.ssh/id_rsa` and it wil
 In order to further secure the server, it's best to prevent direct login to the `root` user. I have also changed the port for `ssh` to something other than `22` to prevent a lot of automated attacks and disabled password authentication (forcing you to use public keys).
 
     $ nano /etc/ssh/sshd_config
-    
+
     PermitRootLogin no
     Port 23401
     PasswordAuthentication no
@@ -87,4 +87,4 @@ Reload the ssh daemon to reflect the changes
 
 With these settings active, you will be forced into logging in via the `Fred` or `Wilma` users (`root` being disabled) by public key authentication on port 23401.
 
-[1]: {% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %}
+[1]: {% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %}

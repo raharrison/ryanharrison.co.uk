@@ -2,24 +2,24 @@
 layout: post
 title: Ubuntu Server Setup Part 5 - Install Git, Ruby and Jekyll
 tags:
-  - ubuntu
-  - server
-  - git
-  - ruby
-  - jekyll
+    - ubuntu
+    - server
+    - git
+    - ruby
+    - jekyll
 typora-root-url: ..
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
-- [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
-- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
-- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018/2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+-   [Part 6 - HTTPS With Let's Encrypt]({{ site.baseurl }}{% post_url 2018/2018-09-12-ubuntu-server-setup-part-6-https-with-lets-encrypt %})
+-   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+-   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
-This part will take care of installing everything necessary to allow the new server to host your personal blog (or other [Jekyll](https://jekyllrb.com/) site). As a prerequisite, you will also need some kind of web server installed (such as [Nginx](https://www.nginx.com/) or [Apache](https://httpd.apache.org/)) to take care of serving your `HTML` files over the web. [Part 4]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %}) covers the steps for my favourite - Nginx.
+This part will take care of installing everything necessary to allow the new server to host your personal blog (or other [Jekyll](https://jekyllrb.com/) site). As a prerequisite, you will also need some kind of web server installed (such as [Nginx](https://www.nginx.com/) or [Apache](https://httpd.apache.org/)) to take care of serving your `HTML` files over the web. [Part 4]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %}) covers the steps for my favourite - Nginx.
 
 ## Install Git
 
@@ -64,8 +64,8 @@ alias glo='git log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\
 
 More helpful aliases:
 
-- [Must Have Git Aliases: Advanced Examples](http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/)
-- [16 Awesome Git Aliases](http://codersopinion.com/blog/16-awesome-git-aliases-that-you-will-love/)
+-   [Must Have Git Aliases: Advanced Examples](http://durdn.com/blog/2012/11/22/must-have-git-aliases-advanced-examples/)
+-   [16 Awesome Git Aliases](http://codersopinion.com/blog/16-awesome-git-aliases-that-you-will-love/)
 
 ## Install Ruby
 

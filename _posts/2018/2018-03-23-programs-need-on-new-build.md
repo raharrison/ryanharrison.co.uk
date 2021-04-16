@@ -2,9 +2,9 @@
 layout: post
 title: Programs to install on a New Build
 tags:
-  - programs
-  - new
-  - install
+    - programs
+    - new
+    - install
 ---
 
 Below is a list of all the software I tend to install straight away on a new build (or simply when reinstalling Windows from time to time). I am big into keeping what you have installed at any point to an absolute minimum - mainly to prevent general slowdown over time, so this list isn't that long. These can however get pretty much anything I need done, even if extra utilities are needed later on.
@@ -13,7 +13,7 @@ Below is a list of all the software I tend to install straight away on a new bui
 
 **[Chrome](https://www.google.com/chrome/)** - my main browser and has been for quite a while now. Sure it's a massive resource hog, but what's the point in having RAM if it's sitting idle? Still probably the fastest browser around and the most popular.
 
-**[Firefox](https://www.mozilla.org/en-GB/firefox/new/)** - mainly installed as a backup which gets used every so often. The new [Firefox Quantum]({% post_url 2017-10-07-firefox-quantum %}) update has improved the situation dramatically and maybe I'll try it as my main driver if Google screws things up.
+**[Firefox](https://www.mozilla.org/en-GB/firefox/new/)** - mainly installed as a backup which gets used every so often. The new [Firefox Quantum]({% post_url 2017/2017-10-07-firefox-quantum %}) update has improved the situation dramatically and maybe I'll try it as my main driver if Google screws things up.
 
 ### Browser Extensions: pretty much mandatory if you want any kind of sane browsing experience
 
@@ -31,7 +31,7 @@ Again, I like to keep this list to a minimum as Chrome starts to slowdown and co
 
 **[Notepad++](https://notepad-plus-plus.org/)** - small, fast and feature rich replacement to the standard Windows Notepad. Great for any light text editing that doesn't require a full-blown editor/IDE.
 
-**[Visual Studio Code](https://code.visualstudio.com/)** - probably the best editor around now after pretty much wiping the floor with Atom and Sublime. The amount of updates each month is insane and the extensions are very mature at this point. [See here]({% post_url 2018-02-10-helpful-extensions-vscode %}) for the extensions I use.
+**[Visual Studio Code](https://code.visualstudio.com/)** - probably the best editor around now after pretty much wiping the floor with Atom and Sublime. The amount of updates each month is insane and the extensions are very mature at this point. [See here]({% post_url 2018/2018-02-10-helpful-extensions-vscode %}) for the extensions I use.
 
 ### Dev: tools and IDE of choice
 
@@ -57,7 +57,7 @@ Again, I like to keep this list to a minimum as Chrome starts to slowdown and co
 
 **[FileZilla](https://filezilla-project.org/)** - SFTP client although not really needed anymore as WSL and `rsync` are a thing. Still small/lightweight enough to keep around.
 
-**[Postman](https://www.getpostman.com/)** -  great program to create and send HTTP requests. The de facto choice at this point for testing web services.
+**[Postman](https://www.getpostman.com/)** - great program to create and send HTTP requests. The de facto choice at this point for testing web services.
 
 **[Private Internet Access](https://www.privateinternetaccess.com/)** - current VPN provider. Never had any problems with it, speeds are good and the client is solid.
 

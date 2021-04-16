@@ -2,9 +2,9 @@
 layout: post
 title: Automate Jekyll with GitHub Webhooks
 tags:
-  - jekyll
-  - github
-  - webhook
+    - jekyll
+    - github
+    - webhook
 typora-root-url: ..
 ---
 
@@ -22,7 +22,7 @@ Here you can choose a URL which will be called by GitHub when certain actions ha
 
 For this use case we are just interested in the `push` event (i.e when you push a new post), but you could also perform actions on all sorts of other events if needed. In the content type I have left it as `form-urlencoded` as I'm not really interested in the payload, but you could also choose `JSON` if needed. The payload will include extra details of the event - in this case the files which have changed as a result of the `git push`. This could be helpful if you only wanted to regenerate certain portions of your site if they have been modified.
 
-You can also provide a secret - of which the` SHA-1` hash which will be added into the `X-Hub-Signature` header of each request. More details [in the docs](https://developer.github.com/webhooks/). Once finished click `Add webook`. 
+You can also provide a secret - of which the` SHA-1` hash which will be added into the `X-Hub-Signature` header of each request. More details [in the docs](https://developer.github.com/webhooks/). Once finished click `Add webook`.
 
 **Note** - GitHub webhooks have a timeout of 10 seconds so you might see them fail if your blog takes longer to rebuild. It doesn't really matter though as the server will have still been notified.
 
@@ -71,4 +71,4 @@ echo "Site Rebuilt Successfully";
 
 And that's pretty much it. Just run the Flask web server via `python3 refresh.py`. By default Flask runs on port 5000, so you might need to either open up a port on your server (and update the webhook url) or proxy it through Apache/Nginx.
 
-You could also integrate [Elastic Jekyll]({{ site.baseurl }}{% post_url 2017-10-24-elastic-jekyll %}) into this process to give your site full-text search via ElasticSearch that gets automatically updated as you add new content!
+You could also integrate [Elastic Jekyll]({{ site.baseurl }}{% post_url 2017/2017-10-24-elastic-jekyll %}) into this process to give your site full-text search via ElasticSearch that gets automatically updated as you add new content!

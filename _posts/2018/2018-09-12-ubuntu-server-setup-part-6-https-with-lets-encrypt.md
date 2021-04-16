@@ -2,27 +2,27 @@
 layout: post
 title: Ubuntu Server Setup Part 6 - HTTPS With Let's Encrypt
 tags:
-  - ubuntu
-  - server
-  - https
-  - let's encrypt
-  - certbot
-  - certificate
+    - ubuntu
+    - server
+    - https
+    - let's encrypt
+    - certbot
+    - certificate
 typora-root-url: ..
 ---
 
-- [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016-03-29-ubuntu-server-setup-part-1-logging-in %})
-- [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018-03-11-ubuntu-server-setup-part-2-securing-login %})
-- [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
-- [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
-- [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
-- [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
-- [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
-- [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})
+-   [Part 2 - Securing Login]({{ site.baseurl }}{% post_url 2018/2018-03-11-ubuntu-server-setup-part-2-securing-login %})
+-   [Part 3 - Installing a Firewall]({{ site.baseurl }}{% post_url 2018/2018-07-31-ubuntu-server-setup-part-3-setup-firewall %})
+-   [Part 4 - Setup Nginx Web Server]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})
+-   [Part 5 - Install Git, Ruby and Jekyll]({{ site.baseurl }}{% post_url 2018/2018-08-27-ubuntu-server-setup-part-5-git-ruby-jekyll %})
+-   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
+-   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
+-   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
 
 `HTTPS` is a must have nowadays with sites served under plain `HTTP` being downgraded in search results by Google and marked as insecure by browsers. The process of obtaining an `SSL` certificate used to be cumbersome and expensive, but now thankfully because of Let's Encrypt it completely free and you can automate the process with just a few commands.
 
-This part assumes that you already have an active `Nginx` server running (as described in [Part 4]({{ site.baseurl }}{% post_url 2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})) and so will go over how to use Let's Encrypt with Nginx. `Certbot` (the client software) has a number of plugins that make the process just as easy if you are running another web server such as `Apache`.
+This part assumes that you already have an active `Nginx` server running (as described in [Part 4]({{ site.baseurl }}{% post_url 2018/2018-08-08-ubuntu-server-setup-part-4-setup-nginx-server %})) and so will go over how to use Let's Encrypt with Nginx. `Certbot` (the client software) has a number of plugins that make the process just as easy if you are running another web server such as `Apache`.
 
 ## Prepare the Nginx Server
 
@@ -68,10 +68,10 @@ sudo certbot --nginx
 
 It will ask for:
 
-- an email address (you will be emailed if there are any issues or your certs are about to expire)
-- agreeing to the Terms of Service
-- which domains to use `HTTPS` for (it detects the list using `server_name` lines in your Nginx config)
-- whether to redirect `HTTP` to `HTTPS` (recommended)
+-   an email address (you will be emailed if there are any issues or your certs are about to expire)
+-   agreeing to the Terms of Service
+-   which domains to use `HTTPS` for (it detects the list using `server_name` lines in your Nginx config)
+-   whether to redirect `HTTP` to `HTTPS` (recommended)
 
 Once you have selected these options, `Certbot` will perform a 'challenge' to check that the server it is running on is in control of the domain name. As described in the [ACME protocol](https://github.com/ietf-wg-acme/acme/) which is what underlies Let's Encrypt, there are a number of different challenge types. In this case `tls-sni` was probably performed, although `DNS` might be used for wildcard certificates.
 

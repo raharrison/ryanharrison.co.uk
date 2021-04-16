@@ -2,12 +2,12 @@
 layout: post
 title: Even More Favourite Kotlin Features
 tags:
-  - kotlin
-  - features
-  - favourite
+    - kotlin
+    - features
+    - favourite
 ---
 
-This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018-06-24-more-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
+This post is a continuation of a [previous post]({{ site.baseurl }}{% post_url 2018/2018-06-24-more-favourite-kotlin-features %}) on some of my favourite language feature in Kotlin.
 
 ## Coroutines
 
@@ -24,7 +24,7 @@ suspend fun someWork(): String {
 
 suspend fun worker() {
     val first = async { someWork() }
-    val second = async { someOtherWork() } 
+    val second = async { someOtherWork() }
     println("The answer is ${first.await() + second.await()}") // suspension point
 }
 ```
@@ -43,15 +43,15 @@ launch {
 
 The key factor is that you want to avoid blocking threads. In Java multithreading scenarios, this is much more common - maybe you block waiting for a queue to fill or until a web request is finished. With Kotlin coroutines you don't have to block the entire thread - you suspend the coroutine instead and the thread is free to continue doing other work. This is especially handy in web frameworks such as [Ktor](https://github.com/ktorio/ktor) which is built around coroutines.
 
-This is just scraping the surface of what the coroutines library has to offer - 
+This is just scraping the surface of what the coroutines library has to offer -
 
-- channels (think pub/sub)
+-   channels (think pub/sub)
 
-- support for custom dispatchers and contexts (restrain execution to your thread pool etc)
+-   support for custom dispatchers and contexts (restrain execution to your thread pool etc)
 
-- full support for cancellation and error handing
+-   full support for cancellation and error handing
 
-- actors, producers and select expressions
+-   actors, producers and select expressions
 
 The [introductory guide](https://github.com/Kotlin/kotlinx.coroutines/blob/master/coroutines-guide.md) is a great read if you want to learn more. In effect, they are similar to Go-routines and a lot more powerful than C# `async/await`. If you read the guide you can see the multitude of use cases which can be easily parallelised or made non-blocking.
 
@@ -90,7 +90,7 @@ fun work() {
 }
 ```
 
-Even though Kotlin *does* have a language feature that could support a similar utils pattern you would see in Java - the `object` keyword - top-level helper functions are much neater.
+Even though Kotlin _does_ have a language feature that could support a similar utils pattern you would see in Java - the `object` keyword - top-level helper functions are much neater.
 
 It might not seem like much, but it really can dramatically reduce the overall number of source files you have to deal with. A common case is where you define a short interface and a couple of implementations. In Java they would have to be split into 3 separate `.java` files, regardless of the fact that it might all be 50 lines long. In Kotlin, you can put everything into one file.
 
@@ -122,7 +122,7 @@ public class SingletonInJava {
             INSTANCE = new SingletonInJava();
         }
         return INSTANCE;
-    }   
+    }
 }
 ```
 

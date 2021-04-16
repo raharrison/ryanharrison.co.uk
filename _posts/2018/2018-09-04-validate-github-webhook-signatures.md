@@ -9,7 +9,7 @@ tags:
 typora-root-url: ..
 ---
 
-I've mentioned using [GitHub webhooks](https://developer.github.com/webhooks) in a [previous post]({% post_url 2018-07-05-jekyll-rebuild-github-webhook %}) where they got used to kick-off a new Jekyll build every time a new commit is pushed. This usually involves having some kind of web server (in my case [Flask](http://flask.pocoo.org/)) running that listens for requests on some endpoint. The hope of course is that these requests only come from GitHub, but really there is nothing stopping any malicious actor from causing a denial of service attack by hitting that endpoint constantly and using up server resources.
+I've mentioned using [GitHub webhooks](https://developer.github.com/webhooks) in a [previous post]({% post_url 2018/2018-07-05-jekyll-rebuild-github-webhook %}) where they got used to kick-off a new Jekyll build every time a new commit is pushed. This usually involves having some kind of web server (in my case [Flask](http://flask.pocoo.org/)) running that listens for requests on some endpoint. The hope of course is that these requests only come from GitHub, but really there is nothing stopping any malicious actor from causing a denial of service attack by hitting that endpoint constantly and using up server resources.
 
 To get around this, we need to perform some kind of validation to make sure that only requests from GitHub cause a rebuild.
 
@@ -86,7 +86,7 @@ if not hmac.compare_digest(digest, signature):
 
 **Update 06/02/2020: Use `hmac.compare_digest` instead of `==`. Thanks @webknaz**
 
-[Automate Jekyll with GitHub Webhooks]({% post_url 2018-07-05-jekyll-rebuild-github-webhook %})
+[Automate Jekyll with GitHub Webhooks]({% post_url 2018/2018-07-05-jekyll-rebuild-github-webhook %})
 
 <https://docs.python.org/3.7/library/hmac.html>
 
