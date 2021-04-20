@@ -4,4 +4,18 @@
 
 My personal website and blog. Powered by [Jekyll](https://jekyllrb.com/)
 
-Accessible at http://ryanharrison.co.uk
+Accessible at <http://ryanharrison.co.uk>
+
+## Serve
+
+```plain
+docker-compose up
+or
+docker run -p 4000:4000 -v $(pwd):/site bretfisher/jekyll-serve
+```
+
+## Build
+
+```plain
+docker run -v $(pwd):/site bretfisher/jekyll-serve bundle exec jekyll build
+```
