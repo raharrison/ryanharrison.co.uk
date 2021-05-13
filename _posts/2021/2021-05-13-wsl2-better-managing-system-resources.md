@@ -12,7 +12,7 @@ typora-root-url: ..
 
 WSL2 is great, but unfortunately after moderate usage it’s easy to get in a situation where it will eat up all of your disk space and use up to 50% of your total system memory. We’ll go over how to address these issues below.
 
-## Setting WSL2 Memory Limit
+## Setting a WSL2 Memory Limit
 
 By default the WSL2 will consume up to 50% of your total system memory (or 8GB whichever is lower). You can configure an upper limit for the WSL2 VM by creating a `.wslconfig` file in your home directory (`C:\Users\<user>\.wslconfig`).
 
@@ -32,7 +32,7 @@ Whilst the WSL2 VM is running can you also run a simple command to drop the memo
 
 `sudo sh -c \"echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a && printf '\n%s\n' 'Ram-cache and Swap Cleared'\"`
 
-## Compact WSL2 Virtual Disk
+## Compact the WSL2 Virtual Disk
 
 If you copy some large files into WSL2 and then delete them, they will disappear from the filesystem but the underlying virtual disk may have still grown in size and the extra space will not be re-used. We can run a command to optimize/vacuum the virtual disk file to reclaim some space.
 
@@ -42,7 +42,7 @@ If you copy some large files into WSL2 and then delete them, they will disappear
 #   CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc
 #   CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc
 
-cd C:\Users\<user>\AppData\Local\Packages\<Replace-CanonicalGroupLimited>\LocalState
+cd C:\Users\user\AppData\Local\Packages<Replace-Eg-CanonicalGroupLimited\LocalState
 wsl --shutdown
 optimize-vhd -Path .\ext4.vhdx -Mode full
 ```
@@ -62,7 +62,7 @@ Along the same lines as above as we can also compact the VM file that Docker Des
 wsl.exe --shutdown
 
 # Replace <user> with your Windows user name. This is where Docker stores its VM file.
-cd C:\Users\<user>\AppData\Local\Docker\wsl\data
+cd C:\Users\user\AppData\Local\Docker\wsl\data
 
 # Compact the Docker Desktop WSL VM file
 optimize-vhd -Path .\ext4.vhdx -Mode full
