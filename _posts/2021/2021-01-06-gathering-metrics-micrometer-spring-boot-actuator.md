@@ -14,6 +14,8 @@ typora-root-url: ..
 
 > **Note**: Also check out this follow-up post which covers how to query and create reusable dashboards from your metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
 
+---
+
 ### Why Metrics?
 
 Metrics, alongside tracing and logging, form the concept of observability - one of the key cornerstones of DevOps - so hopefully it should be of no surprise to anyone of its importance. As we build larger and more distributed platforms, maintaining sufficient visibility into what the system is doing, when it's doing it and how well it's performing becomes more difficult, but also more vital. We can likely no longer just directly query the application for these measurements anymore. Instead, we require aggregations across all our service instances, as well as the ability to drill-down into particular aspects of a metric to gain most insight.
