@@ -12,6 +12,8 @@ tags:
 typora-root-url: ..
 ---
 
+> **Note**: Also check out this follow-up post which covers how to query and create reusable dashboards from your metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
+
 ### Why Metrics?
 
 Metrics, alongside tracing and logging, form the concept of observability - one of the key cornerstones of DevOps - so hopefully it should be of no surprise to anyone of its importance. As we build larger and more distributed platforms, maintaining sufficient visibility into what the system is doing, when it's doing it and how well it's performing becomes more difficult, but also more vital. We can likely no longer just directly query the application for these measurements anymore. Instead, we require aggregations across all our service instances, as well as the ability to drill-down into particular aspects of a metric to gain most insight.
@@ -590,6 +592,8 @@ We can then view the timing data in the `method.timed` base metric, which can be
 This just scratches the surface of the `Micrometer` API to define your own metrics. Take a look at the docs page <https://micrometer.io/docs/concepts> which goes into more detail about each available meter type.
 
 ### Aggregation and Visualization
+
+See this follow-up post for a complete look at visualizing Spring Boot metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
 
 Capturing and publishing metrics is one thing, but in a multi-instance environment we also need some way of aggregating all the measurements and allow us to visualize state across the whole platform. The built-in Spring Boot Actuator endpoint is useful as a quick admin tool, but generally we need to use the `Micrometer` connectors and other external monitoring tools to get the full benefits. There are a lot of options here, but `Prometheus` tends to be the go-to as a time series database and monitoring tool. For Spring based apps, you just need to add the appropriate `Micrometer` dependency and the rest is handled for you:
 
