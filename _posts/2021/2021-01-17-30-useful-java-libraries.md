@@ -6,7 +6,7 @@ tags:
   - library
   - useful
   - jvm
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 A collection of some interesting Java libraries and frameworks (not including the big ones everyone uses such as Spring or JUnit). Hopefully it contains some lesser known libraries which you might not have heard of before and may find useful.

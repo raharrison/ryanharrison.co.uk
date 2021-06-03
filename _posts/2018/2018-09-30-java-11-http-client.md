@@ -2,15 +2,15 @@
 layout: post
 title: Java 11 HTTP Client API
 tags:
-  - java
-  - jdk
-  - http
-  - client
-  - api
-  - java 11
-  - jdk 11
-  - request
-typora-root-url: ..
+    - java
+    - jdk
+    - http
+    - client
+    - api
+    - java 11
+    - jdk 11
+    - request
+typora-root-url: ../..
 ---
 
 One of the more noteworthy features of the new [Java 11](http://jdk.java.net/11/) release is the new `HttpClient` API within the standard library, which has been in incubator status since JDK 9. Previously, the process of sending and retrieving data over `HTTP` has been very cumbersome in Java. Either you went through the hassle of using `HttpURLConnection`, or you bring in a library to abstract over it such as the `HttpClient` from [Apache](http://hc.apache.org/index.html). Notably, both solutions would also block threads whilst doing so.

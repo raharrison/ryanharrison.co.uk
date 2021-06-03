@@ -7,7 +7,7 @@ tags:
     - docker
     - disk
     - reclaim
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 WSL2 is great, but unfortunately after moderate usage it’s easy to get in a situation where it will eat up all of your disk space and use up to 50% of your total system memory. We’ll go over how to address these issues below.
@@ -70,4 +70,4 @@ optimize-vhd -Path .\ext4.vhdx -Mode full
 
 The above `optimize-vhd` command will only work on Windows 10 Pro. For folks on the Home edition there are some scripts with workarounds:
 
-- <https://github.com/mikemaccana/compact-wsl2-disk>
+-   <https://github.com/mikemaccana/compact-wsl2-disk>

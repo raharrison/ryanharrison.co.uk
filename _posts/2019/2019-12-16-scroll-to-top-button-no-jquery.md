@@ -2,11 +2,11 @@
 layout: post
 title: Scroll to top button with no jQuery
 tags:
-  - scroll
-  - top
-  - jquery
-  - button
-typora-root-url: ..
+    - scroll
+    - top
+    - jquery
+    - button
+typora-root-url: ../..
 ---
 
 Dynamic scroll to top buttons have become quite common amongst a lot of webpages now, but most guides online require the use of `jQuery` to achieve the functionality of smooth scrolling plus fade in/out. In modern browsers however, you can get much the same effect without the additional `~30kb+` library overhead if you are already using a separate framework.
@@ -17,7 +17,7 @@ First step is to create an element representing the actual button. This takes th
 
 ```html
 <div id="topcontrol" title="Scroll to Top">
-    <img src="/images/arrow.png">
+    <img src="/images/arrow.png" />
 </div>
 ```
 
@@ -27,15 +27,15 @@ Without any styling, the image above will just appear at the bottom of your page
 
 ```scss
 #topcontrol {
-  @media (max-width: 38rem) {
-      display: none;
-  }
-  
-  position: fixed;
-  bottom: 10px;
-  right: 20px;
-  opacity: 0;
-  cursor: pointer;
+    @media (max-width: 38rem) {
+        display: none;
+    }
+
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    opacity: 0;
+    cursor: pointer;
 }
 ```
 
@@ -49,20 +49,20 @@ Because the button is hidden by default due to `opacity: 0` above, we also need 
 
 ```html
 <script>
-    (function(document) {
+    (function (document) {
         const topbutton = document.getElementById("topcontrol");
-        topbutton.onclick = function(e) {
-            window.scrollTo({top: 0, behavior: "smooth"});
-        }
+        topbutton.onclick = function (e) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
 
-        window.onscroll = function() {
+        window.onscroll = function () {
             if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                 topbutton.style.opacity = "1";
             } else {
                 topbutton.style.opacity = "0";
             }
         };
-})(document);
+    })(document);
 </script>
 ```
 
@@ -76,4 +76,3 @@ The above code will get all the behaviour we need, but the button will jump in a
 -o-transition: opacity 400ms ease-in-out;
 transition: opacity 400ms ease-in-out;
 ```
-

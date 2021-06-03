@@ -5,7 +5,7 @@ tags:
     - ubuntu
     - server
     - nginx
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 -   [Part 1 - Logging In]({{ site.baseurl }}{% post_url 2016/2016-03-29-ubuntu-server-setup-part-1-logging-in %})

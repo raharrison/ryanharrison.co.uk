@@ -8,7 +8,8 @@ tags:
     - regular expressions
 ---
 
-**NOTE: The Google Finance API has now been deprecated so this code will no longer work**
+**Note:** The Google Finance API has now been deprecated so this code will no longer work
+{: .info-block}
 
 After testing out the code from the [recent post on the Google Currency API][1], it became apparent that the code had one very significant bug that caused an exception to be thrown when the user enters a value that returns a result over the one million mark. For example -;
 

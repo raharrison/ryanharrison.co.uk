@@ -37,10 +37,10 @@ Rather than having to hardcode host names, Prometheus can integrate directly int
 
 Prometheus provides its own dynamic query language called [PromQL]({{ site.baseurl }}{% post_url 2021/2021-04-18-prometheus-monitoring-guide-part-2-promql-recording-rules %}) which understands each major metric type: `Counters`, `Gauges`, `Summaries` and `Histograms`. This is the main entry point into the underlying time series data and allows you to perform a wide variety of operations on your metrics:
 
-- binary operations between time series
-- rates over counters - taking into account service restarts
-- filtering the time series by any provided dimension/label
-- aggregating summary stats to create cumulative histograms
+-   binary operations between time series
+-   rates over counters - taking into account service restarts
+-   filtering the time series by any provided dimension/label
+-   aggregating summary stats to create cumulative histograms
 
 These queries can be used to support graphs and dashboards, or also to create alerts in conjunction with the `AlertManager` component (if for example certain thresholds are breached by an aggregated query across instances).
 
@@ -73,7 +73,7 @@ If you start the application, now you should be able to visit <http://localhost:
 You should see each of the built-in metrics provided by Spring Boot (JVM memory usage, HTTP requests, connection pools, caches etc) alongside all of your custom metrics and tags. Taking one of these lines to examine further gives some insight into how Prometheus stores these metrics:
 
 ```
-http_server_requests_seconds_count{application="nextservice",exception="None",method="GET",outcome="SUCCESS",status="200",uri="/actuator/info",} 1.0 
+http_server_requests_seconds_count{application="nextservice",exception="None",method="GET",outcome="SUCCESS",status="200",uri="/actuator/info",} 1.0
 ```
 
 In this case it's the total number of `HTTP` requests serviced by our app - for now just one after I called one of the actuator endpoints. The serialized form of the counter consists of the metric `name`, a series of `tags` (representing the dimensions) and a 64-bit floating point value - all of which will be stored in the time series dataset after capture. Since Prometheus understands the dimensional nature of our metrics, we can use `PromQL` to perform filtering, aggregations and other calculations specific to these attributes and not the metric as a whole. The serialized form also includes metadata on the underlying meters, including a description which will be available later on as tooltips.
@@ -86,18 +86,18 @@ Prometheus is bundled as a single `Go` binary, so is very easy to deploy even as
 docker run -p 9090:9090 -v /path/to/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
 ```
 
-The above command will run a Prometheus instance exposed on port `9090`, binding the configuration `YAML` file from our own working directory (change as needed). 
+The above command will run a Prometheus instance exposed on port `9090`, binding the configuration `YAML` file from our own working directory (change as needed).
 
 **prometheus.yml**
 
 ```yaml
 scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: 'springboot'
-    metrics_path: '/next/actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-    - targets: ['localhost:8080'] # wherever our Spring Boot app is running
+    # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+    - job_name: "springboot"
+      metrics_path: "/next/actuator/prometheus"
+      scrape_interval: 5s
+      static_configs:
+          - targets: ["localhost:8080"] # wherever our Spring Boot app is running
 ```
 
 The Prometheus configuration file has many options, more information at <https://prometheus.io/docs/prometheus/latest/configuration/configuration/>. For now though we just setup a single `scrape target` which tells Prometheus where to pull our metrics from - in this case a single static host, but could also be your service discovery mechanism. We also point the path to our new `actuator` URL and set the scrape interval.
@@ -140,11 +140,11 @@ The Prometheus graphs are useful for adhoc queries, but Grafana is significantly
 
 We could begin creating our own custom dashboards immediately, but one of the great things about Grafana is that there are many open source [community dashboards](https://grafana.com/grafana/dashboards) that we can reuse in order to get going quickly. For example the below screenshot shows a general `JVM application` dashboard which displays many key indicators out-of-the-box. All of these are default `JVM` metrics that get measured and exported automatically by default within Spring Boot apps:
 
-- I/O rates, duration and errors
-- Memory usage broken down by each pool
-- Garbage collection and pause times
-- Thread count and states
-- Open file descriptors etc.
+-   I/O rates, duration and errors
+-   Memory usage broken down by each pool
+-   Garbage collection and pause times
+-   Thread count and states
+-   Open file descriptors etc.
 
 [![Grafana JVM Dashboard](/images/2021/grafana_jvm_dashboard.png)](/images/2021/grafana_jvm_dashboard.png)
 
@@ -152,20 +152,20 @@ Grafana dashboards can also be set to automatically refresh every few seconds, s
 
 General `JVM` level measurements can be useful in some cases, but we can get significantly more value by inspecting some of the Spring Boot specific meters which integrate deeply into various aspects of our application:
 
-- **HTTP request counts** - by URL, method, exception etc
-- **HTTP response times** - latest measured or averaged over a wider time period, can also be split by URL, response codes
-- **Database connection pool statistics** - open connections, create/usage/acquire times
-- **Tomcat statistics** - active sessions, error count
-- **Logback events** - number of info/warn/error lines over time
+-   **HTTP request counts** - by URL, method, exception etc
+-   **HTTP response times** - latest measured or averaged over a wider time period, can also be split by URL, response codes
+-   **Database connection pool statistics** - open connections, create/usage/acquire times
+-   **Tomcat statistics** - active sessions, error count
+-   **Logback events** - number of info/warn/error lines over time
 
 [![Grafana Spring Dashboard](/images/2021/grafana_spring_dashboard.png)](/images/2021/grafana_spring_dashboard.png)
 
 Finally, we can of course also create our own panels and dashboards based on the custom metrics added specifically within our business processes:
 
-- Custom timers with our own tags
-- Cache utilization taken from our instrumented Spring Boot cache manager - calculating using the hit/miss counts
-- Client request latency/counts - exported from all outbound calls made using `RestTemplate`/`WebClient`
-- Response time distribution and percentiles - uses a great feature of Prometheus/Grafana allowing as to display aggregated cumulative timing histograms
+-   Custom timers with our own tags
+-   Cache utilization taken from our instrumented Spring Boot cache manager - calculating using the hit/miss counts
+-   Client request latency/counts - exported from all outbound calls made using `RestTemplate`/`WebClient`
+-   Response time distribution and percentiles - uses a great feature of Prometheus/Grafana allowing as to display aggregated cumulative timing histograms
 
 Since we have easy access to a variety of timing and exception data, we can also record breaches against predefined `SLA's` - in the example below visualizing all requests which have missed a `100ms` threshold value. We could easily do the same for exceptions/errors, or even better utilize our custom metrics integrated into the functional areas:
 
@@ -176,10 +176,10 @@ Since we have easy access to a variety of timing and exception data, we can also
 I mentioned above how an additional part of the `Promstack` is the [Node Exporter](https://github.com/prometheus/node_exporter) This is a simple daemon process which exposes a variety of Prometheus metrics about the underlying host it runs on. By default this runs on port `9100`, to begin scraping we just need an additional section in the Prometheus config:
 
 ```yaml
-- job_name: 'node-exporter'
+- job_name: "node-exporter"
   scrape_interval: 10s
   static_configs:
-    - targets: ['localhost:9100']
+      - targets: ["localhost:9100"]
 ```
 
 Again, there are a variety of community dashboards available which give an idea of some the metrics made available by the exporter:
@@ -192,10 +192,10 @@ If you are running an `Elasticsearch` cluster then you can also make use of the 
 
 ## Takeaways (TL;DR)
 
-- `Prometheus` and `Grafana` offer a very powerful platform for consumption and visualization of Spring Boot metrics
-- Prometheus runs in a `pull model` meaning that it needs to maintain a view of the current running instances - this can be done through `static targets` or by integrating directly into service discovery. Each app instance must expose an `HTTP` endpoint serializing a snapshot view of all metrics into the `Prometheus` textual format
-- We can easily spin up `Prometheus` and `Grafana` with the official `Docker` images
-- Spring Boot applications using `Micrometer` can easily integrate with Prometheus by adding the appropriate `exporter` dependency - no direct code changes required
-- `Prometheus` provides it's own dynamic query language `PromQL` which is built specifically for dimensional metrics. It allows you to perform aggregation and mathematical operations on time series datasets, alongside the ability to apply filters to metric dimensions for both high level and more focused queries
-- The `AlertManager` component can be used to systematically generate alerts based on `PromQL` queries and predefined thresholds
-- `Grafana` can sit on top of Prometheus to offer rich visualization and dashboarding capabilities - utilising the underlying time series database and `PromQL` to generate graphs/charts
+-   `Prometheus` and `Grafana` offer a very powerful platform for consumption and visualization of Spring Boot metrics
+-   Prometheus runs in a `pull model` meaning that it needs to maintain a view of the current running instances - this can be done through `static targets` or by integrating directly into service discovery. Each app instance must expose an `HTTP` endpoint serializing a snapshot view of all metrics into the `Prometheus` textual format
+-   We can easily spin up `Prometheus` and `Grafana` with the official `Docker` images
+-   Spring Boot applications using `Micrometer` can easily integrate with Prometheus by adding the appropriate `exporter` dependency - no direct code changes required
+-   `Prometheus` provides it's own dynamic query language `PromQL` which is built specifically for dimensional metrics. It allows you to perform aggregation and mathematical operations on time series datasets, alongside the ability to apply filters to metric dimensions for both high level and more focused queries
+-   The `AlertManager` component can be used to systematically generate alerts based on `PromQL` queries and predefined thresholds
+-   `Grafana` can sit on top of Prometheus to offer rich visualization and dashboarding capabilities - utilising the underlying time series database and `PromQL` to generate graphs/charts

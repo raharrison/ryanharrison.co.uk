@@ -6,7 +6,7 @@ tags:
     - webhook
     - signature
     - HMAC
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 I've mentioned using [GitHub webhooks](https://developer.github.com/webhooks) in a [previous post]({% post_url 2018/2018-07-05-jekyll-rebuild-github-webhook %}) where they got used to kick-off a new Jekyll build every time a new commit is pushed. This usually involves having some kind of web server (in my case [Flask](http://flask.pocoo.org/)) running that listens for requests on some endpoint. The hope of course is that these requests only come from GitHub, but really there is nothing stopping any malicious actor from causing a denial of service attack by hitting that endpoint constantly and using up server resources.

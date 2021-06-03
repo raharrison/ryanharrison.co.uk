@@ -35,6 +35,7 @@ From the docs:
 
 More documentation and examples, along with how to remove large files from your repo can found on the [BFG project page](https://rtyley.github.io/bfg-repo-cleaner/).
 
-**Note: This will completely rewrite your Git history, the hashes or all commits will be re-generated.**
+**Note:** This will completely rewrite your Git history, the hashes or all commits will be re-generated.
+{: .info-block}
 
 [1]: {% post_url 2011/2011-06-29-compile-from-the-command-line %}

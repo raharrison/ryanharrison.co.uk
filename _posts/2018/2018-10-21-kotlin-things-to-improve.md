@@ -2,9 +2,9 @@
 layout: post
 title: Kotlin - Things to Improve
 tags:
-  - kotlin
-  - improve
-typora-root-url: ..
+    - kotlin
+    - improve
+typora-root-url: ../..
 ---
 
 This list isn't very long and doesn't exactly include any game breaking lack of functionality. A good testament to how Kotlin is a solid language these days.
@@ -117,4 +117,4 @@ import io.ktor.websocket.webSocket
 // implementation at https://github.com/raharrison/kotlin-ktor-exposed-starter/blob/master/src/main/kotlin/web/WidgetResource.kt
 ```
 
-Kotlin has import * syntax, which the library makers tell everyone to use, but didn't we previously agree that this was a bad idea? Something about having to 'explicitly define your dependencies' or something? But hey, as long as we get our nice builder syntactic sugar, lets just make IntelliJ fold it up and forget it ever happened.
+Kotlin has import \* syntax, which the library makers tell everyone to use, but didn't we previously agree that this was a bad idea? Something about having to 'explicitly define your dependencies' or something? But hey, as long as we get our nice builder syntactic sugar, lets just make IntelliJ fold it up and forget it ever happened.

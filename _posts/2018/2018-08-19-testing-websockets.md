@@ -2,10 +2,10 @@
 layout: post
 title: Testing WebSockets
 tags:
-  - websocket
-  - test
-  - wscat
-typora-root-url: ..
+    - websocket
+    - test
+    - wscat
+typora-root-url: ../..
 ---
 
 Like any other web service, websockets also need to be tried out and tested. The only problem is they aren't quite as easy to deal with as your standard REST endpoints etc as you can't just point to the URL and inspect whatever output is sent back. Websockets are persistent, so instead you need some way of hanging on to the connection in order to see output as it might arrive in various intervals, as well as send adhoc messages down the wire.
@@ -21,6 +21,7 @@ The simplest way to see what's happening is to use the browser itself - just as 
 Open up the `Developer Tools` (`F12`) and go to the `Console` tab (FireFox works similarly). Here you can enter `WebSocket` related commands as necessary without having a to run a dedicated site/server.
 
 **Note:** If you are not running a secured WebSocket (i.e not with the `wss:` protocol), you will have to visit an `HTTP` site before you open the console. This is because the browser will not allow unsecured websocket connections to be opened on what should otherwise be a secured `HTTPS` page.
+{: .info-block}
 
 The below example runs through the code needed to open a `WebSocket` connection, send content to the server and log the output as it is received:
 
@@ -30,22 +31,22 @@ The below example runs through the code needed to open a `WebSocket` connection,
 ws = new WebSocket("ws://localhost:8080/ws"); // create new connection
 ```
 
-**List to events**
+**Listen to events**
 
 ```javascript
 // When the connection is open
 ws.onopen = function () {
-  connection.send('Ping');
+    connection.send("Ping");
 };
 
 // Log errors
 ws.onerror = function (error) {
-  console.log('WebSocket Error ' + error);
+    console.log("WebSocket Error " + error);
 };
 
 // Log messages from the server
 ws.onmessage = function (e) {
-  console.log('From Server: ' + e.data);
+    console.log("From Server: " + e.data);
 };
 ```
 
@@ -53,13 +54,13 @@ ws.onmessage = function (e) {
 
 ```javascript
 // Sending a String
-ws.send('your message');
+ws.send("your message");
 ```
 
 **Close Connection**
 
 ```javascript
-ws.close() // not necessarily required
+ws.close(); // not necessarily required
 ```
 
 ## WsCat
@@ -89,15 +90,17 @@ Here are some other related tools (most just like `wscat`). [This GitHub repo gu
 
 <https://github.com/thehowl/claws>
 
-- Go based
-- Json formatting and pipes
+-   Go based
+-   Json formatting and pipes
 
 <https://github.com/esphen/wsta>
-- Rust based
-- most advanced
-- very pipe friendly
-- configuration profiles
+
+-   Rust based
+-   most advanced
+-   very pipe friendly
+-   configuration profiles
 
 <https://github.com/progrium/wssh>
-- Python based
-- equivalent of `wscat` if `Node` is not your thing
+
+-   Python based
+-   equivalent of `wscat` if `Node` is not your thing

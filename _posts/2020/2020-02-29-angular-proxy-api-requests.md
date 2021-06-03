@@ -2,25 +2,25 @@
 layout: post
 title: Angular - Proxy API Requests
 tags:
-  - angular
-  - proxy
-  - api
-  - request
-typora-root-url: ..
+    - angular
+    - proxy
+    - api
+    - request
+typora-root-url: ../..
 ---
 
 If you are developing with Angular locally, then chances are you also have some kind of API server also running on the same machine that you need to make requests to. The problem is, your local environment setup may not reflect that of a real-world deployment - where you might use something like Nginx as a reverse proxy. CORS (Cross-Origin-Resource-Sharing) policy starts to become a problem when you have something like:
 
-- Angular dev server on `localhost:4200`
-- Some kind of HTTP API listening on `localhost:8080`
+-   Angular dev server on `localhost:4200`
+-   Some kind of HTTP API listening on `localhost:8080`
 
-If you try to make a request from your Angular app to `localhost:8080`, your browser will block you as it's effectively trying to access a separate host. You *could* enable CORS on your server to explicitly enable access from different origins - but this is not something you want to turn on just to get a working dev environment.
+If you try to make a request from your Angular app to `localhost:8080`, your browser will block you as it's effectively trying to access a separate host. You _could_ enable CORS on your server to explicitly enable access from different origins - but this is not something you want to turn on just to get a working dev environment.
 
 A much better option is to use the built-in proxying support of the Angular dev server (webpack) to proxy certain URL patterns to your backend server - essentially making your browser think that they are being served from the same origin.
 
 ### Create a Proxy config file
 
-To get this setup, simply create a config file called `proxy.conf.json` in the root of your Angular project (the name doesn't matter, but is just a convention). The most basic example is: 
+To get this setup, simply create a config file called `proxy.conf.json` in the root of your Angular project (the name doesn't matter, but is just a convention). The most basic example is:
 
 ```
 {

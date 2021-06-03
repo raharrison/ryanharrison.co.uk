@@ -2,13 +2,13 @@
 layout: post
 title: Gathering Metrics with Micrometer and Spring Boot Actuator
 tags:
-  - metrics
-  - micrometer
-  - spring
-  - spring boot
-  - actuator
-  - prometheus
-  - grafana
+    - metrics
+    - micrometer
+    - spring
+    - spring boot
+    - actuator
+    - prometheus
+    - grafana
 typora-root-url: ../..
 ---
 
@@ -47,11 +47,11 @@ http.requests.getwidgets.region.200.username.duration
 
 From the top metric we measure the most general aggregate - total number of HTTP requests served - and then get gradually more specific by introducing additional fields. These tend to make the metric more insightful, as we are likely going to need to drill-down to a specific region/datacentre or endpoint name and then find the total number of 200 or 500 responses for example. Hopefully you can see the issue here - as we add more fields, the number of metrics we gather starts to grow and grow. The above example is just for a single endpoint, username and status code, they can quickly start to multiply as your system is used. This is what's known as a `cardinality explosion` and something to be careful of in applications using hierarchical metrics. It can increase resource consumption and cause pressure on the external systems trying to consume and report on them.
 
-The case for hierarchical metrics gets worse though as the final measurement is tied to the full key. This is fine if it represents exactly what you're looking for - in the above example, perhaps reporting on the total number of `200` responses for the `getwidgets` endpoint in a particular `region` is helpful - but what if you need a different combination? 
+The case for hierarchical metrics gets worse though as the final measurement is tied to the full key. This is fine if it represents exactly what you're looking for - in the above example, perhaps reporting on the total number of `200` responses for the `getwidgets` endpoint in a particular `region` is helpful - but what if you need a different combination?
 
-- total number of 200 responses served (not just `getwidgets`)
-- total number of requests made by a particular username (independent of endpoint or status code)
-- overall duration spent handling `getwidgets` requests (independent of status code or region)
+-   total number of 200 responses served (not just `getwidgets`)
+-   total number of requests made by a particular username (independent of endpoint or status code)
+-   overall duration spent handling `getwidgets` requests (independent of status code or region)
 
 With this set of metrics the above questions are not trivial to answer. You would either be forced to create even more metrics specific to these cases (making the aforementioned cardinality explosion worse), or be forced to perform complex extra aggregation steps in your reporting tool of choice
 
@@ -80,14 +80,14 @@ implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 The `Spring Boot Actuator` starter dependency does a number of useful things which I'll cover in future posts, but for now we'll focus just on the metrics support. By default, Spring configures bindings to begin automatically publishing core metrics across many areas:
 
-- **JVM** - memory, buffer pools, thread utilization, classes loaded
-- **CPU** and **File Descriptor** usage
-- **Logback** - number of events logged at each level
-- **Spring MVC** - HTTP requests/responses and errors
-- **HTTP Clients** - instrumentation on `RestTemplate` or `WebClient` instances
-- **Kafka** - native metrics on all configured producers/consumers
-- **Data Sources** - `HikariCP` bindings for connection pool size and usage
-- **Caches** - `Caffeine`/`JCache` bindings for hit/miss counts, sizes
+-   **JVM** - memory, buffer pools, thread utilization, classes loaded
+-   **CPU** and **File Descriptor** usage
+-   **Logback** - number of events logged at each level
+-   **Spring MVC** - HTTP requests/responses and errors
+-   **HTTP Clients** - instrumentation on `RestTemplate` or `WebClient` instances
+-   **Kafka** - native metrics on all configured producers/consumers
+-   **Data Sources** - `HikariCP` bindings for connection pool size and usage
+-   **Caches** - `Caffeine`/`JCache` bindings for hit/miss counts, sizes
 
 Hopefully you will agree that this is a fairly comprehensive list already for out-of-the-box behaviour (just dependant on which beans you have created in your app), and this is before you have created any of your own custom metrics.
 
@@ -126,9 +126,9 @@ public class AppConfig {
 
 There are a few things going on here:
 
-- we use a Spring `MeterRegistryCustomizer` bean to add a common set of tags to all metrics that get published. This is useful to attach instance level details, such as application name and region/datacentre that the service is running in.
-- we create a `CacheManager` bean using `Caffeine` as the underlying caching mechanism. The `recordStats()` portion instructs `Caffeine` to record metrics that `Micrometer` can then bind to (also make sure to `@EnableCaching`).
-- we create a standard `RestTemplate` bean, making sure to to use the `RestTemplateBuilder` so that the metrics instrumentation gets added.
+-   we use a Spring `MeterRegistryCustomizer` bean to add a common set of tags to all metrics that get published. This is useful to attach instance level details, such as application name and region/datacentre that the service is running in.
+-   we create a `CacheManager` bean using `Caffeine` as the underlying caching mechanism. The `recordStats()` portion instructs `Caffeine` to record metrics that `Micrometer` can then bind to (also make sure to `@EnableCaching`).
+-   we create a standard `RestTemplate` bean, making sure to to use the `RestTemplateBuilder` so that the metrics instrumentation gets added.
 
 Next is a simple `@Service` class to give something for our endpoints to call:
 
@@ -139,7 +139,7 @@ public class WidgetService {
 
     private static final Logger log = LoggerFactory.getLogger(WidgetService.class);
     private final RestTemplate restTemplate;
-    
+
     @Cacheable("widgetCache")
     public String getWidgets(String user) {
         log.info("Finding widgets for {}", user);
@@ -200,23 +200,23 @@ If you now visit `http://localhost:8080/actuator/metrics` in your browser, actua
 
 ```json
 {
-  "names": [
-    "cache.gets",
-    "cache.size",
-    "http.server.requests",
-    "jvm.buffer.memory.used",
-    "jvm.classes.loaded",
-    "jvm.gc.pause",
-    "jvm.memory.max",
-    "jvm.memory.used",
-    "jvm.threads.live",
-    "logback.events",
-    "process.cpu.usage",
-    "process.uptime",
-    "system.cpu.usage",
-    "tomcat.sessions.active.current",
-    "tomcat.sessions.active.max"
-  ]
+    "names": [
+        "cache.gets",
+        "cache.size",
+        "http.server.requests",
+        "jvm.buffer.memory.used",
+        "jvm.classes.loaded",
+        "jvm.gc.pause",
+        "jvm.memory.max",
+        "jvm.memory.used",
+        "jvm.threads.live",
+        "logback.events",
+        "process.cpu.usage",
+        "process.uptime",
+        "system.cpu.usage",
+        "tomcat.sessions.active.current",
+        "tomcat.sessions.active.max"
+    ]
 }
 ```
 
@@ -224,48 +224,41 @@ Most of these should look familiar when compared with the list we saw before - t
 
 ```json
 {
-  "name": "jvm.memory.used",
-  "description": "The amount of used memory",
-  "baseUnit": "bytes",
-  "measurements": [
-    {
-      "statistic": "VALUE",
-      "value": 89722280
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "area",
-      "values": [
-        "heap",
-        "nonheap"
-      ]
-    },
-    {
-      "tag": "application",
-      "values": [
-        "widgetservice"
-      ]
-    },
-    {
-      "tag": "id",
-      "values": [
-        "G1 Old Gen",
-        "CodeHeap 'non-profiled nmethods'",
-        "G1 Survivor Space",
-        "Compressed Class Space",
-        "Metaspace",
-        "G1 Eden Space",
-        "CodeHeap 'non-nmethods'"
-      ]
-    },
-    {
-      "tag": "region",
-      "values": [
-        "us-east-1"
-      ]
-    }
-  ]
+    "name": "jvm.memory.used",
+    "description": "The amount of used memory",
+    "baseUnit": "bytes",
+    "measurements": [
+        {
+            "statistic": "VALUE",
+            "value": 89722280
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "area",
+            "values": ["heap", "nonheap"]
+        },
+        {
+            "tag": "application",
+            "values": ["widgetservice"]
+        },
+        {
+            "tag": "id",
+            "values": [
+                "G1 Old Gen",
+                "CodeHeap 'non-profiled nmethods'",
+                "G1 Survivor Space",
+                "Compressed Class Space",
+                "Metaspace",
+                "G1 Eden Space",
+                "CodeHeap 'non-nmethods'"
+            ]
+        },
+        {
+            "tag": "region",
+            "values": ["us-east-1"]
+        }
+    ]
 }
 ```
 
@@ -273,25 +266,21 @@ At the top we can see the aggregate measured value for total memory used and the
 
 ```json
 {
-  "name": "jvm.memory.used",
-  "description": "The amount of used memory",
-  "baseUnit": "bytes",
-  "measurements": [
-    {
-      "statistic": "VALUE",
-      "value": 47795248
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "id",
-      "values": [
-        "G1 Old Gen",
-        "G1 Survivor Space",
-        "G1 Eden Space"
-      ]
-    }
-  ]
+    "name": "jvm.memory.used",
+    "description": "The amount of used memory",
+    "baseUnit": "bytes",
+    "measurements": [
+        {
+            "statistic": "VALUE",
+            "value": 47795248
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "id",
+            "values": ["G1 Old Gen", "G1 Survivor Space", "G1 Eden Space"]
+        }
+    ]
 }
 ```
 
@@ -303,27 +292,25 @@ Now to actually call some of our own code to generate some other metrics. We can
 
 ```json
 {
-  "name": "cache.gets",
-  "description": "The number of times cache lookup methods have returned a cached value.",
-  "baseUnit": null,
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 3
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "name",
-      "values": [
-        "widgetCache"
-      ]
-    }
-  ]
+    "name": "cache.gets",
+    "description": "The number of times cache lookup methods have returned a cached value.",
+    "baseUnit": null,
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 3
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "name",
+            "values": ["widgetCache"]
+        }
+    ]
 }
 ```
 
-Here we are using the the `cache.gets` metric, with tag predicates on the cache name and result, in order to assess how well our cache is utilized. Similarly, you could also inspect the `misses` tag to generate the cache hit/miss ratio.  You can also use the `cache.size` metric to observe trends in how many values are in loaded into your caches: `http://localhost:8080/actuator/metrics/cache.size?tag=name:widgetCache`
+Here we are using the the `cache.gets` metric, with tag predicates on the cache name and result, in order to assess how well our cache is utilized. Similarly, you could also inspect the `misses` tag to generate the cache hit/miss ratio. You can also use the `cache.size` metric to observe trends in how many values are in loaded into your caches: `http://localhost:8080/actuator/metrics/cache.size?tag=name:widgetCache`
 
 ### HTTP Client Metrics
 
@@ -331,63 +318,53 @@ Next up we can call the `saveWidget` endpoint to make use of our instrumented `R
 
 ```json
 {
-  "name": "http.client.requests",
-  "description": "Timer of RestTemplate operation",
-  "baseUnit": "seconds",
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 1
-    },
-    {
-      "statistic": "TOTAL_TIME",
-      "value": 0.6493909
-    },
-    {
-      "statistic": "MAX",
-      "value": 0.6493909
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "method",
-      "values": [
-        "GET"
-      ]
-    },
-    {
-      "tag": "clientName",
-      "values": [
-        "httpbin.org"
-      ]
-    },
-    {
-      "tag": "uri",
-      "values": [
-        "/uuid?param={input}"
-      ]
-    },
-    {
-      "tag": "outcome",
-      "values": [
-        "SUCCESS"
-      ]
-    },
-    {
-      "tag": "status",
-      "values": [
-        "200"
-      ]
-    }
-  ]
+    "name": "http.client.requests",
+    "description": "Timer of RestTemplate operation",
+    "baseUnit": "seconds",
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 1
+        },
+        {
+            "statistic": "TOTAL_TIME",
+            "value": 0.6493909
+        },
+        {
+            "statistic": "MAX",
+            "value": 0.6493909
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "method",
+            "values": ["GET"]
+        },
+        {
+            "tag": "clientName",
+            "values": ["httpbin.org"]
+        },
+        {
+            "tag": "uri",
+            "values": ["/uuid?param={input}"]
+        },
+        {
+            "tag": "outcome",
+            "values": ["SUCCESS"]
+        },
+        {
+            "tag": "status",
+            "values": ["200"]
+        }
+    ]
 }
 ```
 
 The previous metrics we've looked at were simple counters or gauges, but now we have timer which gives us more measurement values. Not only do you get the count, but also the total time taken (allowing you to compute averages) and a max observed value. The tags are also more interesting here - similar to the above you can easily drill-down to answer some interesting questions:
 
-- how many requests where made to client X in total within a certain time period?
-- how many requests where made to the `/uuid` endpoint on client X which failed?
-- how long did the application spend waiting for client X to respond to our calls?
+-   how many requests where made to client X in total within a certain time period?
+-   how many requests where made to the `/uuid` endpoint on client X which failed?
+-   how long did the application spend waiting for client X to respond to our calls?
 
 ### HTTP Request Metrics
 
@@ -395,75 +372,54 @@ By now we should have produced enough traffic to generate some good HTTP request
 
 ```json
 {
-  "name": "http.server.requests",
-  "description": null,
-  "baseUnit": "seconds",
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 23
-    },
-    {
-      "statistic": "TOTAL_TIME",
-      "value": 0.7761524969999999
-    },
-    {
-      "statistic": "MAX",
-      "value": 0.0031665
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "exception",
-      "values": [
-        "None",
-        "IllegalArgumentException",
-        "BadOperationRequestException"
-      ]
-    },
-    {
-      "tag": "method",
-      "values": [
-        "GET",
-        "POST"
-      ]
-    },
-    {
-      "tag": "uri",
-      "values": [
-        "/saveWidget",
-        "/getWidgets",
-        "/actuator/metrics",
-        "/**"
-      ]
-    },
-    {
-      "tag": "outcome",
-      "values": [
-        "CLIENT_ERROR",
-        "SUCCESS",
-        "SERVER_ERROR"
-      ]
-    },
-    {
-      "tag": "status",
-      "values": [
-        "404",
-        "200",
-        "400",
-        "500"
-      ]
-    }
-  ]
+    "name": "http.server.requests",
+    "description": null,
+    "baseUnit": "seconds",
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 23
+        },
+        {
+            "statistic": "TOTAL_TIME",
+            "value": 0.7761524969999999
+        },
+        {
+            "statistic": "MAX",
+            "value": 0.0031665
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "exception",
+            "values": ["None", "IllegalArgumentException", "BadOperationRequestException"]
+        },
+        {
+            "tag": "method",
+            "values": ["GET", "POST"]
+        },
+        {
+            "tag": "uri",
+            "values": ["/saveWidget", "/getWidgets", "/actuator/metrics", "/**"]
+        },
+        {
+            "tag": "outcome",
+            "values": ["CLIENT_ERROR", "SUCCESS", "SERVER_ERROR"]
+        },
+        {
+            "tag": "status",
+            "values": ["404", "200", "400", "500"]
+        }
+    ]
 }
 ```
 
 Similarly to the `http.client.requests` metric, we have a timer meter and a number of useful tags to inspect:
 
-- how many requests resulted in `500` status codes within a certain time period?
-- how many times was a `POST` request made to the `/widget` resource?
-- how many requests made to the `/widget` resource resulted in `IllegalArgumentException`?
-- how long did it take to respond to all `GET` requests which resulted in `500` status codes?
+-   how many requests resulted in `500` status codes within a certain time period?
+-   how many times was a `POST` request made to the `/widget` resource?
+-   how many requests made to the `/widget` resource resulted in `IllegalArgumentException`?
+-   how long did it take to respond to all `GET` requests which resulted in `500` status codes?
 
 ### Logging Metrics
 
@@ -471,15 +427,15 @@ A perhaps lesser known, but I think very useful metric is `logback.events` which
 
 ```json
 {
-  "name": "logback.events",
-  "description": "Number of error level events that made it to the logs",
-  "baseUnit": "events",
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 4
-    }
-  ]
+    "name": "logback.events",
+    "description": "Number of error level events that made it to the logs",
+    "baseUnit": "events",
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 4
+        }
+    ]
 }
 ```
 
@@ -517,24 +473,21 @@ Once the metric is published, you should be able to see it show up in actuator j
 
 ```json
 {
-  "name": "custom.widgets",
-  "description": null,
-  "baseUnit": null,
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 2
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "user",
-      "values": [
-        "bob",
-        "bill"
-      ]
-    }
-  ]
+    "name": "custom.widgets",
+    "description": null,
+    "baseUnit": null,
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 2
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "user",
+            "values": ["bob", "bill"]
+        }
+    ]
 }
 ```
 
@@ -556,37 +509,33 @@ We can then view the timing data in the `method.timed` base metric, which can be
 
 ```json
 {
-  "name": "method.timed",
-  "description": null,
-  "baseUnit": "seconds",
-  "measurements": [
-    {
-      "statistic": "COUNT",
-      "value": 3
-    },
-    {
-      "statistic": "TOTAL_TIME",
-      "value": 1.0327454
-    },
-    {
-      "statistic": "MAX",
-      "value": 0.600250599
-    }
-  ],
-  "availableTags": [
-    {
-      "tag": "exception",
-      "values": [
-        "none"
-      ]
-    },
-    {
-      "tag": "class",
-      "values": [
-        "com.example.demo.WidgetService"
-      ]
-    }
-  ]
+    "name": "method.timed",
+    "description": null,
+    "baseUnit": "seconds",
+    "measurements": [
+        {
+            "statistic": "COUNT",
+            "value": 3
+        },
+        {
+            "statistic": "TOTAL_TIME",
+            "value": 1.0327454
+        },
+        {
+            "statistic": "MAX",
+            "value": 0.600250599
+        }
+    ],
+    "availableTags": [
+        {
+            "tag": "exception",
+            "values": ["none"]
+        },
+        {
+            "tag": "class",
+            "values": ["com.example.demo.WidgetService"]
+        }
+    ]
 }
 ```
 
@@ -610,16 +559,16 @@ Actuator will then expose a dedicated `/actuator/prometheus` endpoint which can 
 
 ## Takeaways (TL;DR)
 
-- metrics are an essential part of any application, not only in assessing health and stability, but also to make data-informed decisions on the future direction of your application
-- for JVM based apps, `Micrometer` is the way to go for metrics collection (especially when using Spring)
-- dimensional metrics are extremely powerful - and resolve longstanding issues with conventional hierarchical metrics
-- `Spring Boot 2+` and `Spring Actuator` have great built-in support for metrics with `Micrometer` and out-of-the-box integration for a number of key areas
-- default application metrics should only form part of the overall picture and must be partnered with business level metrics - which are well-defined against established and agreed SLA's
-- an external time series database such as `Prometheus` should be used to aggregate metrics across all application instances and allow tools such as `Grafana` to provide dynamic visualisations on top of the underlying data.
+-   metrics are an essential part of any application, not only in assessing health and stability, but also to make data-informed decisions on the future direction of your application
+-   for JVM based apps, `Micrometer` is the way to go for metrics collection (especially when using Spring)
+-   dimensional metrics are extremely powerful - and resolve longstanding issues with conventional hierarchical metrics
+-   `Spring Boot 2+` and `Spring Actuator` have great built-in support for metrics with `Micrometer` and out-of-the-box integration for a number of key areas
+-   default application metrics should only form part of the overall picture and must be partnered with business level metrics - which are well-defined against established and agreed SLA's
+-   an external time series database such as `Prometheus` should be used to aggregate metrics across all application instances and allow tools such as `Grafana` to provide dynamic visualisations on top of the underlying data.
 
 **Useful links:**
 
-- <https://micrometer.io/docs/concepts>
-- <https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/production-ready-features.html#production-ready-metrics-getting-started>
-- <https://prometheus.io/>
-- <https://grafana.com/>
+-   <https://micrometer.io/docs/concepts>
+-   <https://docs.spring.io/spring-boot/docs/2.4.1/reference/html/production-ready-features.html#production-ready-metrics-getting-started>
+-   <https://prometheus.io/>
+-   <https://grafana.com/>

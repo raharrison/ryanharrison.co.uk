@@ -8,7 +8,8 @@ tags:
   - regular expressions
 ---
 
-**NOTE: The Google Finance API has now been deprecated so this code will no longer work**
+**Note:** The Google Finance API has now been deprecated so this code will no longer work
+{: .info-block}
 
 After I found myself using Google to translate currencies, I wondered whether it would be possible to utilise this functionality in a program. After a little research it turns out that Google offer a huge API that deals with currencies and finance. For the purpose of this post I will show you how to convert currencies, yet you can also use the API to find stock information and even market gains over a period.
 

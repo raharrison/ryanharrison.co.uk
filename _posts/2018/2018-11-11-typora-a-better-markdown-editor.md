@@ -2,11 +2,11 @@
 layout: post
 title: Typora - A Better Markdown Editor
 tags:
-  - typora
-  - markdown
-  - editor
-  - vs code
-typora-root-url: ..
+    - typora
+    - markdown
+    - editor
+    - vs code
+typora-root-url: ../..
 ---
 
 ## VS Code Doesn't Cut It

@@ -2,12 +2,12 @@
 layout: post
 title: Using Ktor with Jackson Serialization
 tags:
-  - kotlin
-  - ktor
-  - jackson
-  - json
-  - mapper
-typora-root-url: ..
+    - kotlin
+    - ktor
+    - jackson
+    - json
+    - mapper
+typora-root-url: ../..
 ---
 
 Although the preferred JSON serialization library used in a lot of the `Ktor` examples is [GSON](https://github.com/google/gson), which makes sense due to it's simplicity and ease of use, in real-world use [Jackson](https://github.com/FasterXML/jackson) is probably the preferred option. It's faster (especially when combined with the `AfterBurner` module) and generally more flexible. `Ktor` comes with a built-in feature that makes use Jackson for JSON conversion very simple.

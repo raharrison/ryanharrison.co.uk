@@ -2,17 +2,17 @@
 layout: post
 title: Setting up a Python Virtual Environment
 tags:
-  - python
-  - venv
-  - virtualenv
-  - virtual environment
-  - pip
-typora-root-url: ..
+    - python
+    - venv
+    - virtualenv
+    - virtual environment
+    - pip
+typora-root-url: ../..
 ---
 
 You should setup a Python virtual environment to ensure that your library dependencies are consistent and segregated from your global packages. This can help to prevent potential versioning conflicts and makes it easier to package your app for use by others (or you, but on a different machine).
 
-Previously, you had to install dedicated packages to create and manage Python virtual environments - such  as `pipenv` or `virtualenv`. Python does however now come with it's own solution `venv` which accomplishes much of the same and can be run directly as a Python module without any installation steps.
+Previously, you had to install dedicated packages to create and manage Python virtual environments - such as `pipenv` or `virtualenv`. Python does however now come with it's own solution `venv` which accomplishes much of the same and can be run directly as a Python module without any installation steps.
 
 ## Create a Virtual Environment
 
@@ -32,9 +32,9 @@ If on Windows - `virtenv\Scripts\activate.bat`
 
 If on Linux/Mac - `virtenv/Scripts/activate`
 
-You should notice that your shell prompt got changed to include the name of the `venv` at the start. If you  now run the `where` / `which` commands to show the location of the executables, it should show those located in the `virtenv` directory.
+You should notice that your shell prompt got changed to include the name of the `venv` at the start. If you now run the `where` / `which` commands to show the location of the executables, it should show those located in the `virtenv` directory.
 
-`where python` ==> `\virtenv\Scripts\python.exe` 
+`where python` ==> `\virtenv\Scripts\python.exe`
 
 `where pip` ==> `\virtenv\Scripts\pip.exe`
 

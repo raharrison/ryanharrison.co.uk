@@ -2,19 +2,19 @@
 layout: post
 title: How to Dynamically Change Log Levels at Runtime with Spring Boot
 tags:
-  - log
-  - logger
-  - logging
-  - spring boot
-  - actuator
-  - runtime
-  - debug
-typora-root-url: ..
+    - log
+    - logger
+    - logging
+    - spring boot
+    - actuator
+    - runtime
+    - debug
+typora-root-url: ../..
 ---
 
 As we can all probably agree, logging is a vital part of any application. It provides visibility into what our component is doing at any point in time and is an invaluable tool when trying to debug issues. When faced with a problem in production, likely one of the first things that will be done is to check the logs for any errors and to hopefully locate the source of the issue. It's therefore vital that our logs are not only relevant and useful (perhaps a topic for another day), but are also visible and accessible when we need them the most. Hopefully we will be lucky and the logs will include all the necessary details to pinpoint the issue - or maybe they won't. This may be decided by the level at which the loggers are configured.
 
-By default, most if not all of our loggers will probably be set to `INFO` level. This is fine when everything is working correctly - including only the key operations/tasks and not creating too much noise as to overload the logging tools - but perhaps not so great when you need to work an issue. Although the developers may have included some basic `INFO` level log output within the problematic area, this may not include enough data to properly trace through an erroneous transaction. The same developer may have also added some additional `DEBUG` log lines (hopefully, if not they should do) that give us some additional details into what was being done, but these may not be visible to us when the application is deployed within an environment. 
+By default, most if not all of our loggers will probably be set to `INFO` level. This is fine when everything is working correctly - including only the key operations/tasks and not creating too much noise as to overload the logging tools - but perhaps not so great when you need to work an issue. Although the developers may have included some basic `INFO` level log output within the problematic area, this may not include enough data to properly trace through an erroneous transaction. The same developer may have also added some additional `DEBUG` log lines (hopefully, if not they should do) that give us some additional details into what was being done, but these may not be visible to us when the application is deployed within an environment.
 
 I bet most people reading this can remember that instance in which they were debugging an issue, were able to focus down on a particular segment of code, only to find that the log line that gave them that critical piece of information was set to `DEBUG` level and so was unavailable to them. We may have 6 different log levels available, but without finer control over their configuration at runtime, we may as well only have half that.
 
@@ -22,9 +22,9 @@ I bet most people reading this can remember that instance in which they were deb
 
 Log configuration within Spring Boot applications takes a number of different forms these days, but in this post we'll focus just on the main ones (excluding specific `logback.xml` modifications etc). A lot of the same configuration changes you would previously have made in those dedicated files can now also be set as simple application properties. For example, to change the global root log level to `DEBUG`, we can just add the following to `application.properties` (or `YAML` equivalent):
 
-````properties
+```properties
 logging.level.root=DEBUG
-````
+```
 
 This however has similar problems to the conventional `logback.xml` approach - to update these configuration settings you would have to rebuild and redeploy your entire application - not something that's plausible in production. The difference here is that these all just standard Spring Boot properties, so in much the same way as you would elsewhere, you can set them as environment variables or pass them in as JVM options:
 
@@ -32,10 +32,10 @@ This however has similar problems to the conventional `logback.xml` approach - t
 -Dlogging.level.root=DEBUG
 ```
 
-This gets us somewhat closer to where we want to be - we can now control the log level without redeploying - but it also introduces another problem. This enables `DEBUG` log output for the *entire* application. If you've ever done this before, even in a basic Spring application, you will know that the output is extremely noisy:
+This gets us somewhat closer to where we want to be - we can now control the log level without redeploying - but it also introduces another problem. This enables `DEBUG` log output for the _entire_ application. If you've ever done this before, even in a basic Spring application, you will know that the output is extremely noisy:
 
-- At default `INFO` level a simple Spring Boot app generates 14 lines of log output at startup
-- At `DEBUG` level the same application generates over 2440 log lines - just at startup!
+-   At default `INFO` level a simple Spring Boot app generates 14 lines of log output at startup
+-   At `DEBUG` level the same application generates over 2440 log lines - just at startup!
 
 ```
 DEBUG 6852 --- [           main] o.s.b.f.s.DefaultListableBeanFactory     : Creating shared instance of singleton bean 'org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration'
@@ -67,7 +67,7 @@ DEBUG 8768 --- [nio-8080-exec-1] com.example.demo.service.WidgetService   : Foun
 
 This is another improvement, but still has one big problem - you need to restart your application for the changes to be applied. This might be ok for some cases, but for example if the underlying issue was due some particular bad state of a local cache, restarting would reset the component, hide the underlying cause and make it much harder to reproduce further. Depending on the issue it may be possible to get your application back into the same state again after rehydrating caches etc, but sometimes "turn it off and on again" just hides the larger underlying problem.
 
-As a last improvement, it would be great if you could dynamically change the log levels for particular targeted areas at runtime - without having to rebuild, redeploy *or* restart.
+As a last improvement, it would be great if you could dynamically change the log levels for particular targeted areas at runtime - without having to rebuild, redeploy _or_ restart.
 
 ## Spring Boot Actuator
 
@@ -87,20 +87,20 @@ If we now visit `http://localhost:8080/actuator` in the browser (or as `GET` req
 
 ```json
 {
-  "_links": {
-    "self": {
-      "href": "http://localhost:8080/actuator",
-      "templated": false
-    },
-    "loggers": {
-      "href": "http://localhost:8080/actuator/loggers",
-      "templated": false
-    },
-    "loggers-name": {
-      "href": "http://localhost:8080/actuator/loggers/{name}",
-      "templated": true
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/actuator",
+            "templated": false
+        },
+        "loggers": {
+            "href": "http://localhost:8080/actuator/loggers",
+            "templated": false
+        },
+        "loggers-name": {
+            "href": "http://localhost:8080/actuator/loggers/{name}",
+            "templated": true
+        }
     }
-  }
 }
 ```
 
@@ -112,27 +112,25 @@ First of all visit `http://localhost:8080/actuator/loggers` (via `GET` request) 
 
 ```json
 {
-  "levels": [
-    "OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"
-  ],
-  "loggers": {
-    "ROOT": {
-      "configuredLevel": "INFO",
-      "effectiveLevel": "INFO"
-    },
-    "com.example.demo.DemoApplication": {
-      "configuredLevel": null,
-      "effectiveLevel": "INFO"
-    },
-    "com.example.demo.service": {
-      "configuredLevel": null,
-      "effectiveLevel": "INFO"
-    },
-    "com.example.demo.service.WidgetService": {
-      "configuredLevel": null,
-      "effectiveLevel": "INFO"
+    "levels": ["OFF", "ERROR", "WARN", "INFO", "DEBUG", "TRACE"],
+    "loggers": {
+        "ROOT": {
+            "configuredLevel": "INFO",
+            "effectiveLevel": "INFO"
+        },
+        "com.example.demo.DemoApplication": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.example.demo.service": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        },
+        "com.example.demo.service.WidgetService": {
+            "configuredLevel": null,
+            "effectiveLevel": "INFO"
+        }
     }
-  }
 }
 ```
 
@@ -142,8 +140,8 @@ If you want to explicitly target a specific logger, you can add the name to the 
 
 ```json
 {
-  "configuredLevel": null,
-  "effectiveLevel": "INFO"
+    "configuredLevel": null,
+    "effectiveLevel": "INFO"
 }
 ```
 
@@ -186,14 +184,13 @@ Pretty cool! This gives you a lot of flexibility at runtime to better utilize yo
 
 ## Takeaways (TL;DR)
 
-- Logs are a vital tool when debugging issues, but only if you can see the right lines when you need them. These might not be at  `INFO` level.
-- Developers should be using the various log levels `TRACE`, `DEBUG`, `INFO`, `ERROR` accordingly to add additional data points to your log output. In general volume should increase as the level decreases, but more detailed data points will be included.
-- The root logger should be kept at `INFO` level. Turning on `DEBUG` logs for our entire application will generate too much noise and will overwhelm both us and our log tooling.
-- Use Spring Boot properties to set specific log levels for particular packages/classes. Pass these in as runtime JVM options for greater flexibility. Note that you will have to restart the app for them to take effect.
-- Spring Boot Actuator gives the most fine-grained control - allowing you both query and update log levels at runtime through it's admin endpoints.
+-   Logs are a vital tool when debugging issues, but only if you can see the right lines when you need them. These might not be at `INFO` level.
+-   Developers should be using the various log levels `TRACE`, `DEBUG`, `INFO`, `ERROR` accordingly to add additional data points to your log output. In general volume should increase as the level decreases, but more detailed data points will be included.
+-   The root logger should be kept at `INFO` level. Turning on `DEBUG` logs for our entire application will generate too much noise and will overwhelm both us and our log tooling.
+-   Use Spring Boot properties to set specific log levels for particular packages/classes. Pass these in as runtime JVM options for greater flexibility. Note that you will have to restart the app for them to take effect.
+-   Spring Boot Actuator gives the most fine-grained control - allowing you both query and update log levels at runtime through it's admin endpoints.
 
 **Useful links:**
 
-- <https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-logging>
-- <https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/#loggers>
-
+-   <https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-logging>
+-   <https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/#loggers>

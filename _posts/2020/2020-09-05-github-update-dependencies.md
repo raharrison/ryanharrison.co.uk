@@ -8,7 +8,7 @@ tags:
     - automatic
     - java
     - python
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 With the introduction of [Actions]({{ site.baseurl }}{% post_url 2020/2020-04-12-kotlin-java-ci-with-github-actions %}), GitHub is quickly becoming the one-stop shop for all things CI. But one, perhaps less well-known feature, is `dependabot` which allows you to automatically keep all your dependencies up to date. Depending on which language/framework you are using, making sure all your libraries are on the latest versions can be tricky. `Maven`/`Gradle` have plugins which will notify you of new versions, but this is a decidedly manual process. Plus if you are unlucky enough to develop in JS land, then good luck attempting to keep your 400 `npm` dependencies updated at any reasonable recurrence.

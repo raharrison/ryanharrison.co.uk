@@ -2,12 +2,12 @@
 layout: post
 title: Ktor - File Upload and Download
 tags:
-  - kotlin
-  - ktor
-  - file
-  - upload
-  - download
-typora-root-url: ..
+    - kotlin
+    - ktor
+    - file
+    - upload
+    - download
+typora-root-url: ../..
 ---
 
 The ability to perform file uploads and downloads is a staple part of any good web server framework. [Ktor](https://github.com/ktorio/ktor) has support for both operations in just a few lines of code.

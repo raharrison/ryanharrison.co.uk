@@ -2,11 +2,11 @@
 layout: post
 title: Kotlin - Add Integration Test Module
 tags:
-  - kotlin
-  - gradle
-  - module
-  - integration tests
-typora-root-url: ..
+    - kotlin
+    - gradle
+    - module
+    - integration tests
+typora-root-url: ../..
 ---
 
 The default package structure for a new [Kotlin](https://kotlinlang.org/) project generated through [IntelliJ](https://www.jetbrains.com/idea/) looks like the following, whereby you have a main source folder with `source sets` (modules) for your `main` files and then `test` source files.
@@ -17,13 +17,13 @@ Typically, you would place your unit tests within the auto-generated `test` modu
 
 However, if you also need to add integration tests (or end-to-end etc), then this project structure can start to cause issues. For example, consider a typical project setup for a server-side app:
 
-- `main` - business logic and main app files
-- `test` - unit tests, 
-  - typically with [JUnit](https://junit.org/junit5/) or similar
-  - spin up in-memory [H2](http://www.h2database.com/html/main.html) database for easy DAO testing
-- `test-integration` - integration/e2e tests
-  - typically testing API endpoints with [Rest Assured](http://rest-assured.io/) or similar
-  - start up full version of the server and any dependencies
+-   `main` - business logic and main app files
+-   `test` - unit tests,
+    -   typically with [JUnit](https://junit.org/junit5/) or similar
+    -   spin up in-memory [H2](http://www.h2database.com/html/main.html) database for easy DAO testing
+-   `test-integration` - integration/e2e tests
+    -   typically testing API endpoints with [Rest Assured](http://rest-assured.io/) or similar
+    -   start up full version of the server and any dependencies
 
 You can't merge all the tests into one module and run them all at once because you would need to start up multiple database instances etc. Conflicts arise and it's apparent that you need to run them separately in their own dedicated JVM.
 
@@ -81,4 +81,5 @@ Now you will see the desired output after Gradle runs:
 
 ![With Integration tests module](/images/2018/kotlin-integration-test-module.png)
 
-**WARNING** - This approach is not without problems. If you look at the `Test Output Path` of the new module, it is defined as `\kotlin-scratchpad\out\test\classes` which is the same as the main `test` module. Therefore, all the compiled test classes will end up in the same directory - which causes issues if you try to `Run All` for example.  To fix this, you have to manually update the path to `\kotlin-scratchpad\out\testIntegration\classes`. Alternatively, you might not apply the `idea` plugin and just mark the module for tests each time Gradle runs. Hopefully I will find a fix for this at some point.
+**WARNING** - This approach is not without problems. If you look at the `Test Output Path` of the new module, it is defined as `\kotlin-scratchpad\out\test\classes` which is the same as the main `test` module. Therefore, all the compiled test classes will end up in the same directory - which causes issues if you try to `Run All` for example. To fix this, you have to manually update the path to `\kotlin-scratchpad\out\testIntegration\classes`. Alternatively, you might not apply the `idea` plugin and just mark the module for tests each time Gradle runs. Hopefully I will find a fix for this at some point.
+{: .info-block}

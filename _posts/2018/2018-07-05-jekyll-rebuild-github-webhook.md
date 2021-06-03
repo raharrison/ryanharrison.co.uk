@@ -5,7 +5,7 @@ tags:
     - jekyll
     - github
     - webhook
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
 In the ongoing task of trying to automate as much of the blogging process as much as possible, actually rebuilding the static files is the most painful and could definitely use improvement. If you're not using something like [GitHub Pages](https://pages.github.com/) (which does it automatically), but instead host everything on your own server, rebuilding the site after you add a new post could involve manually ssh'ing into the machine and running the [Jekyll](https://jekyllrb.com/) command manually.

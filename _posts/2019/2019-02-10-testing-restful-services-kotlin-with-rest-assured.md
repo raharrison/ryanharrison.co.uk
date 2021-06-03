@@ -2,13 +2,13 @@
 layout: post
 title: Testing RESTful Services in Kotlin with Rest Assured
 tags:
-  - restful service
-  - assert
-  - test
-  - kotlin
-  - rest assured
-  - endpoint
-typora-root-url: ..
+    - restful service
+    - assert
+    - test
+    - kotlin
+    - rest assured
+    - endpoint
+typora-root-url: ../..
 ---
 
 If you're not writing a Spring application, creating good integration tests for RESTful endpoints (or any other web service) isn't always the easiest - especially when you aren't working in a dynamically typed language. [Rest Assured](http://rest-assured.io/) is a great library which makes the process a lot easier - it's designed around use in Java, but of course we can use it just fine in Kotlin as well.
