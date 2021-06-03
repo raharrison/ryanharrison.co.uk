@@ -12,9 +12,8 @@ tags:
 typora-root-url: ../..
 ---
 
-> **Note:** this is a follow-up post covering the collection and visualization of Spring Boot metrics within distributed environments. Make sure to take a look at [Gathering Metrics with Micrometer and Spring Boot Actuator]({{ site.baseurl }}{% post_url 2021/2021-01-06-gathering-metrics-micrometer-spring-boot-actuator %}) which outlines using Micrometer to instrument your application with some of the built-in Spring Boot integrations and how to start defining and capturing custom metrics.
-
----
+**Note:** this is a follow-up post covering the collection and visualization of Spring Boot metrics within distributed environments. Make sure to take a look at [Gathering Metrics with Micrometer and Spring Boot Actuator]({{ site.baseurl }}{% post_url 2021/2021-01-06-gathering-metrics-micrometer-spring-boot-actuator %}) which outlines using Micrometer to instrument your application with some of the built-in Spring Boot integrations and how to start defining and capturing custom metrics.
+{: .info-block}
 
 From the [previous part]({{ site.baseurl }}{% post_url 2021/2021-01-06-gathering-metrics-micrometer-spring-boot-actuator %}) we should now have a Spring Boot application that is capable of capturing a variety of dimensional metrics, but is of limited use since it only stores these values locally within it's own [Micrometer](https://micrometer.io/) `MetricsRegistry`. We can use the built-in Spring actuator endpoints to perform simple queries on these metrics, but this alone is not meant as a complete monitoring tool. We don't have any access to historical data and we need to query the instances directly - not something which is viable when running many (perhaps ephemeral) instances.
 

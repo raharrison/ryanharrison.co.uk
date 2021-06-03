@@ -169,7 +169,7 @@ blockquote p:last-child {
 }
 @media (min-width: 30em) {
   blockquote {
-    padding-right: 5rem;
+    padding-right: 4rem;
     padding-left: 1.25rem;
   }
 }
@@ -688,4 +688,24 @@ a.pagination-item:hover {
     border-radius: 3px;
     font-style: normal;
   }
+}
+
+.info-block {
+  padding: .5rem 1rem;
+  margin: .8rem 0;
+  border-left: .25rem solid #bee5eb;
+  background-color: #d1ecf1;
+  color: #0c5460;
+  a {
+    color: #0c7af0;
+  }
+}
+.info-block p:last-child {
+  margin-bottom: 0;
+}
+@media (min-width: 30em) {
+    .info-block {
+      padding-right: 4rem;
+      padding-left: 1.25rem;
+    }
 }

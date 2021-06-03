@@ -9,20 +9,19 @@ tags:
   - actuator
   - prometheus
   - grafana
-typora-root-url: ..
+typora-root-url: ../..
 ---
 
-> **Note**: Also check out this follow-up post which covers how to query and create reusable dashboards from your metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
+**Note**: Also check out this follow-up post which covers how to query and create reusable dashboards from your metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
+{: .info-block}
 
----
-
-### Why Metrics?
+## Why Metrics?
 
 Metrics, alongside tracing and logging, form the concept of observability - one of the key cornerstones of DevOps - so hopefully it should be of no surprise to anyone of its importance. As we build larger and more distributed platforms, maintaining sufficient visibility into what the system is doing, when it's doing it and how well it's performing becomes more difficult, but also more vital. We can likely no longer just directly query the application for these measurements anymore. Instead, we require aggregations across all our service instances, as well as the ability to drill-down into particular aspects of a metric to gain most insight.
 
 The usefulness of metrics also goes well past just capturing overall system health and resource usage. We can still observe common things like memory and CPU usage, garbage collection and thread utilization metrics - from the SRE perspective these can still go a long way to monitor and manage a production system - but we should also be looking to go much further than just machine level statistics. Well-defined business level metrics, collected automatically by our applications in real-time, are a prerequisite to both our ability to define and measure against SLA's/SLO's, alongside our ability to make well informed, data-driven decisions as part of the wider Agile process.
 
-### Micrometer
+## Micrometer
 
 Libraries and frameworks for gathering metrics are nothing new in the Java world. Things like [Dropwizard](https://www.dropwizard.io/en/latest/) have been around for many years now, but more recently [Micrometer](https://micrometer.io/) has taken a more prominent position - and for good reason. In a lot of ways it supersedes the alternatives.
 
@@ -32,7 +31,7 @@ The above description is straight from the [Micrometer](https://micrometer.io/) 
 
 A nice and modern API is all well and good, but perhaps the larger points to mention here are its support for dimensional metrics (see below) and the first-party support from Spring. From Spring Boot 2.0 (1.x used `Dropwizard`) each component is integrated with `Micrometer` and will automatically publish metrics out-of-the-box (again, more on this below).
 
-### Hierarchical vs. Dimensional Metrics
+## Hierarchical vs. Dimensional Metrics
 
 Traditionally, metrics have really been not much more than just simple key/value pairs - where the key is usually some dot-separated string namespaced into a particular application area and the value being a simple numerical measurement. This is what's known as a `hierarchical metric`, where as the key gets longer, the measurement gets more specific. This used to be the way that most libraries captured metrics and indeed is how `Dropwizard` and Spring Boot 1.x function. Hierarchical metrics do however have a large limitation - consider the below keys for capturing metrics for `HTTP` endpoints:
 
@@ -71,7 +70,7 @@ This kind of structure is supported out-of-the-box by `Micrometer`, whereby each
 
 The real benefit of dimensional metrics comes into play when partnered with a time series database (such as `Prometheus`). This allows for the ability to drill-down across dimensions at will, without introducing any of the downsides of hierarchical metrics. Going back to the example above, you can add specific predicates on any number of dimensions and get out the expected aggregation directly. Answering a complex query like "give me all the 500 responses from the `getwidgets` endpoint, across all regions and from users X,Y and Z from the last 24hrs and compare against the same data from yesterday" becomes trivial.
 
-### Spring Integration
+## Spring Integration
 
 As I mentioned before, `Micrometer` is integrated with Spring Boot Actuator and so requires just the single dependency to get running:
 
@@ -92,7 +91,7 @@ The `Spring Boot Actuator` starter dependency does a number of useful things whi
 
 Hopefully you will agree that this is a fairly comprehensive list already for out-of-the-box behaviour (just dependant on which beans you have created in your app), and this is before you have created any of your own custom metrics.
 
-#### Publishing Metrics
+### Publishing Metrics
 
 To try these features out we'll create a quick contrived demo app to test some of the integration areas. First of all the main Spring app config:
 
@@ -188,7 +187,7 @@ public class WidgetEndpoint {
 
 If you build, run the app and hit the endpoints, they will work as expected, but we don't yet have a way to confirm any metrics actually get created.
 
-#### Spring Boot Actuator Metrics
+### Spring Boot Actuator Metrics
 
 The `Spring Boot Actuator` comes built-in with a number of endpoints we can use to manage our application. One of these allows you to view and query all the metrics generated by your application, but it's disabled by default. Add the following to `application.properties` to enable it:
 
@@ -326,7 +325,7 @@ Now to actually call some of our own code to generate some other metrics. We can
 
 Here we are using the the `cache.gets` metric, with tag predicates on the cache name and result, in order to assess how well our cache is utilized. Similarly, you could also inspect the `misses` tag to generate the cache hit/miss ratio.  You can also use the `cache.size` metric to observe trends in how many values are in loaded into your caches: `http://localhost:8080/actuator/metrics/cache.size?tag=name:widgetCache`
 
-#### HTTP Client Metrics
+### HTTP Client Metrics
 
 Next up we can call the `saveWidget` endpoint to make use of our instrumented `RestTemplate` to call an external service: `http://localhost:8080/widgets?input=something`. If you call the `/actuator/metrics` endpoint again, you should see a new entry `http.client.requests`:
 
@@ -390,7 +389,7 @@ The previous metrics we've looked at were simple counters or gauges, but now we 
 - how many requests where made to the `/uuid` endpoint on client X which failed?
 - how long did the application spend waiting for client X to respond to our calls?
 
-#### HTTP Request Metrics
+### HTTP Request Metrics
 
 By now we should have produced enough traffic to generate some good HTTP request metrics. You could also call the `getWidgets` endpoint with an unknown user to generate an exception: `http://localhost:8080/widgets?user=none`. The `http.server.requests` metric is used to capture measurements for our HTTP endpoints:
 
@@ -466,7 +465,7 @@ Similarly to the `http.client.requests` metric, we have a timer meter and a numb
 - how many requests made to the `/widget` resource resulted in `IllegalArgumentException`?
 - how long did it take to respond to all `GET` requests which resulted in `500` status codes?
 
-#### Logging Metrics
+### Logging Metrics
 
 A perhaps lesser known, but I think very useful metric is `logback.events` which keeps track of all lines that were logged and at what level. We can then query for example just for `ERROR` log lines across generated over time: `http://localhost:8080/actuator/metrics/logback.events?tag=level:error`:
 
@@ -484,11 +483,11 @@ A perhaps lesser known, but I think very useful metric is `logback.events` which
 }
 ```
 
-#### DataSource Metrics
+### DataSource Metrics
 
 Finally, we have metrics produced by any `JDBC` `DataSource` instances available in our app. This can be done either through the Spring Boot `spring.datasource` auto-configuration, or creating your own. `HikariCP` exposes a number of metrics over it's connection pool, such as `hikaricp.connections.usage` and `hikaricp.connections.idle`. This can be helpful if you're trying to track down connection pool exhaustion issues in your applications.
 
-### Creating Custom Metrics
+## Creating Custom Metrics
 
 All the built-in Spring metrics are great, but you will also need to create and publish your own custom metrics. Spring creates a `Micrometer` `MeterRegistry` instance by default, that you can then inject and use to create custom counters, gauges and timers. As a very simple and contrived example, we can create some counters in our widget service:
 
@@ -593,7 +592,7 @@ We can then view the timing data in the `method.timed` base metric, which can be
 
 This just scratches the surface of the `Micrometer` API to define your own metrics. Take a look at the docs page <https://micrometer.io/docs/concepts> which goes into more detail about each available meter type.
 
-### Aggregation and Visualization
+## Aggregation and Visualization
 
 See this follow-up post for a complete look at visualizing Spring Boot metrics: [Aggregating and Visualizing Spring Boot Metrics with Prometheus and Grafana]({{ site.baseurl }}{% post_url 2021/2021-06-02-aggregating-visualizing-spring-boot-metrics-prometheus-grafana %})
 
@@ -609,7 +608,7 @@ Actuator will then expose a dedicated `/actuator/prometheus` endpoint which can 
 
 ![Grafana Spring Boot Dashboard](/images/2021/grafana_dashboard.png)
 
-### Takeaways (TL;DR)
+## Takeaways (TL;DR)
 
 - metrics are an essential part of any application, not only in assessing health and stability, but also to make data-informed decisions on the future direction of your application
 - for JVM based apps, `Micrometer` is the way to go for metrics collection (especially when using Spring)
