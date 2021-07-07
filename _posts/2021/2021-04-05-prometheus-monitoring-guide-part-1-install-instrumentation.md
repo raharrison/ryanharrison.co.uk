@@ -15,6 +15,7 @@ typora-root-url: ../..
 ---
 
 -   [Part 2 - PromQL and Recording Rules]({{ site.baseurl }}{% post_url 2021/2021-04-18-prometheus-monitoring-guide-part-2-promql-recording-rules %})
+-   [Part 3 - Alerting]({{ site.baseurl }}{% post_url 2021/2021-04-30-prometheus-monitoring-guide-part-3-alerting %})
 
 An open-source systems monitoring and alerting toolkit. Now a standalone open source project and maintained independently of any company. Analyse how your applications and infrastructure is performing based on the metrics they publish. Particularly suitable for large distributed systems with ephemeral instances.
 
