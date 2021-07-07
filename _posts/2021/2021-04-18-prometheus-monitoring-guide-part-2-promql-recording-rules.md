@@ -18,7 +18,7 @@ typora-root-url: ../..
 ---
 
 -   [Part 1 - Installation and Instrumentation]({{ site.baseurl }}{% post_url 2021/2021-04-05-prometheus-monitoring-guide-part-1-install-instrumentation %})
--   [Part 3 - Alerting]({{ site.baseurl }}{% post_url 2021/2021-04-30-prometheus-monitoring-guide-part-3-alerting %})
+-   [Part 3 - Alerting]({{ site.baseurl }}{% post_url 2021/2021-07-06-prometheus-monitoring-guide-part-3-alerting %})
 
 ## PromQL
 
