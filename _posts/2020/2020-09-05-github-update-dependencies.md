@@ -17,7 +17,7 @@ Instead, GitHub `Dependabot` will automatically read your project build files (`
 
 ### Updating Java Dependencies
 
-Configuring `Dependabot` is as simple as adding a `dependendabot.yml` file in the `.github` directory at the root level of your project (the same place any action workflow config files are also placed).
+Configuring `Dependabot` is as simple as adding a `dependabot.yml` file in the `.github` directory at the root level of your project (the same place any action workflow config files are also placed).
 
 ```yaml
 version: 2
