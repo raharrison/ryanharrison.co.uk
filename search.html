@@ -7,7 +7,7 @@ title: Search
 
 <div>
     <form id="site_search" class="input-form">
-        <input type="text" id="search_box" placeholder="Enter search term ..." />
+        <input type="text" id="search_box" placeholder="Enter search term ..." oninput="debouncedSearch()" />
         <button id="submit_button" type="submit">Search</button>
     </form>
 </div>
