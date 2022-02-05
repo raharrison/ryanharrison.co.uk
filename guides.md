@@ -24,3 +24,5 @@ title: Guides
 
 -   [Part 1 - Installation and Instrumentation]({{ site.baseurl }}{% post_url 2021/2021-04-05-prometheus-monitoring-guide-part-1-install-instrumentation %})
 -   [Part 2 - PromQL and Recording Rules]({{ site.baseurl }}{% post_url 2021/2021-04-18-prometheus-monitoring-guide-part-2-promql-recording-rules %})
+-   [Part 3 - Alerting]({{ site.baseurl }}{% post_url 2021/2021-07-06-prometheus-monitoring-guide-part-3-alerting %})
+-   [Part 4 - Pushgateway and Blackbox Exporter]({{ site.baseurl }}{% post_url 2022/2022-02-05-prometheus-monitoring-guide-part-4-pushgateway-blackbox-exporter %})
