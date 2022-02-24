@@ -16,8 +16,9 @@ tags:
 -   [Part 7 - Email Forwarding with Postfix]({{ site.baseurl }}{% post_url 2018/2018-10-10-ubuntu-server-setup-part-7-forward-email-postfix %})
 -   [Part 8 - Sending Email Through Gmail]({{ site.baseurl }}{% post_url 2018/2018-10-30-ubuntu-server-setup-part-8-sending-email-through-gmail %})
 -   [Part 9 - Setup a Reverse Proxy with Nginx]({{ site.baseurl }}{% post_url 2019/2019-06-16-ubuntu-server-setup-part-9-reverse-proxy-nginx %})
+-   [Part 10 - Install Docker and Docker Compose]({{ site.baseurl }}{% post_url 2022/2022-02-24-ubuntu-server-setup-part-10-install-docker %})
 
-In this set of posts I'll be running through setting up a new Ubuntu server - from initial setup and security through to installation of some of the most common packages. You can get your very own server/VPS through companies such as [DigitalOcean](http://digitalocean.com/) or [OVH](https://www.ovh.co.uk/) - in this case we'll be using Ubuntu Server 18.04, but the same concepts should apply to previous and future releases as well.
+In this set of posts I'll be running through setting up a new Ubuntu server - from initial setup and security through to installation of some of the most common packages. You can get your very own server/VPS through companies such as [DigitalOcean](http://digitalocean.com/) or [OVH](https://www.ovh.co.uk/) - in this case we'll be using Ubuntu Server 20.04, but the same concepts should apply to previous and future releases as well.
 
 In this post we'll be covering how to login to your server for the first time through SSH and creating a new user with root privileges.
 
