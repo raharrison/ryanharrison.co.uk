@@ -42,6 +42,8 @@ sasl.kerberos.service.name=myuser
 
 `export ZBROKER=host:2181`
 
+---
+
 ## Topics
 
 **Create a new topic**
@@ -64,6 +66,8 @@ sasl.kerberos.service.name=myuser
 
 `kafka-configs.sh --zookeeper $ZBROKER --alter --entity-type topics --entity-name topic1 --add-config retention.ms=2592000000`
 
+---
+
 ## Consumers
 
 **Run a console consumer starting from the beginning of a topic**
@@ -78,6 +82,8 @@ sasl.kerberos.service.name=myuser
 
 `kafka-console-consumer.sh --bootstrap-server $KBROKER --topic topic1 --group group1 --consumer-config $KCONFIG`
 
+---
+
 ## Producers
 
 **Run a console producer pushing to a specific topic**
@@ -87,6 +93,8 @@ sasl.kerberos.service.name=myuser
 **Include a specific key in each published message**
 
 `kafka-console-producer.sh --broker-list $KBROKER --topic topic1 --property "parse.key=true" --property "key.separator=|" --producer-config $KCONFIG`
+
+---
 
 ## Consumer Groups
 
@@ -122,11 +130,15 @@ sasl.kerberos.service.name=myuser
 
 `kafka-consumer-groups.sh --bootstrap-server $KBROKER --group group1 --reset-offsets --shift-by -10 --topic topic1 --execute --command-config $KCONFIG`
 
-## ACL
+---
+
+## ACL's
 
 **Grant superuser access to all topics and groups**
 
 `kafka-acls.sh --authorizer-properties zookeeper.connect=$ZBROKER --add --allow-principal User:myuser --operation ALL --topic '*' --group '*' --cluster`
+
+---
 
 ## Zookeeper
 
