@@ -17,8 +17,8 @@ footer-links:
 # Enter your Disqus shortname
 disqus: ryanharrison
 
-# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-90740127-1
+# Enter your Google Analytics web tracking code to activate tracking
+google_analytics: G-9MVP1BEKQY
 
 # Used for Sitemap.xml and your RSS feed
 url: https://ryanharrison.co.uk
