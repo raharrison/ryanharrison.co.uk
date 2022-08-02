@@ -229,7 +229,7 @@ A similar endpoint is also added to `Service A` which just uses a `RestTemplate`
 - By default `Sleuth` adds the trace and span ids to the `SLF4J MDC` meaning that they can be logged alongside the usual output. This is really useful to perform trace/log correlation, as once you have the root trace id you can use `Splunk` to directly locate the same request across any downstream services
 - In the headers of the `HTTP` request from `Service A` we can see the trace context propagation in action
   - In both `B3` and `W3C` (`traceparent`) format the trace id and parent span ids are passed with the request
-  - `Sleuth` will capture these id's and automatically and them to any subsequent requests
+  - `Sleuth` will capture these id's and automatically add them to any subsequent requests
 - We can `autowire` and  use the `io.opentracing.Tracer` instance to print the current active span
 
 ### Visualizing in Jaeger
