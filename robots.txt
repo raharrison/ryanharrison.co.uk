@@ -1,4 +1,4 @@
 User-Agent: *
-Disallow: 
+Disallow: /page*
 
 Sitemap: https://ryanharrison.co.uk/sitemap.xml
