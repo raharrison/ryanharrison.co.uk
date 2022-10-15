@@ -1,25 +1,40 @@
 ---
 layout: post
-title: Testing RESTful Services in Kotlin with Rest Assured
+title: Testing RESTful Ktor Services in Kotlin with Rest Assured
 tags:
     - restful service
+    - ktor
     - assert
     - test
     - kotlin
     - rest assured
+    - junit
     - endpoint
+last_modified_at: 2022-10-15
 typora-root-url: ../..
 ---
 
-If you're not writing a Spring application, creating good integration tests for RESTful endpoints (or any other web service) isn't always the easiest - especially when you aren't working in a dynamically typed language. [Rest Assured](http://rest-assured.io/) is a great library which makes the process a lot easier - it's designed around use in Java, but of course we can use it just fine in Kotlin as well.
+If you're not writing a Spring application, creating good integration tests for RESTful endpoints (or any other web service) isn't always the easiest - especially when you aren't working in a dynamically typed language. [Rest Assured](http://rest-assured.io/) is a great library which makes the process a lot easier - it's designed around use in Java, but of course we can use it just fine in Kotlin as well (such as with the `Ktor` web framework).
 
 In the following examples, a simple Kotlin web service written with [Ktor](https://ktor.io/) and [Exposed](https://github.com/JetBrains/Exposed) is tested using `Rest Assured` and `JUnit`. Note that this isn't a simple unit test of the endpoint, an actual instance of the server is started up and tested via requests to `localhost`.
 
-## Add Rest Assured as a dependency
+**Full sample application available at** [kotlin-ktor-exposed-starter]()
 
-The first step is to add Rest Assured as a test dependency in your project, just open up your `build.gradle` file and add the following to the `dependencies` section (3.3.0 is the latest version as of writing):
+## Add Test Dependencies
 
-`testCompile "io.rest-assured:rest-assured:3.3.0"`
+The first step is to add some test dependencies to our project. Just open up your `build.gradle.kts` file and add the following to the `dependencies` section (5.2.0 is the latest version of `Rest Assured` as of writing):
+
+```kotlin
+testImplementation("org.assertj:assertj-core:$assertjVersion")
+testImplementation("io.rest-assured:rest-assured:$restAssuredVersion")
+testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")
+testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+```
+
+Alongside `Rest Assured` we are also using a couple other test libraries:
+
+- `AssertJ` - an amazing assertion library
+- `JUnit5` - the test runner (shouldn't need too much explanation)
 
 ## Create Kotlin aliases
 
@@ -30,9 +45,12 @@ protected fun RequestSpecification.When(): RequestSpecification {
     return this.`when`()
 }
 
-// allows response.to<Widget>() -> Widget instance
 protected inline fun <reified T> ResponseBodyExtractionOptions.to(): T {
-    return this.`as`(T::class.java)
+    return defaultMapper.decodeFromString(this.asString())
+}
+
+protected inline fun <reified T> RequestSpecification.bodyJson(obj: T): RequestSpecification {
+    return this.body(defaultMapper.encodeToString(obj))
 }
 ```
 
@@ -46,34 +64,33 @@ Because we also have access to any other source files in this base class, you ca
 
 ```kotlin
 open class ServerTest {
-
-    companion object {
+	companion object {
 
         private var serverStarted = false
-
         private lateinit var server: ApplicationEngine
 
         @BeforeAll
         @JvmStatic
         fun startServer() {
-            if(!serverStarted) {
-                server = embeddedServer(Netty, 8080, Application::module)
+            if (!serverStarted) {
+                server = embeddedServer(Netty, 8081, module = Application::module)
                 server.start()
                 serverStarted = true
 
                 RestAssured.baseURI = "http://localhost"
-                RestAssured.port = 8080
+                RestAssured.port = 8081
                 Runtime.getRuntime().addShutdownHook(Thread { server.stop(0, 0, TimeUnit.SECONDS) })
             }
         }
     }
 
     @BeforeEach
-    fun before() = transaction {
-        Widgets.deleteAll() // refresh data before each test
-        Unit
+    fun before() = runBlocking {
+        newSuspendedTransaction {
+            Widgets.deleteAll()
+            Unit
+        }
     }
-
 }
 ```
 
@@ -90,17 +107,19 @@ The below example shows testing out a `GET` request to our RESTful resource. The
 ```kotlin
 @Test
 fun testGetWidgets() {
-    // expected
     val widget1 = NewWidget(null, "widget1", 10)
     val widget2 = NewWidget(null, "widget2", 5)
+    addWidget(widget1)
+    addWidget(widget2)
 
-    val widgets = get("/widget")
-    	.then()
-    	.statusCode(200)
-    	.extract().to<List<Widget>>()
+    val widgets = get("/widgets")
+        .then()
+        .statusCode(200)
+        .extract().to<List<Widget>>()
 
-    assertThat(widgets).containsOnly(widget1, widget2)
-
+    assertThat(widgets).hasSize(2)
+    assertThat(widgets).extracting("name").containsExactlyInAnyOrder(widget1.name, widget2.name)
+    assertThat(widgets).extracting("quantity").containsExactlyInAnyOrder(widget1.quantity, widget2.quantity)
 }
 ```
 
@@ -111,15 +130,20 @@ Testing out `POST` requests mainly follows the same format, however in this case
 ```kotlin
 @Test
 fun testUpdateWidget() {
-    val update = NewWidget("id1", "updated", 46) // already exists
+    // when
+    val widget1 = NewWidget(null, "widget1", 10)
+    val saved = addWidget(widget1)
+
+    // then
+    val update = NewWidget(saved.id, "updated", 46)
     val updated = given()
         .contentType(ContentType.JSON)
-        .body(update)
+        .bodyJson(update)
         .When()
-        .post("/widget")
-        .then()
-        .statusCode(200)
-        .extract().to<Widget>()
+            .put("/widgets")
+            .then()
+            .statusCode(200)
+            .extract().to<Widget>()
 
     assertThat(updated).isNotNull
     assertThat(updated.id).isEqualTo(update.id)
@@ -147,7 +171,7 @@ The Rest Assured [usage guide](https://github.com/rest-assured/rest-assured/wiki
 
 The main differences you will see in other examples is that in a typical Rest Assured test, the `body` method is used to run `Hamcrest` matchers against certain JSON elements. You can also test forms, run JSON schema validations, test against XML and use `JSONPath` to access specific nodes.
 
-Find a lot more real-world use cases in the following two projects:
+Find a lot more real-world use cases in the following two projects. This also includes testing Ktor websockets:
 
 <https://github.com/raharrison/kotlin-ktor-exposed-starter/tree/master/src/test/kotlin>
 
