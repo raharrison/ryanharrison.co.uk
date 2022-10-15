@@ -7,10 +7,13 @@ tags:
     - jackson
     - json
     - mapper
+last_modified_at: 2022-10-15
 typora-root-url: ../..
 ---
 
 Although the preferred JSON serialization library used in a lot of the `Ktor` examples is [GSON](https://github.com/google/gson), which makes sense due to it's simplicity and ease of use, in real-world use [Jackson](https://github.com/FasterXML/jackson) is probably the preferred option. It's faster (especially when combined with the `AfterBurner` module) and generally more flexible. `Ktor` comes with a built-in feature that makes use Jackson for JSON conversion very simple.
+
+Example real-world project: <https://github.com/raharrison/lynks-server>
 
 ## Add Jackson dependency
 
@@ -18,7 +21,8 @@ In your `build.gradle` file add a dependency to the Ktor Jackson artifact:
 
 ```kotlin
 dependencies {
-    compile "io.ktor:ktor-jackson:$ktor_version"
+    implementation "io.ktor:ktor-server-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-serialization-jackson:$ktor_version"
 }
 ```
 
@@ -33,8 +37,11 @@ Then tell Ktor to use Jackson for serialization/deserialization for JSON content
 ```kotlin
 install(ContentNegotiation) {
     jackson {
-        // extension method of ObjectMapper to allow config etc
-        enable(SerializationFeature.INDENT_OUTPUT)
+        // customize the Jackson serializer as usual
+        configure(SerializationFeature.INDENT_OUTPUT, true)
+        setDefaultPrettyPrinter(DefaultPrettyPrinter().apply {
+            indentArraysWith(DefaultPrettyPrinter.FixedSpaceIndenter.instance)
+        })
     }
 }
 ```

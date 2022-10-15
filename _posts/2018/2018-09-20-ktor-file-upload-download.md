@@ -7,6 +7,7 @@ tags:
     - file
     - upload
     - download
+last_modified_at: 2022-10-15
 typora-root-url: ../..
 ---
 
@@ -45,8 +46,6 @@ post("/upload") { _ ->
     }
 }
 ```
-
-The [documentation](https://ktor.io/servers/uploads.html) also includes a suspending `copyTo` method which can be used to save the upload to a file in a non-blocking way.
 
 ## File Download
 
