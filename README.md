@@ -4,7 +4,7 @@
 
 My personal website and blog. Powered by [Jekyll](https://jekyllrb.com/)
 
-Accessible at <http://ryanharrison.co.uk>
+Accessible at <https://ryanharrison.co.uk>
 
 ## Serve
 
