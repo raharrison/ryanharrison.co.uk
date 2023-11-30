@@ -8,7 +8,7 @@ title: Contact Me
     <form id="contact-form" class="input-form" method="POST" action="https://api.ryanharrison.co.uk/contact" >
 
         <label for="name">Name</label>
-        <input id="name" type="text" name="name" class="field" placeholder="Optional" autofocus /><br/>
+        <input id="name" type="text" name="name" class="field" placeholder="Required" required autofocus /><br/>
 
         <label for="email">E-mail</label>
         <input id="email" type="email" name="email" class="field" id="email" placeholder="Required" required /><br/>
@@ -21,7 +21,7 @@ title: Contact Me
 
         <div id="invalid-answer" style="color:red"></div>
 
-        <input type="hidden" name="redirect" value="https://ryanharrison.co.uk/thanks.html">
+        <input type="hidden" name="forward" value="https://ryanharrison.co.uk/thanks.html">
 
         <button type="submit">SEND</button>
 
