@@ -19,5 +19,3 @@ docker run -p 4000:4000 -v $(pwd):/site bretfisher/jekyll-serve
 ```plain
 docker run -v $(pwd):/site bretfisher/jekyll-serve bundle exec jekyll build
 ```
-
-Webhook trigger
