@@ -3,7 +3,6 @@ _gh_pages
 _site
 .ruby-version
 
-_site
 .sass-cache
 sftp-config.json
 .jekyll-metadata

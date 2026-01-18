@@ -1,3 +1,5 @@
+@use "sass:color";
+
 /*
 *  Import external font families
 */
@@ -19,9 +21,7 @@
  */
 
 * {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -46,7 +46,7 @@ body {
   color: #24292e;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
@@ -325,8 +325,7 @@ figure {
   font-size: .875rem; /* 15px */
   color: rgba(255,255,255,.6);
   background-color: #202020;
-  -webkit-transition: all .3s ease-in-out;
-          transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 @media (min-width: 30em) {
   .sidebar {
@@ -396,10 +395,7 @@ a.sidebar-nav-item:focus {
   width: 1rem;
   height: .75rem;
   content: "";
-  background-image: -webkit-linear-gradient(to bottom, #555, #555 20%, #fff 20%, #fff 40%, #555 40%, #555 60%, #fff 60%, #fff 80%, #555 80%, #555 100%);
-  background-image:    -moz-linear-gradient(to bottom, #555, #555 20%, #fff 20%, #fff 40%, #555 40%, #555 60%, #fff 60%, #fff 80%, #555 80%, #555 100%);
-  background-image:     -ms-linear-gradient(to bottom, #555, #555 20%, #fff 20%, #fff 40%, #555 40%, #555 60%, #fff 60%, #fff 80%, #555 80%, #555 100%);
-  background-image:         linear-gradient(to bottom, #555, #555 20%, #fff 20%, #fff 40%, #555 40%, #555 60%, #fff 60%, #fff 80%, #555 80%, #555 100%);
+  background-image: linear-gradient(to bottom, #555, #555 20%, #fff 20%, #fff 40%, #555 40%, #555 60%, #fff 60%, #fff 80%, #555 80%, #555 100%);
 }
 
 .sidebar-toggle:active,
@@ -412,10 +408,7 @@ a.sidebar-nav-item:focus {
 .sidebar-toggle:active:before,
 #sidebar-checkbox:focus ~ .sidebar-toggle:before,
 #sidebar-checkbox:checked ~ .sidebar-toggle:before {
-  background-image: -webkit-linear-gradient(to bottom, #fff, #fff 20%, #555 20%, #555 40%, #fff 40%, #fff 60%, #555 60%, #555 80%, #fff 80%, #fff 100%);
-  background-image:    -moz-linear-gradient(to bottom, #fff, #fff 20%, #555 20%, #555 40%, #fff 40%, #fff 60%, #555 60%, #555 80%, #fff 80%, #fff 100%);
-  background-image:     -ms-linear-gradient(to bottom, #fff, #fff 20%, #555 20%, #555 40%, #fff 40%, #fff 60%, #555 60%, #555 80%, #fff 80%, #fff 100%);
-  background-image:         linear-gradient(to bottom, #fff, #fff 20%, #555 20%, #555 40%, #fff 40%, #fff 60%, #555 60%, #555 80%, #fff 80%, #fff 100%);
+  background-image: linear-gradient(to bottom, #fff, #fff 20%, #555 20%, #555 40%, #fff 40%, #fff 60%, #555 60%, #555 80%, #fff 80%, #fff 100%);
 }
 
 @media (min-width: 30.1em) {
@@ -446,14 +439,11 @@ a.sidebar-nav-item:focus {
 .wrap,
 .sidebar,
 .sidebar-toggle {
-  -webkit-backface-visibility: hidden;
-      -ms-backface-visibility: hidden;
-          backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 .wrap,
 .sidebar-toggle {
-  -webkit-transition: -webkit-transform .3s ease-in-out;
-          transition: transform .3s ease-in-out;
+  transition: transform .3s ease-in-out;
 }
 
 #sidebar-checkbox:checked + .sidebar {
@@ -463,9 +453,7 @@ a.sidebar-nav-item:focus {
 #sidebar-checkbox:checked ~ .sidebar,
 #sidebar-checkbox:checked ~ .wrap,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
-  -webkit-transform: translateX(14rem);
-      -ms-transform: translateX(14rem);
-          transform: translateX(14rem);
+  transform: translateX(14rem);
 }
 
 
@@ -529,7 +517,6 @@ a.sidebar-nav-item:focus {
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid lighten(#828282, 40%);
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   background-color: #eee;
@@ -637,8 +624,6 @@ a.pagination-item:hover {
   input, textarea, button {
     margin: 5px 0;
     padding: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     border: 1px solid #bbb;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -666,8 +651,8 @@ a.pagination-item:hover {
     cursor: pointer;
 
     &:hover {
-      background-color: darken(#268bd2, 10%);
-      color: darken(#fff, 10%);
+      background-color: color.adjust(#268bd2, $lightness: -10%);
+      color: color.adjust(#fff, $lightness: -10%);
     }
   }
 }
@@ -688,9 +673,6 @@ a.pagination-item:hover {
   right: 20px;
   opacity: 0;
   cursor: pointer;
-  -webkit-transition: opacity 400ms ease-in-out;
-  -moz-transition: opacity 400ms ease-in-out;
-  -o-transition: opacity 400ms ease-in-out;
   transition: opacity 400ms ease-in-out;
 }
 
