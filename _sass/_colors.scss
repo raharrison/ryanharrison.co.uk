@@ -1,0 +1,206 @@
+/*
+ * Color scheme definitions
+ * Uses CSS custom properties for light/dark mode support
+ */
+
+:root {
+  // Base colors
+  --body-bg: #fff;
+  --body-color: #24292e;
+  --body-color-secondary: #303030;
+
+  // Links
+  --link-color: #268bd2;
+  --link-hover-color: #1a6a9e;
+
+  // Headings
+  --heading-color: #313131;
+
+  // Borders
+  --border-color: #eee;
+  --border-color-light: #fff;
+  --border-color-medium: #e5e5e5;
+  --border-color-dark: #ddd;
+
+  // Grays
+  --gray-100: #f9f9f9;
+  --gray-200: #f5f5f5;
+  --gray-300: #eee;
+  --gray-400: #ccc;
+  --gray-500: #777;
+  --gray-600: #7a7a7a;
+  --gray-700: #555;
+  --gray-800: #424242;
+  --gray-900: #202020;
+
+  // Masthead
+  --masthead-border-top: #424242;
+  --masthead-border-bottom: var(--border-color);
+  --masthead-title-color: #505050;
+  --masthead-tagline-color: #888;
+
+  // Sidebar (keep dark in both modes)
+  --sidebar-bg: #202020;
+  --sidebar-color: rgba(255, 255, 255, 0.6);
+  --sidebar-link-color: #fff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+
+  // Sidebar toggle
+  --sidebar-toggle-color: #505050;
+  --sidebar-toggle-bg: #fff;
+  --sidebar-toggle-active-color: #fff;
+  --sidebar-toggle-active-bg: #555;
+
+  // Code
+  --code-color: #c7254e;
+  --code-bg: #f7f7f9;
+  --pre-bg: var(--gray-100);
+
+  // Tables
+  --table-border: var(--border-color-medium);
+  --table-stripe-bg: var(--gray-100);
+
+  // Footer
+  --footer-bg: var(--gray-300);
+  --footer-border: var(--border-color-dark);
+
+  // Forms
+  --input-border: #ddd;
+  --input-focus-border: #268bd2;
+  --input-focus-shadow: rgba(38, 139, 210, 0.15);
+  --button-bg: #f5f5f5;
+  --button-border: #ddd;
+  --button-color: #268bd2;
+  --button-hover-bg: #268bd2;
+  --button-hover-border: #268bd2;
+  --button-hover-color: #fff;
+
+  // Info blocks
+  --info-block-bg: #d1ecf1;
+  --info-block-border: #bee5eb;
+  --info-block-color: #0c5460;
+  --info-block-link: #0c7af0;
+
+  // Search results
+  --search-highlight-color: var(--code-color);
+  --search-highlight-bg: var(--code-bg);
+
+  // Messages
+  --message-bg: var(--gray-100);
+  --message-color: #717171;
+
+  // Post meta
+  --post-date-color: var(--gray-500);
+  --related-post-date: #999;
+
+  // Quotes
+  --blockquote-color: var(--gray-600);
+  --blockquote-border: var(--border-color-medium);
+
+  // Pagination
+  --pagination-color: var(--gray-400);
+  --pagination-border: var(--border-color);
+  --pagination-hover-bg: var(--gray-200);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Base colors - inverted
+    --body-bg: #1a1a1a;
+    --body-color: #dadada;
+    --body-color-secondary: #d0d0d0;
+
+    // Links - slightly brighter for dark mode
+    --link-color: #4dabf7;
+    --link-hover-color: #74c0fc;
+
+    // Headings
+    --heading-color: #e8e8e8;
+
+    // Borders - darker versions
+    --border-color: #333;
+    --border-color-light: #2a2a2a;
+    --border-color-medium: #3a3a3a;
+    --border-color-dark: #404040;
+
+    // Grays - inverted
+    --gray-100: #2a2a2a;
+    --gray-200: #2f2f2f;
+    --gray-300: #333;
+    --gray-400: #555;
+    --gray-500: #9a9a9a;
+    --gray-600: #999;
+    --gray-700: #aaa;
+    --gray-800: #ccc;
+    --gray-900: #202020;
+
+    // Masthead
+    --masthead-border-top: #4dabf7;
+    --masthead-border-bottom: var(--border-color);
+    --masthead-title-color: #ececec;
+    --masthead-tagline-color: #999;
+
+    // Sidebar - keep similar but adjust slightly
+    --sidebar-bg: #151515;
+    --sidebar-color: rgba(255, 255, 255, 0.7);
+    --sidebar-link-color: #fff;
+    --sidebar-border: rgba(255, 255, 255, 0.15);
+
+    // Sidebar toggle - adjust for dark bg
+    --sidebar-toggle-color: #e0e0e0;
+    --sidebar-toggle-bg: transparent;
+    --sidebar-toggle-active-color: #fff;
+    --sidebar-toggle-active-bg: rgba(255, 255, 255, 0.1);
+
+    // Code - better contrast for dark mode
+    --code-color: #ff6b9d;
+    --code-bg: #2d2d2d;
+    --pre-bg: #252525;
+
+    // Tables
+    --table-border: var(--border-color-medium);
+    --table-stripe-bg: var(--gray-100);
+
+    // Footer
+    --footer-bg: #232323;
+    --footer-border: var(--border-color);
+
+    // Forms
+    --input-border: #444;
+    --input-focus-border: #4dabf7;
+    --input-focus-shadow: rgba(77, 171, 247, 0.15);
+    --button-bg: #333;
+    --button-border: #444;
+    --button-color: #4dabf7;
+    --button-hover-bg: #4dabf7;
+    --button-hover-border: #4dabf7;
+    --button-hover-color: #1a1a1a;
+
+    // Info blocks - darker but still distinct
+    --info-block-bg: #1e3a47;
+    --info-block-border: #2c5f75;
+    --info-block-color: #a8d8ea;
+    --info-block-link: #74c0fc;
+
+    // Search results
+    --search-highlight-color: var(--code-color);
+    --search-highlight-bg: var(--code-bg);
+
+    // Messages
+    --message-bg: var(--gray-100);
+    --message-color: #aaa;
+
+    // Post meta
+    --post-date-color: var(--gray-500);
+    --related-post-date: var(--gray-500);
+
+    // Quotes
+    --blockquote-color: var(--gray-600);
+    --blockquote-border: var(--border-color-medium);
+
+    // Pagination
+    --pagination-color: var(--gray-400);
+    --pagination-border: var(--border-color);
+    --pagination-hover-bg: var(--gray-200);
+  }
+}

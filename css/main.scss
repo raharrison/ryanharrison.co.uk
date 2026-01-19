@@ -4,7 +4,10 @@
 
 @charset "utf-8";
 
+// Import colors first so variables are available to all partials
+@use "colors";
+
 // Use partials from `sass_dir` (defaults to `_sass`)
-@use "lanyon";
+@use "theme";
 @use "syntax";
 @use "svg-icons";
