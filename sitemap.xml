@@ -1,0 +1,58 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>{{ site.url }}{{ site.baseurl }}/</loc>
+{%- if site.posts.first %}
+<lastmod>{{ site.posts.first.date | date_to_xmlschema }}</lastmod>
+{%- endif %}
+</url>
+{%- for page in site.pages %}
+  {%- unless page.sitemap == false %}
+    {%- assign url_parts = page.url | split: "/" %}
+    {%- assign is_paginated = false %}
+    {%- if url_parts.size == 3 %}
+      {%- assign second_part = url_parts[1] %}
+      {%- if second_part contains "page" %}
+        {%- assign is_paginated = true %}
+      {%- endif %}
+    {%- endif %}
+    {%- unless is_paginated %}
+      {%- if page.layout %}
+        {%- assign page_url = page.url %}
+        {%- if page_url contains ".html" or page_url == "/" -%}
+          {%- assign final_url = page_url %}
+        {%- elsif page_url contains "." -%}
+          {%- assign final_url = page_url %}
+        {%- else -%}
+          {%- assign clean_url = page_url | remove_first: "/" | remove: "/" %}
+          {%- assign final_url = clean_url | prepend: "/" | append: ".html" %}
+        {%- endif %}
+<url>
+<loc>{{ site.url }}{{ site.baseurl }}{{ final_url }}</loc>
+{%- if page.last_modified_at %}
+<lastmod>{{ page.last_modified_at | date_to_xmlschema }}</lastmod>
+{%- elsif page.date %}
+<lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+{%- endif %}
+</url>
+      {%- endif %}
+    {%- endunless %}
+  {%- endunless %}
+{%- endfor %}
+{%- for post in site.posts %}
+  {%- unless post.sitemap == false %}
+<url>
+<loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
+{%- if post.last_modified_at %}
+<lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
+{%- else %}
+<lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+{%- endif %}
+</url>
+  {%- endunless %}
+{%- endfor %}
+</urlset>

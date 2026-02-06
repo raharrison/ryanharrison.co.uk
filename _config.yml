@@ -25,7 +25,6 @@ collections:
     permalink: /:name
 
 plugins:
-  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-paginate # Pagination of posts
 
 # Post excerpts include everything up to this tag
@@ -36,7 +35,7 @@ version: 1.2.0
 
 # Set the Sass partials directory, as we're using @imports
 sass:
-  style: :compressed # Or use :expanded
+  style: compressed # Or use :expanded
 
 # Exclude these files from the production _site
 exclude:
