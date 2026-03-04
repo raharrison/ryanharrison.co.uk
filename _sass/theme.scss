@@ -271,13 +271,24 @@ figure {
  */
 
 .masthead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
   padding-top:    1rem;
   padding-bottom: 1rem;
   margin-bottom: 2rem;
+  background-color: var(--body-bg);
   border-bottom: 1px solid var(--masthead-border-bottom);
   border-top: 5px solid var(--masthead-border-top);
 }
+.masthead .container {
+  display: flex;
+  align-items: center;
+}
 .masthead-title {
+  flex: 1;
+  order: 1;
+  text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   color: var(--masthead-title-color);
@@ -294,12 +305,21 @@ figure {
   letter-spacing: 0;
 }
 
-@media (max-width: 50em) {
-  .masthead-title {
-    text-align: center;
-  }
+@media (max-width: 64em) {
   .masthead-title small {
     display: none;
+  }
+}
+
+@media (min-width: 64em) {
+  .masthead-title {
+    text-align: left;
+  }
+  .sidebar-toggle {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
   }
 }
 
@@ -385,10 +405,8 @@ a.sidebar-nav-item:focus {
 
 /* Style the `label` that we use to target the `.sidebar-checkbox` */
 .sidebar-toggle {
-  position: absolute;
-  top:  .8rem;
-  left: 1rem;
   display: block;
+  flex-shrink: 0;
   padding: .25rem .75rem;
   color: var(--sidebar-toggle-color);
   background-color: var(--sidebar-toggle-bg);
@@ -417,15 +435,15 @@ a.sidebar-nav-item:focus {
 }
 
 .sidebar-toggle:active,
-#sidebar-checkbox:focus ~ .sidebar-toggle,
-#sidebar-checkbox:checked ~ .sidebar-toggle {
+body:has(#sidebar-checkbox:focus) .sidebar-toggle,
+body:has(#sidebar-checkbox:checked) .sidebar-toggle {
   color: var(--sidebar-toggle-active-color);
   background-color: var(--sidebar-toggle-active-bg);
 }
 
 .sidebar-toggle:active:before,
-#sidebar-checkbox:focus ~ .sidebar-toggle:before,
-#sidebar-checkbox:checked ~ .sidebar-toggle:before {
+body:has(#sidebar-checkbox:focus) .sidebar-toggle:before,
+body:has(#sidebar-checkbox:checked) .sidebar-toggle:before {
   background-image: linear-gradient(to bottom,
     var(--sidebar-toggle-active-color), var(--sidebar-toggle-active-color) 12.5%,
     transparent 12.5%, transparent 43.75%,
@@ -434,11 +452,6 @@ a.sidebar-nav-item:focus {
     var(--sidebar-toggle-active-color) 87.5%, var(--sidebar-toggle-active-color) 100%);
 }
 
-@media (min-width: 30.1em) {
-  .sidebar-toggle {
-    position: fixed;
-  }
-}
 
 @media print {
   .sidebar-toggle {
@@ -460,12 +473,10 @@ a.sidebar-nav-item:focus {
  */
 
 .wrap,
-.sidebar,
-.sidebar-toggle {
+.sidebar {
   backface-visibility: hidden;
 }
-.wrap,
-.sidebar-toggle {
+.wrap {
   transition: transform .3s ease-in-out;
 }
 
@@ -474,8 +485,7 @@ a.sidebar-nav-item:focus {
   visibility: visible;
 }
 #sidebar-checkbox:checked ~ .sidebar,
-#sidebar-checkbox:checked ~ .wrap,
-#sidebar-checkbox:checked ~ .sidebar-toggle {
+#sidebar-checkbox:checked ~ .wrap {
   transform: translateX(14rem);
 }
 
@@ -744,8 +754,8 @@ a.pagination-item:hover {
 .svg-icon.search {
     width: 1.25rem;
     height: 1.25rem;
-    float: right;
-    margin-top: 0.5rem;
+    flex-shrink: 0;
+    order: 2;
     transition: opacity 0.2s ease, transform 0.2s ease;
     cursor: pointer;
 
