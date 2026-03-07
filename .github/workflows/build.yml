@@ -38,4 +38,5 @@ jobs:
       with:
         webhook_url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
         webhook_secret: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+        verbose: true
         data: '{"site":"blog","version":"${{ steps.version.outputs.number }}"}'
