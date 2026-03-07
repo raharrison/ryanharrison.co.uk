@@ -1,9 +1,7 @@
-name: Jekyll site CI
+name: Build and Deploy
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -13,5 +11,31 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
+
+    - name: Build the site
       run: docker run -v ${{ github.workspace }}:/site bretfisher/jekyll-serve bundle exec jekyll build
+
+    - name: Get version from config
+      id: version
+      run: |
+        VERSION=$(grep '^version:' _config.yml | awk '{print $2}')
+        echo "number=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Copy artifacts to server
+      uses: appleboy/scp-action@v0.1.7
+      with:
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        port: ${{ secrets.REMOTE_PORT }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        strip_components: 1
+        overwrite: true
+        source: "_site/"
+        target: ${{ secrets.UI_TARGET_PATH }}${{ steps.version.outputs.number }}/
+
+    - name: Trigger deployment webhook
+      uses: distributhor/workflow-webhook@v3
+      with:
+        webhook_url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
+        webhook_secret: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+        data: '{"site":"blog","version":"${{ steps.version.outputs.number }}"}'
