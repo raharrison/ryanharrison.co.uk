@@ -160,7 +160,7 @@ sitemap: false
 
         try {
             const response = await fetch(
-                "http://localhost:7070/search?q=" + encodeURIComponent(userQuery),
+                "https://api.ryanharrison.co.uk/search?q=" + encodeURIComponent(userQuery),
                 { signal: currentController.signal }
             );
 
