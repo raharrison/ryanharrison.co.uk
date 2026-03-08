@@ -721,16 +721,6 @@ a.pagination-item:hover {
   transition: opacity 400ms ease-in-out;
 }
 
-#search_results {
-  padding-left: 20px;
-  em {
-    color: var(--search-highlight-color);
-    background-color: var(--search-highlight-bg);
-    border-radius: 3px;
-    font-style: normal;
-  }
-}
-
 .info-block {
   padding: .5rem 1rem;
   margin: .8rem 0;

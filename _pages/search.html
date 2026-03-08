@@ -8,19 +8,111 @@ sitemap: false
 
 <div>
     <form id="site_search" class="input-form">
-        <input type="search" id="search_box" placeholder="Enter search term ..." oninput="debouncedSearch()" />
+        <input type="search" id="search_box" placeholder="Enter search term ..." oninput="debouncedSearch()" autocomplete="off" />
         <button id="submit_button" type="submit">SEARCH</button>
     </form>
 </div>
 
-<br />
+<div id="search_status"></div>
 
 <div class="entry">
     <ul id="search_results" class="post-content"></ul>
 </div>
 
+<style>
+    #search_box {
+        min-width: 20rem;
+    }
+
+    #search_status {
+        margin: 1rem 0 0.5rem;
+        font-size: 0.9rem;
+        color: var(--post-date-color);
+        min-height: 1.4rem;
+    }
+
+    #search_results {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .search-result {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .search-result:last-child {
+        border-bottom: none;
+    }
+
+    .search-result-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.3rem;
+    }
+
+    .search-result-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--link-color);
+        text-decoration: none;
+    }
+
+    .search-result-title:hover {
+        text-decoration: underline;
+    }
+
+    .search-result-type {
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.1em 0.5em;
+        border-radius: 3px;
+        background-color: var(--code-bg);
+        color: var(--post-date-color);
+        border: 1px solid var(--border-color);
+        flex-shrink: 0;
+    }
+
+    .search-result-excerpt {
+        font-size: 0.9rem;
+        color: var(--body-color);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .search-spinner {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid var(--border-color);
+        border-top-color: var(--link-color);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        vertical-align: middle;
+        margin-right: 0.4rem;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .search-error {
+        color: #c0392b;
+    }
+
+    #search_results em {
+        color: var(--search-highlight-color);
+        background-color: var(--search-highlight-bg);
+        border-radius: 3px;
+        font-style: normal;
+    }
+</style>
+
 <script>
-    // extract param from current url by name
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -31,63 +123,106 @@ sitemap: false
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    // delay successive executions of a given function
-    function debounce(func, timeout = 300) {
+    function debounce(func, timeout = 350) {
         let timer;
         return (...args) => {
             clearTimeout(timer);
-            timer = setTimeout(() => {
-                func.apply(this, args);
-            }, timeout);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
         };
     }
 
-    // execute search query through jsonp
-    function runSearchQuery() {
-        const userQuery = document.getElementById("search_box").value;
+    function resolveUrl(hit) {
+        if (hit.type === "blog") return hit.url;
+        return "https://guidelines.ryanharrison.co.uk" + hit.url;
+    }
 
-        const params = {q: userQuery};
-        history.pushState({ q: userQuery }, null, "/search.html?q=" + encodeURIComponent(userQuery));
+    let currentController = null;
 
-        const results = document.getElementById("search_results");
-        while (results.firstChild) results.removeChild(results.firstChild);
+    function setStatus(html) {
+        document.getElementById("search_status").innerHTML = html;
+    }
 
-        const script = document.createElement("script");
-        script.src = "https://api.ryanharrison.co.uk/blog/search?q=" + userQuery + "&callback=searchSuccess";
-        document.head.appendChild(script);
+    async function runSearchQuery() {
+        const userQuery = document.getElementById("search_box").value.trim();
+
+        history.pushState({ q: userQuery }, null, "/search.html" + (userQuery ? "?q=" + encodeURIComponent(userQuery) : ""));
+
+        const resultsList = document.getElementById("search_results");
+        resultsList.innerHTML = "";
+        setStatus("");
+
+        if (!userQuery) return;
+
+        if (currentController) currentController.abort();
+        currentController = new AbortController();
+
+        setStatus('<span class="search-spinner"></span>Searching&hellip;');
+
+        try {
+            const response = await fetch(
+                "http://localhost:7070/search?q=" + encodeURIComponent(userQuery),
+                { signal: currentController.signal }
+            );
+
+            if (!response.ok) throw new Error("Server returned " + response.status);
+
+            const data = await response.json();
+
+            if (!Array.isArray(data) || data.length === 0) {
+                setStatus("No results found for <strong>" + escapeHtml(userQuery) + "</strong>");
+                return;
+            }
+
+            setStatus(data.length + " result" + (data.length !== 1 ? "s" : "") + " for <strong>" + escapeHtml(userQuery) + "</strong>");
+
+            data.forEach(function (hit) {
+                const li = document.createElement("li");
+                li.className = "search-result";
+
+                const typeLabel = hit.type ? '<span class="search-result-type">' + escapeHtml(hit.type) + '</span>' : "";
+                const url = resolveUrl(hit);
+
+                li.innerHTML =
+                    '<div class="search-result-header">' +
+                        '<a class="search-result-title" href="' + escapeHtml(url) + '">' + escapeHtmlWithEm(hit.title) + '</a>' +
+                        typeLabel +
+                    '</div>' +
+                    (hit.excerpt ? '<p class="search-result-excerpt">' + escapeHtmlWithEm(hit.excerpt) + '</p>' : "");
+
+                resultsList.appendChild(li);
+            });
+        } catch (err) {
+            if (err.name === "AbortError") return;
+            setStatus('<span class="search-error">Search failed. Please try again.</span>');
+        }
+    }
+
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+
+    // Escape HTML but allow <em> tags through (for search highlights from API)
+    function escapeHtmlWithEm(str) {
+        return escapeHtml(str)
+            .replace(/&lt;em&gt;/g, "<em>")
+            .replace(/&lt;\/em&gt;/g, "</em>");
     }
 
     const debouncedSearch = debounce(() => runSearchQuery());
 
-    // set input textbox to query and execute search
     function setQueryAndSubmit(query) {
         document.getElementById("search_box").value = query;
         runSearchQuery();
     }
 
-    // callback when search api call completes
-    function searchSuccess(data) {
-        const results = document.getElementById("search_results");
-        data.forEach(function (value, key) {
-            const link =
-                "<li id='" + key + "'><a target=\"_blank\" href='" + value.url + "'>" + value.title + "</a></li>";
-            const highlight = "<p><small>" + value.body + "</small></p>";
-            results.innerHTML += link;
-            results.innerHTML += highlight;
-        });
-
-        if (results.children.length === 0) {
-            results.innerHTML += "<p>No results found</p>";
-        }
-    }
-
     window.onpopstate = function (e) {
-        if (e.state) {
-            setQueryAndSubmit(e.state.q);
-        }
+        if (e.state) setQueryAndSubmit(e.state.q || "");
     };
 
-    // on page load check query params and add handlers
     ready(function () {
         document.getElementById("search_box").focus();
         document.getElementById("site_search").onsubmit = function (e) {
@@ -95,10 +230,7 @@ sitemap: false
             runSearchQuery();
         };
 
-        // if query string set search with it
         const qs = getParameterByName("q");
-        if (qs) {
-            setQueryAndSubmit(qs);
-        }
+        if (qs) setQueryAndSubmit(qs);
     });
 </script>
