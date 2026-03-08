@@ -6,11 +6,15 @@ sitemap: false
 
 <h2>Site Search</h2>
 
-<div>
-    <form id="site_search" class="input-form">
-        <input type="search" id="search_box" placeholder="Enter search term ..." oninput="debouncedSearch()" autocomplete="off" />
-        <button id="submit_button" type="submit">SEARCH</button>
-    </form>
+<form id="site_search" class="input-form">
+    <input type="search" id="search_box" placeholder="Enter search term ..." oninput="debouncedSearch()" autocomplete="off" />
+    <button type="submit">SEARCH</button>
+</form>
+
+<div id="index_toggle" role="group" aria-label="Search index">
+    <button class="index-btn active" data-index="all">All</button>
+    <button class="index-btn" data-index="blog">Blog</button>
+    <button class="index-btn" data-index="guidelines">Guidelines</button>
 </div>
 
 <div id="search_status"></div>
@@ -22,6 +26,36 @@ sitemap: false
 <style>
     #search_box {
         min-width: 20rem;
+    }
+
+    #index_toggle {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.8rem;
+    }
+
+    .index-btn {
+        border: 1px solid var(--border-color);
+        border-radius: 2rem;
+        padding: 5px 14px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        background-color: var(--body-bg);
+        color: var(--post-date-color);
+        transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .index-btn:hover {
+        border-color: var(--link-color);
+        color: var(--link-color);
+    }
+
+    .index-btn.active {
+        background-color: var(--link-color);
+        border-color: var(--link-color);
+        color: #fff;
     }
 
     #search_status {
@@ -113,88 +147,12 @@ sitemap: false
 </style>
 
 <script>
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return "";
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
     function debounce(func, timeout = 350) {
         let timer;
         return (...args) => {
             clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+            timer = setTimeout(() => func.apply(this, args), timeout);
         };
-    }
-
-    function resolveUrl(hit) {
-        if (hit.type === "blog") return hit.url;
-        return "https://guidelines.ryanharrison.co.uk" + hit.url;
-    }
-
-    let currentController = null;
-
-    function setStatus(html) {
-        document.getElementById("search_status").innerHTML = html;
-    }
-
-    async function runSearchQuery() {
-        const userQuery = document.getElementById("search_box").value.trim();
-
-        history.pushState({ q: userQuery }, null, "/search.html" + (userQuery ? "?q=" + encodeURIComponent(userQuery) : ""));
-
-        const resultsList = document.getElementById("search_results");
-        resultsList.innerHTML = "";
-        setStatus("");
-
-        if (!userQuery) return;
-
-        if (currentController) currentController.abort();
-        currentController = new AbortController();
-
-        setStatus('<span class="search-spinner"></span>Searching&hellip;');
-
-        try {
-            const response = await fetch(
-                "https://api.ryanharrison.co.uk/search?q=" + encodeURIComponent(userQuery),
-                { signal: currentController.signal }
-            );
-
-            if (!response.ok) throw new Error("Server returned " + response.status);
-
-            const data = await response.json();
-
-            if (!Array.isArray(data) || data.length === 0) {
-                setStatus("No results found for <strong>" + escapeHtml(userQuery) + "</strong>");
-                return;
-            }
-
-            setStatus(data.length + " result" + (data.length !== 1 ? "s" : "") + " for <strong>" + escapeHtml(userQuery) + "</strong>");
-
-            data.forEach(function (hit) {
-                const li = document.createElement("li");
-                li.className = "search-result";
-
-                const typeLabel = hit.type ? '<span class="search-result-type">' + escapeHtml(hit.type) + '</span>' : "";
-                const url = resolveUrl(hit);
-
-                li.innerHTML =
-                    '<div class="search-result-header">' +
-                        '<a class="search-result-title" href="' + escapeHtml(url) + '">' + escapeHtmlWithEm(hit.title) + '</a>' +
-                        typeLabel +
-                    '</div>' +
-                    (hit.excerpt ? '<p class="search-result-excerpt">' + escapeHtmlWithEm(hit.excerpt) + '</p>' : "");
-
-                resultsList.appendChild(li);
-            });
-        } catch (err) {
-            if (err.name === "AbortError") return;
-            setStatus('<span class="search-error">Search failed. Please try again.</span>');
-        }
     }
 
     function escapeHtml(str) {
@@ -205,32 +163,121 @@ sitemap: false
             .replace(/"/g, "&quot;");
     }
 
-    // Escape HTML but allow <em> tags through (for search highlights from API)
     function escapeHtmlWithEm(str) {
         return escapeHtml(str)
             .replace(/&lt;em&gt;/g, "<em>")
             .replace(/&lt;\/em&gt;/g, "</em>");
     }
 
-    const debouncedSearch = debounce(() => runSearchQuery());
-
-    function setQueryAndSubmit(query) {
-        document.getElementById("search_box").value = query;
-        runSearchQuery();
+    function resolveUrl(hit) {
+        if (hit.type === "blog") return hit.url;
+        return "https://guidelines.ryanharrison.co.uk" + hit.url;
     }
 
+    function getSelectedIndex() {
+        return document.querySelector(".index-btn.active").dataset.index;
+    }
+
+    function setSelectedIndex(index) {
+        document.querySelectorAll(".index-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.index === index);
+        });
+    }
+
+    function setStatus(html) {
+        document.getElementById("search_status").innerHTML = html;
+    }
+
+    let currentController = null;
+
+    async function runSearchQuery() {
+        const query = document.getElementById("search_box").value.trim();
+        const index = getSelectedIndex();
+
+        const pageParams = new URLSearchParams({ q: query });
+        if (index !== "all") pageParams.set("index", index);
+        history.pushState({ query, index }, null, "/search.html" + (query ? "?" + pageParams : ""));
+
+        const resultsList = document.getElementById("search_results");
+        resultsList.innerHTML = "";
+        setStatus("");
+
+        if (!query) return;
+
+        if (currentController) currentController.abort();
+        currentController = new AbortController();
+
+        setStatus('<span class="search-spinner"></span>Searching&hellip;');
+
+        try {
+            const apiParams = new URLSearchParams({ q: query });
+            if (index !== "all") apiParams.set("index", index);
+
+            const response = await fetch(
+                "https://api.ryanharrison.co.uk/search?" + apiParams,
+                { signal: currentController.signal }
+            );
+
+            if (!response.ok) throw new Error("Server returned " + response.status);
+
+            const data = await response.json();
+
+            if (!Array.isArray(data) || data.length === 0) {
+                setStatus("No results found for <strong>" + escapeHtml(query) + "</strong>");
+                return;
+            }
+
+            setStatus(data.length + " result" + (data.length !== 1 ? "s" : "") + " for <strong>" + escapeHtml(query) + "</strong>");
+
+            data.forEach(hit => {
+                const li = document.createElement("li");
+                li.className = "search-result";
+                const typeLabel = hit.type ? '<span class="search-result-type">' + escapeHtml(hit.type) + '</span>' : "";
+                li.innerHTML =
+                    '<div class="search-result-header">' +
+                        '<a class="search-result-title" href="' + escapeHtml(resolveUrl(hit)) + '">' + escapeHtmlWithEm(hit.title) + '</a>' +
+                        typeLabel +
+                    '</div>' +
+                    (hit.excerpt ? '<p class="search-result-excerpt">' + escapeHtmlWithEm(hit.excerpt) + '</p>' : "");
+                resultsList.appendChild(li);
+            });
+        } catch (err) {
+            if (err.name === "AbortError") return;
+            setStatus('<span class="search-error">Search failed. Please try again.</span>');
+        }
+    }
+
+    const debouncedSearch = debounce(runSearchQuery);
+
     window.onpopstate = function (e) {
-        if (e.state) setQueryAndSubmit(e.state.q || "");
+        if (!e.state) return;
+        document.getElementById("search_box").value = e.state.query || "";
+        setSelectedIndex(e.state.index || "all");
+        runSearchQuery();
     };
 
     ready(function () {
         document.getElementById("search_box").focus();
-        document.getElementById("site_search").onsubmit = function (e) {
+
+        document.getElementById("site_search").addEventListener("submit", e => {
             e.preventDefault();
             runSearchQuery();
-        };
+        });
 
-        const qs = getParameterByName("q");
-        if (qs) setQueryAndSubmit(qs);
+        document.querySelectorAll(".index-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                setSelectedIndex(btn.dataset.index);
+                if (document.getElementById("search_box").value.trim()) runSearchQuery();
+            });
+        });
+
+        const params = new URLSearchParams(window.location.search);
+        const qs = params.get("q");
+        const qi = params.get("index") || "all";
+        if (qs) {
+            document.getElementById("search_box").value = qs;
+            setSelectedIndex(qi);
+            runSearchQuery();
+        }
     });
 </script>

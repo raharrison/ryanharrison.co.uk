@@ -31,7 +31,7 @@ plugins:
 excerpt_separator: <!--more-->
 
 # Custom vars
-version: 1.2.1
+version: 1.2.2
 
 # Set the Sass partials directory, as we're using @imports
 sass:

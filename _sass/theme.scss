@@ -282,17 +282,19 @@ figure {
   border-top: 5px solid var(--masthead-border-top);
 }
 .masthead .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
 }
+.sidebar-toggle { grid-column: 1; justify-self: start; }
 .masthead-title {
-  flex: 1;
-  order: 1;
+  grid-column: 2;
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
   color: var(--masthead-title-color);
 }
+.svg-icon.search { grid-column: 3; justify-self: end; }
 .masthead-title a {
   color: var(--masthead-title-color);
   font-size: 1.5rem;
@@ -312,8 +314,17 @@ figure {
 }
 
 @media (min-width: 64em) {
+  .masthead .container {
+    display: flex;
+    align-items: center;
+  }
   .masthead-title {
+    flex: 1;
+    order: 1;
     text-align: left;
+  }
+  .svg-icon.search {
+    order: 2;
   }
   .sidebar-toggle {
     position: absolute;
