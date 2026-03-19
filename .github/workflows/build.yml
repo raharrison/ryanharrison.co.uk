@@ -3,6 +3,8 @@ name: Build and Deploy
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
@@ -17,11 +19,13 @@ jobs:
 
     - name: Get version from config
       id: version
+      if: github.event_name == 'push'
       run: |
         VERSION=$(grep '^version:' _config.yml | awk '{print $2}')
         echo "number=$VERSION" >> $GITHUB_OUTPUT
 
     - name: Copy artifacts to server
+      if: github.event_name == 'push'
       uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.REMOTE_HOST }}
@@ -34,6 +38,7 @@ jobs:
         target: ${{ secrets.UI_TARGET_PATH }}${{ steps.version.outputs.number }}/
 
     - name: Trigger deployment webhook
+      if: github.event_name == 'push'
       uses: distributhor/workflow-webhook@v3
       with:
         webhook_url: ${{ secrets.DEPLOY_WEBHOOK_URL }}
