@@ -3,8 +3,6 @@ name: Build and Deploy
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -12,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Build the site
       run: docker run -v ${{ github.workspace }}:/site bretfisher/jekyll-serve bundle exec jekyll build
@@ -26,7 +24,7 @@ jobs:
 
     - name: Copy artifacts to server
       if: github.event_name == 'push'
-      uses: appleboy/scp-action@v0.1.7
+      uses: appleboy/scp-action@v1
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
